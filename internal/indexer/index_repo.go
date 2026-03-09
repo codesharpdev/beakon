@@ -8,11 +8,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/codeindex/codeindex/internal/graph"
-	"github.com/codeindex/codeindex/internal/index"
-	"github.com/codeindex/codeindex/internal/repo"
-	"github.com/codeindex/codeindex/internal/symbols"
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/internal/graph"
+	"github.com/beakon/beakon/internal/index"
+	"github.com/beakon/beakon/internal/repo"
+	"github.com/beakon/beakon/internal/symbols"
+	"github.com/beakon/beakon/pkg"
 )
 
 // Result summarizes a completed indexing run.

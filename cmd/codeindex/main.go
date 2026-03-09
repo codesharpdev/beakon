@@ -8,12 +8,12 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/codeindex/codeindex/internal/code"
-	ctx "github.com/codeindex/codeindex/internal/context"
-	"github.com/codeindex/codeindex/internal/graph"
-	"github.com/codeindex/codeindex/internal/index"
-	"github.com/codeindex/codeindex/internal/indexer"
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/internal/code"
+	ctx "github.com/beakon/beakon/internal/context"
+	"github.com/beakon/beakon/internal/graph"
+	"github.com/beakon/beakon/internal/index"
+	"github.com/beakon/beakon/internal/indexer"
+	"github.com/beakon/beakon/pkg"
 )
 
 var human bool

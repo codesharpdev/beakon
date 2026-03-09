@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	sitter "github.com/smacker/go-tree-sitter"
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/pkg"
 )
 
 // Extract parses a source file and returns all symbols and call edges.

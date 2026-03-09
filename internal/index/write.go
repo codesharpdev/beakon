@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/pkg"
 )
 
 const (

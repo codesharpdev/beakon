@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/pkg"
 )
 
 const graphDir = ".codeindex/graph"

@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/codeindex/codeindex/internal/graph"
-	"github.com/codeindex/codeindex/internal/index"
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/internal/graph"
+	"github.com/beakon/beakon/internal/index"
+	"github.com/beakon/beakon/pkg"
 )
 
 // CodeBlock is a symbol with its live source code attached.

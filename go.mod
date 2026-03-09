@@ -1,4 +1,4 @@
-module github.com/codeindex/codeindex
+module github.com/beakon/beakon
 
 go 1.22.2
 

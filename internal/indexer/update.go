@@ -6,10 +6,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/codeindex/codeindex/internal/graph"
-	"github.com/codeindex/codeindex/internal/index"
-	"github.com/codeindex/codeindex/internal/symbols"
-	"github.com/codeindex/codeindex/pkg"
+	"github.com/beakon/beakon/internal/graph"
+	"github.com/beakon/beakon/internal/index"
+	"github.com/beakon/beakon/internal/symbols"
+	"github.com/beakon/beakon/pkg"
 )
 
 // UpdateResult summarizes a single-file incremental update.
