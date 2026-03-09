@@ -10,14 +10,27 @@ import (
 	"github.com/beakon/beakon/pkg"
 )
 
+
 // CodeBlock is a symbol with its live source code attached.
+// For kind:"external", the position/code fields are omitted and enrichment fields are populated instead.
 type CodeBlock struct {
 	Symbol string `json:"symbol"`
 	Kind   string `json:"kind"`
-	File   string `json:"file"`
-	Start  int    `json:"start"`
-	End    int    `json:"end"`
-	Code   string `json:"code"`
+
+	// Position and source — internal symbols only
+	File  string `json:"file,omitempty"`
+	Start int    `json:"start,omitempty"`
+	End   int    `json:"end,omitempty"`
+	Code  string `json:"code,omitempty"`
+
+	// Enrichment — external callees only
+	Package    string `json:"package,omitempty"`
+	Stdlib     string `json:"stdlib,omitempty"`
+	DevOnly    *bool  `json:"dev_only,omitempty"`
+	Version    string `json:"version,omitempty"`
+	Resolution string `json:"resolution,omitempty"`
+	Reason     string `json:"reason,omitempty"`
+	Hint       string `json:"hint,omitempty"`
 }
 
 // Bundle is the complete context package sent to the LLM.
@@ -36,6 +49,7 @@ type Engine struct {
 	symIdx  map[string]pkg.BeakonNode
 	from    graph.CallsFrom
 	to      graph.CallsTo
+	extIdx  pkg.ExternalIndex
 	loaded  bool
 }
 
@@ -67,6 +81,11 @@ func (e *Engine) load() error {
 	if err != nil {
 		return err
 	}
+	// External index is optional — old indexes won't have it
+	e.extIdx, _ = graph.ReadExternal(e.root)
+	if e.extIdx == nil {
+		e.extIdx = make(pkg.ExternalIndex)
+	}
 
 	e.loaded = true
 	return nil
@@ -94,11 +113,7 @@ func (e *Engine) Assemble(query string) (*Bundle, error) {
 		if sym, ok := e.findSymbol(calleeName); ok {
 			bundle.Callees = append(bundle.Callees, e.toBlock(sym))
 		} else {
-			// Symbol not in index (external lib etc) — include name only
-			bundle.Callees = append(bundle.Callees, CodeBlock{
-				Symbol: calleeName,
-				Kind:   "external",
-			})
+			bundle.Callees = append(bundle.Callees, e.externalBlock(calleeName))
 		}
 	}
 
@@ -116,6 +131,21 @@ func (e *Engine) Assemble(query string) (*Bundle, error) {
 	bundle.TokenEstimate = estimateTokens(bundle)
 
 	return bundle, nil
+}
+
+// externalBlock builds a CodeBlock for an external callee using the ExternalIndex.
+func (e *Engine) externalBlock(calleeName string) CodeBlock {
+	block := CodeBlock{Symbol: calleeName, Kind: "external"}
+	if ext, ok := e.extIdx[calleeName]; ok {
+		block.Package = ext.Package
+		block.Stdlib = ext.Stdlib
+		block.DevOnly = ext.DevOnly
+		block.Version = ext.Version
+		block.Resolution = ext.Resolution
+		block.Reason = ext.Reason
+		block.Hint = ext.Hint
+	}
+	return block
 }
 
 // toBlock converts a Node to a CodeBlock with live source.

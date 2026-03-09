@@ -9,6 +9,7 @@ import (
 
 	"github.com/beakon/beakon/internal/graph"
 	"github.com/beakon/beakon/internal/index"
+	"github.com/beakon/beakon/internal/resolver"
 	"github.com/beakon/beakon/internal/symbols"
 	"github.com/beakon/beakon/pkg"
 )
@@ -76,6 +77,7 @@ func UpdateFile(root, filePath string) (*UpdateResult, error) {
 		return nil, fmt.Errorf("read %s: %w", rel, err)
 	}
 	newSyms, newCalls := symbols.Extract(rel, lang, src)
+	newCalls = resolver.Enrich(root, rel, lang, src, newCalls)
 
 	// Count old symbols for result
 	oldCount := 0
@@ -162,9 +164,30 @@ func rebuildGlobal(root, changedFile string, newSyms []pkg.BeakonNode, newCalls 
 	allSymbols = append(allSymbols, newSyms...)
 	allEdges = append(allEdges, newCalls...)
 
+	// Drop edges where the callee no longer exists in the symbol table.
+	// This handles cross-file invalidation: if a symbol is removed from one
+	// file, other files that called it still have stale edges in their
+	// FileIndex. Filter them out before rebuilding the graph.
+	knownSymbols := make(map[string]bool, len(allSymbols))
+	for _, s := range allSymbols {
+		knownSymbols[s.Name] = true
+	}
+	filtered := allEdges[:0]
+	for _, e := range allEdges {
+		// Keep internal calls to known symbols, and enriched external calls
+		if knownSymbols[e.To] || e.Package != "" {
+			filtered = append(filtered, e)
+		}
+	}
+	allEdges = filtered
+
 	// Rewrite all global index files
 	callsFrom, callsTo := graph.Build(allEdges)
 	if err := graph.Write(root, callsFrom, callsTo); err != nil {
+		return err
+	}
+	extIdx := graph.BuildExternal(allEdges)
+	if err := graph.WriteExternal(root, extIdx); err != nil {
 		return err
 	}
 	if err := index.WriteSymbols(root, allSymbols); err != nil {

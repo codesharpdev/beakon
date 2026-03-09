@@ -52,6 +52,58 @@ func Write(root string, from CallsFrom, to CallsTo) error {
 	return nil
 }
 
+// BuildExternal collects enrichment data from enriched call edges into an ExternalIndex.
+// Only edges that have a Package set are included.
+// When two edges resolve the same callee, "resolved" beats "unresolved".
+func BuildExternal(edges []pkg.CallEdge) pkg.ExternalIndex {
+	idx := make(pkg.ExternalIndex)
+	for _, e := range edges {
+		if e.Package == "" {
+			continue
+		}
+		candidate := pkg.ExternalCallee{
+			Package:    e.Package,
+			Stdlib:     e.Stdlib,
+			DevOnly:    e.DevOnly,
+			Version:    e.Version,
+			Resolution: e.Resolution,
+			Reason:     e.Reason,
+			Hint:       e.Hint,
+		}
+		existing, exists := idx[e.To]
+		if !exists {
+			idx[e.To] = candidate
+			continue
+		}
+		// Prefer resolved over unresolved; prefer richer version info
+		if existing.Resolution != "resolved" && candidate.Resolution == "resolved" {
+			idx[e.To] = candidate
+		} else if existing.Version == "" && candidate.Version != "" {
+			idx[e.To] = candidate
+		}
+	}
+	return idx
+}
+
+// WriteExternal persists the ExternalIndex to .beakon/graph/external.json
+func WriteExternal(root string, idx pkg.ExternalIndex) error {
+	dir := filepath.Join(root, graphDir)
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return err
+	}
+	return writeJSON(filepath.Join(dir, "external.json"), idx)
+}
+
+// ReadExternal loads .beakon/graph/external.json
+func ReadExternal(root string) (pkg.ExternalIndex, error) {
+	var idx pkg.ExternalIndex
+	err := readJSON(filepath.Join(root, graphDir, "external.json"), &idx)
+	if idx == nil {
+		idx = make(pkg.ExternalIndex)
+	}
+	return idx, err
+}
+
 // ReadFrom loads calls_from.json
 func ReadFrom(root string) (CallsFrom, error) {
 	var m CallsFrom

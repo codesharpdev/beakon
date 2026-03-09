@@ -1,5 +1,5 @@
 ---
-  CodeIndex — Capability Audit Report
+  Beakon — Capability Audit Report
 
   ---
   1. IMPLEMENTED FEATURES
@@ -22,15 +22,15 @@
   │ Python     │ ✓         │ ✓       │ ✓       │ ✓          │
   └────────────┴───────────┴─────────┴─────────┴────────────┘
 
-  Each language has its own extractor (extractGo, extractTS, extractPython) producing []CodeIndexNode + []CallEdge. Call edges are extracted directly from the AST — no heuristics.
+  Each language has its own extractor (extractGo, extractTS, extractPython) producing []BeakonNode + []CallEdge. Call edges are extracted directly from the AST — no heuristics.
 
   Call Graph
 
   File: internal/graph/build.go (239 lines)
 
   Bidirectional graph precomputed at index time. Stored as two JSON files:
-  - .codeindex/graph/calls_from.json — what each symbol calls
-  - .codeindex/graph/calls_to.json — who calls each symbol
+  - .beakon/graph/calls_from.json — what each symbol calls
+  - .beakon/graph/calls_to.json — who calls each symbol
 
   Both directions are O(1) lookup at query time.
 
@@ -40,8 +40,8 @@
 
   File: internal/index/write.go (197 lines)
 
-  JSON-only flat file storage under .codeindex/:
-  .codeindex/
+  JSON-only flat file storage under .beakon/:
+  .beakon/
   ├── meta.json           — index metadata
   ├── symbols.json        — flat symbol list
   ├── map.json            — dir → symbols (architecture overview)
@@ -68,7 +68,7 @@
 
   File: internal/indexer/watch.go (179 lines)
 
-  fsnotify-based recursive watcher with two-level debounce: 50ms idle OR 500ms max staleness. Calls UpdateFile per dirty path. Auto-triggers full index if .codeindex/ doesn't exist.
+  fsnotify-based recursive watcher with two-level debounce: 50ms idle OR 500ms max staleness. Calls UpdateFile per dirty path. Auto-triggers full index if .beakon/ doesn't exist.
 
   Context Engine
 
@@ -85,7 +85,7 @@
 
   All 10 CLI Commands
 
-  File: cmd/codeindex/main.go (496 lines)
+  File: cmd/beakon/main.go (496 lines)
 
   Every command implemented with JSON (default) and --human output modes:
 
@@ -164,7 +164,7 @@
 
   Config File
 
-  No .codeindex/config.yaml. Worker count is hardcoded to 8. Language extensions are hardcoded. Skip patterns are hardcoded. For production use, these need to be configurable per project.
+  No .beakon/config.yaml. Worker count is hardcoded to 8. Language extensions are hardcoded. Skip patterns are hardcoded. For production use, these need to be configurable per project.
 
   Progress Output During Indexing
 
@@ -177,14 +177,14 @@
 
   Semantic/Intent Layer
 
-  No capability exists to answer "what feature does this symbol belong to?" or "what is the purpose of this module?" The explain command traces calls but does not reason about intent. This is the capability gap between CodeIndex and a true
+  No capability exists to answer "what feature does this symbol belong to?" or "what is the purpose of this module?" The explain command traces calls but does not reason about intent. This is the capability gap between Beakon and a true
    "LSP for AI agents."
 
   ---
   4. ARCHITECTURE OVERVIEW
 
   ┌─────────────────────────────────────┐
-  │           cmd/codeindex             │  CLI (Cobra, 10 commands)
+  │           cmd/beakon               │  CLI (Cobra, 10 commands)
   │        Thin wrapper only            │
   └────────────────┬────────────────────┘
                    │
@@ -219,8 +219,8 @@
 
   Data flow:
   repo scan → file list
-           → Tree-sitter parse → CodeIndexNode[] + CallEdge[]
-           → parallel write → .codeindex/files/*.json
+           → Tree-sitter parse → BeakonNode[] + CallEdge[]
+           → parallel write → .beakon/files/*.json
            → graph build → calls_from.json + calls_to.json
            → symbol merge → symbols.json + map.json
 
@@ -254,7 +254,7 @@
 
   Risk 6: Live Source Reads in Queries (LOW)
 
-  show, trace, context, and explain all read source files live from disk at query time. For local dev this is fine. If CodeIndex ever serves a remote repo, this assumption breaks entirely.
+  show, trace, context, and explain all read source files live from disk at query time. For local dev this is fine. If Beakon ever serves a remote repo, this assumption breaks entirely.
 
   ---
   6. NEXT 5 IMPROVEMENTS
@@ -280,14 +280,14 @@
 
   Why now: This is the highest-value missing command for the AI agent use case. "What does changing X affect?" is the most common question before a refactor. The graph already supports reverse BFS; the command just needs to be written.
 
-  codeindex impact AuthService.Login
+  beakon impact AuthService.Login
   # → UserController.Login depends on this
   # → AdminController.Login depends on this
   # → 2 test files reference callers
 
   #4 — .gitignore Integration
 
-  Why now: Without it, CodeIndex indexes test fixtures, generated files, vendor copies, and build artifacts. These pollute the symbol index with noise that degrades context quality for AI agents. Parse and respect .gitignore files during
+  Why now: Without it, Beakon indexes test fixtures, generated files, vendor copies, and build artifacts. These pollute the symbol index with noise that degrades context quality for AI agents. Parse and respect .gitignore files during
   scanning.
 
   #5 — Qualify Call Edges by Receiver/Package
@@ -300,7 +300,7 @@
 
   Full LSP Server
 
-  LSP requires a persistent process, incremental document sync, per-client state, and strict protocol compliance. CodeIndex's stateless query model is an architectural strength — it lets AI agents query without a daemon. Adding LSP would
+  LSP requires a persistent process, incremental document sync, per-client state, and strict protocol compliance. Beakon's stateless query model is an architectural strength — it lets AI agents query without a daemon. Adding LSP would
   require a complete architectural shift before the core is solid. Wait until test coverage is >80% and the robustness phase is complete.
 
   Distributed / Remote Indexing
@@ -324,5 +324,5 @@
   look like. Add Rust or Java as first-class built-ins when needed; build a plugin system only when there are 6+ languages.
 
   ---
-  Summary: CodeIndex has a solid, complete core (2,235 lines, 12 files, all 10 commands working). The architecture is clean and well-layered. The critical gaps are test coverage, write safety, and the impact command. Fix those three and
+  Summary: Beakon has a solid, complete core (2,235 lines, 12 files, all 10 commands working). The architecture is clean and well-layered. The critical gaps are test coverage, write safety, and the impact command. Fix those three and
   the system is genuinely production-ready for its stated purpose.

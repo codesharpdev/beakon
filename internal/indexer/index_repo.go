@@ -12,6 +12,7 @@ import (
 	"github.com/beakon/beakon/internal/graph"
 	"github.com/beakon/beakon/internal/index"
 	"github.com/beakon/beakon/internal/repo"
+	"github.com/beakon/beakon/internal/resolver"
 	"github.com/beakon/beakon/internal/symbols"
 	"github.com/beakon/beakon/pkg"
 )
@@ -89,6 +90,7 @@ func Run(root string) (*Result, error) {
 			}
 
 			syms, calls := symbols.Extract(sf.Path, sf.Language, src)
+			calls = resolver.Enrich(root, sf.Path, sf.Language, src, calls)
 			fi := pkg.FileIndex{
 				File:    sf.Path,
 				Hash:    hash,
@@ -135,11 +137,15 @@ func Run(root string) (*Result, error) {
 	}, nil
 }
 
-// writeIndexFiles rebuilds symbols.json, map.json, and graph files.
+// writeIndexFiles rebuilds symbols.json, map.json, graph files, and external index.
 func writeIndexFiles(root string, allSymbols []pkg.BeakonNode, allEdges []pkg.CallEdge) error {
 	callsFrom, callsTo := graph.Build(allEdges)
 	if err := graph.Write(root, callsFrom, callsTo); err != nil {
 		return fmt.Errorf("write graph: %w", err)
+	}
+	extIdx := graph.BuildExternal(allEdges)
+	if err := graph.WriteExternal(root, extIdx); err != nil {
+		return fmt.Errorf("write external index: %w", err)
 	}
 	if err := index.WriteSymbols(root, allSymbols); err != nil {
 		return fmt.Errorf("write symbols: %w", err)

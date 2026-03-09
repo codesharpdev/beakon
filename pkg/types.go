@@ -15,10 +15,35 @@ type BeakonNode struct {
 }
 
 // CallEdge represents a directed call relationship between two symbols.
+// Enrichment fields are populated at index time for external callees only.
 type CallEdge struct {
 	From string `json:"from"` // caller symbol name
 	To   string `json:"to"`   // callee symbol name
+
+	// Enrichment — set for external callees; empty for internal calls
+	Package    string `json:"package,omitempty"`
+	Stdlib     string `json:"stdlib,omitempty"`    // "yes" | "no" | "unknown"
+	DevOnly    *bool  `json:"dev_only,omitempty"`
+	Version    string `json:"version,omitempty"`
+	Resolution string `json:"resolution,omitempty"` // "resolved" | "unresolved"
+	Reason     string `json:"reason,omitempty"`
+	Hint       string `json:"hint,omitempty"`
 }
+
+// ExternalCallee holds enrichment data for a single external callee symbol.
+type ExternalCallee struct {
+	Package    string `json:"package,omitempty"`
+	Stdlib     string `json:"stdlib,omitempty"`
+	DevOnly    *bool  `json:"dev_only,omitempty"`
+	Version    string `json:"version,omitempty"`
+	Resolution string `json:"resolution,omitempty"`
+	Reason     string `json:"reason,omitempty"`
+	Hint       string `json:"hint,omitempty"`
+}
+
+// ExternalIndex maps callee symbol name → enrichment data.
+// Stored in .beakon/graph/external.json at index time; used at query time.
+type ExternalIndex map[string]ExternalCallee
 
 // FileIndex is stored per source file in .beakon/nodes/*.json
 type FileIndex struct {

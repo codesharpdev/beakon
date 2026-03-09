@@ -1,0 +1,15 @@
+# Build output
+/beakon
+/beakon-*
+
+# Index data (generated)
+.beakon/
+.codeindex/
+
+# macOS
+.DS_Store
+
+# Go
+*.test
+*.out
+vendor/

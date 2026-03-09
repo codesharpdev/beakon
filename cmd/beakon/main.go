@@ -45,9 +45,9 @@ var indexCmd = &cobra.Command{
 				fmt.Fprintf(os.Stderr, "  warn: %s\n", e)
 			}
 			if len(result.UnsupportedExts) > 0 {
-				fmt.Println("\nNot indexed (no parser available):")
+				fmt.Println("\nSkipped (language not supported):")
 				for ext, count := range result.UnsupportedExts {
-					fmt.Printf("  %s  (%d files) — add Tree-sitter grammar to support this language\n", ext, count)
+					fmt.Printf("  %s  (%d files)\n", ext, count)
 				}
 			}
 		} else {
