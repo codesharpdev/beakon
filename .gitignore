@@ -9,7 +9,22 @@
 # macOS
 .DS_Store
 
-# Go 
+# Go
 *.test
 *.out
 vendor/
+
+# Internal docs (not for public repo)
+SPEC.md
+ARCHITECTURE.md
+TASKS.md
+REPO_RULES.md
+TESTING.md
+CONTRIBUTING.md
+CLAUDE.md
+builtin_reference.md
+docs/
+
+# Downloaded npm binaries
+bin/beakon
+bin/beakon.exe
