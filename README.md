@@ -1,30 +1,38 @@
 # Beakon
 
-**Structural code intelligence CLI for AI agents.**
+**Shared code intelligence infrastructure for AI agents.**
 
-Beakon parses your repository with Tree-sitter, builds a bidirectional call graph, and assembles complete context bundles so AI agents reason about the right code — not random grep results.
+Beakon parses repositories with Tree-sitter, builds a bidirectional call graph, enriches every external dependency with version and provenance metadata, and assembles complete context bundles — so AI agents reason about the right code, not random grep results.
 
-Think of it as: **LSP for AI agents.**
+> **Long-term vision:** Instead of every AI coding tool rebuilding repository understanding from scratch, Beakon becomes shared infrastructure. Index once. Query from anywhere.
 
 ---
 
-## Why
+## The Problem
 
-AI agents navigating a codebase face a core problem: they don't know what they don't know.
+AI agents navigating codebases face a structural problem: they don't know what they don't know.
 
-The typical agent workflow:
+The typical approach:
 ```
-grep "login" → open 20 files → guess which one matters
+grep "login" → open 20 files → guess which one matters → hit token limits
 ```
 
-This wastes tokens on irrelevant code and misses the files that actually matter.
+This wastes context on irrelevant code, misses the files that actually matter, and gives the agent no signal about external dependencies or blast radius.
 
-Beakon solves this with a single command:
+## The Solution
+
 ```bash
 beakon context AuthService.Login
 ```
 
-You get the symbol's source, everything it calls, everything that calls it, all files involved, and a token estimate. The agent knows exactly where to look before touching anything.
+Returns:
+- The symbol's full source code
+- Source of every function it calls — including whether each is stdlib, a pinned third-party dependency, or dev-only
+- Source of every function that calls it
+- All files involved
+- Token estimate
+
+One command. Complete picture.
 
 ---
 
@@ -38,8 +46,6 @@ cd beakon
 go build -o beakon ./cmd/beakon
 ```
 
-Add to your PATH or use `./beakon` from the repo root.
-
 ---
 
 ## Quick Start
@@ -50,6 +56,9 @@ beakon index
 
 # Get complete context for a symbol
 beakon context AuthService.Login --human
+
+# See what would break if you change a symbol
+beakon impact createJWT --human
 
 # See the repo structure
 beakon map --human
@@ -62,75 +71,72 @@ beakon map --human
 | Goal | Command |
 |------|---------|
 | Index the repository | `beakon index` |
-| Watch for changes | `beakon watch` |
+| Watch for changes (incremental) | `beakon watch` |
 | **Complete LLM context bundle** | `beakon context <symbol>` |
+| Blast radius of a change | `beakon impact <symbol>` |
 | Repo structure overview | `beakon map` |
 | Search for a symbol | `beakon search <text>` |
 | Show symbol source | `beakon show <symbol>` |
 | Trace execution flow | `beakon trace <symbol>` |
-| Explain a feature | `beakon explain <symbol>` |
-| Who calls a function | `beakon callers <symbol>` |
-| What a function calls | `beakon deps <symbol>` |
+| Explain a feature end-to-end | `beakon explain <symbol>` |
+| Who calls this function | `beakon callers <symbol>` |
+| What this function depends on | `beakon deps <symbol>` |
 
-All commands output **JSON by default** (for agent consumption) and readable text with `--human`.
-
----
-
-## The `context` Command
-
-The primary command. Assembles everything an LLM needs to reason about a symbol.
-
-```bash
-beakon context AuthService.Login --human
-```
-
-Returns:
-- The symbol's full source code (anchor)
-- Source of every function it calls (callees)
-- Source of every function that calls it (callers)
-- List of all files involved
-- Token estimate
-
-This is the single command that replaces `grep + open files + guess architecture`.
+All commands output **JSON by default** (machine-readable for agents) and readable text with `--human`.
 
 ---
 
-## Agent Workflow
+## External Dependency Enrichment
 
-**Wrong:**
-```
-grep "login"
-open 20 files
-guess which one matters
-```
+A differentiating feature: Beakon doesn't just map internal calls. Every external call edge is enriched at index time:
 
-**Right:**
-```
-beakon context AuthService.login
-↓ receive: anchor code + callers + callees
-↓ now you know exactly which files matter
-cat auth/service.go     ← only if you need the full file
-grep "session" auth/    ← only if you need text search
+```json
+{
+  "from": "AuthService.Login",
+  "to": "bcrypt.GenerateFromPassword",
+  "package": "golang.org/x/crypto/bcrypt",
+  "stdlib": "no",
+  "version": "v0.17.0",
+  "dev_only": false,
+  "resolution": "resolved"
+}
 ```
 
-Three tools. Layered, not competing:
+Enrichment includes:
+- **Package** — the import it came from
+- **Stdlib** — yes / no / unknown
+- **Version** — pinned version from lockfile (`go.mod`, `package.json`, `poetry.lock`, `Cargo.toml`, `Gemfile.lock`)
+- **DevOnly** — whether it's a dev/test-only dependency
+- **Resolution** — resolved or unresolved (with reason: `dot_import`, `wildcard_import`, etc.)
 
-| Tool | Use when |
-|------|----------|
-| `grep` | You know the text exists and where |
-| `cat` | You already know the file |
-| `beakon` | You don't know where to look |
+This tells agents not just *what* a function calls, but *what it depends on* — enabling security audits, upgrade analysis, and dependency-aware reasoning.
 
 ---
 
 ## Supported Languages
 
-- Go
-- TypeScript / TSX
-- JavaScript / JSX
-- Python
+| Language | Extensions |
+|----------|-----------|
+| Go | `.go` |
+| TypeScript | `.ts`, `.tsx` |
+| JavaScript | `.js`, `.jsx` |
+| Python | `.py` |
+| Rust | `.rs` |
+| Java | `.java` |
+| C | `.c`, `.h` |
+| C++ | `.cpp`, `.cc`, `.cxx`, `.hpp` |
+| C# | `.cs` |
+| Ruby | `.rb` |
+| Kotlin | `.kt`, `.kts` |
+| Swift | `.swift` |
+| PHP | `.php` |
+| Scala | `.scala` |
+| Elixir | `.ex`, `.exs` |
+| OCaml | `.ml`, `.mli` |
+| Elm | `.elm` |
+| Groovy | `.groovy` |
 
-All parsing uses [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) via [`go-tree-sitter`](https://github.com/smacker/go-tree-sitter). No language servers. No daemons.
+All parsing uses [Tree-sitter](https://tree-sitter.github.io/tree-sitter/). No language servers. No daemons. No runtime dependencies.
 
 ---
 
@@ -141,21 +147,40 @@ Repository
     ↓
 internal/repo       — scan files, detect languages
     ↓
-internal/symbols    — Tree-sitter parsing, symbol + call extraction
+internal/symbols    — Tree-sitter AST parsing → symbols + call edges
+    ↓
+internal/resolver   — enrich external calls: imports → lockfiles → stdlib detection
     ↓
 internal/indexer    — orchestrate: full index, incremental update, watch mode
     ↓
 internal/index      — read/write .beakon/ JSON files
-internal/graph      — build + query call graph
+internal/graph      — build + query bidirectional call graph
+    ↓
+internal/context    — assemble complete LLM context bundles
     ↓
 cmd/beakon          — CLI (Cobra)
 ```
 
-The index lives in `.beakon/` as JSON. Queries read from the index — never scan source files. Both directions of the call graph are precomputed at index time so all lookups are O(1).
+### Storage Layout
+
+```
+.beakon/
+├── meta.json           index metadata (version, file count, symbol count)
+├── symbols.json        flat list of all symbols
+├── map.json            directory → symbol names
+├── nodes/
+│   └── *.json          one FileIndex per source file
+└── graph/
+    ├── calls_from.json  symbol → what it calls
+    ├── calls_to.json    symbol → what calls it
+    └── external.json    enriched external dependency metadata
+```
+
+Add `.beakon/` to your `.gitignore`.
 
 ### Incremental Updates
 
-When a file changes, Beakon surgically replaces that file's contribution to the index. No full re-scan. Target: **<200ms** per update.
+When a file changes, Beakon surgically replaces that file's contribution to the index. SHA1 hash comparison skips unchanged files. All writes are atomic (temp file + rename). Target: **<200ms** per update.
 
 ### Watch Mode
 
@@ -163,25 +188,7 @@ When a file changes, Beakon surgically replaces that file's contribution to the 
 beakon watch
 ```
 
-Monitors your repo with fsnotify. Two-level debounce (50ms flush / 500ms max) keeps the index current as you edit without thrashing on rapid saves.
-
----
-
-## Storage Layout
-
-```
-.beakon/
-├── meta.json           index metadata
-├── symbols.json        flat list of all symbols
-├── map.json            directory → symbol names
-├── files/
-│   └── *.json          one record per source file
-└── graph/
-    ├── calls_from.json  symbol → what it calls
-    └── calls_to.json    symbol → what calls it
-```
-
-Add `.beakon/` to your `.gitignore`.
+Monitors your repo with fsnotify. Two-level debounce (50ms flush, 500ms max) keeps the index current without thrashing during editor save + format + lint cycles.
 
 ---
 
@@ -189,15 +196,17 @@ Add `.beakon/` to your `.gitignore`.
 
 | Operation | Target |
 |-----------|--------|
-| Any query | <100ms |
+| Any query command | <100ms |
 | Incremental file update | <200ms |
 | Full index (medium repo) | <30s |
+
+Indexing is parallelized across all CPU cores.
 
 ---
 
 ## Using with Claude Code
 
-Beakon is designed to work alongside Claude Code. Add this to your `CLAUDE.md`:
+Beakon is designed to work alongside [Claude Code](https://claude.ai/claude-code). Add this to your `CLAUDE.md`:
 
 ```markdown
 ## Navigation Model
@@ -218,10 +227,30 @@ Three tools. Each has a distinct purpose.
 
     ./beakon context <symbol> --human
 
-This shows you the full blast radius before you touch anything.
+This shows the full blast radius before you touch anything.
 ```
 
-Claude will use `beakon context` before exploring files, cutting irrelevant token usage and improving accuracy.
+With this setup, Claude uses `beakon context` before exploring files — cutting irrelevant token usage and giving the agent accurate dependency and caller/callee context.
+
+---
+
+## Agent Workflow
+
+**Without Beakon:**
+```
+grep "createJWT" → open 12 files → miss the callers → wrong fix
+```
+
+**With Beakon:**
+```
+beakon context createJWT
+↓ anchor: createJWT source
+↓ callers: AuthService.Login, TokenRefresher.Refresh
+↓ deps: jwt.Sign (stdlib: no, version: v5.2.0)
+↓ files: auth/service.go, api/token.go
+→ open exactly those 2 files
+→ correct fix, minimum tokens
+```
 
 ---
 
@@ -247,4 +276,4 @@ Key docs:
 
 ## License
 
-MIT
+[MIT](LICENSE)
