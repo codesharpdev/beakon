@@ -38,8 +38,15 @@ One command. Complete picture.
 
 ## Installation
 
-Requirements: **Go 1.21+**
+```bash
+npm install -g beakon
+```
 
+That's it. The correct binary for your OS and architecture is downloaded automatically.
+
+**Requirements:** Node.js 14+ (for install), no Go toolchain needed.
+
+**Build from source** (optional):
 ```bash
 git clone https://github.com/codesharpdev/beakon
 cd beakon
@@ -204,36 +211,6 @@ Indexing is parallelized across all CPU cores.
 
 ---
 
-## Using with Claude Code
-
-Beakon is designed to work alongside [Claude Code](https://claude.ai/claude-code). Add this to your `CLAUDE.md`:
-
-```markdown
-## Navigation Model
-
-Three tools. Each has a distinct purpose.
-
-    grep        → find text you know exists
-    cat         → read a file you already located
-    beakon      → navigate when you don't know where to look
-
-## First Thing Every Session
-
-    go build -o beakon ./cmd/beakon
-    ./beakon index
-    ./beakon map --human
-
-## Before Modifying Any Symbol
-
-    ./beakon context <symbol> --human
-
-This shows the full blast radius before you touch anything.
-```
-
-With this setup, Claude uses `beakon context` before exploring files — cutting irrelevant token usage and giving the agent accurate dependency and caller/callee context.
-
----
-
 ## Agent Workflow
 
 **Without Beakon:**
@@ -256,7 +233,7 @@ beakon context createJWT
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
+Contributions welcome. Open an issue or pull request.
 
 ```bash
 git clone https://github.com/codesharpdev/beakon
@@ -266,14 +243,8 @@ go build -o beakon ./cmd/beakon
 go test ./...
 ```
 
-Key docs:
-- `SPEC.md` — data structures and storage layout
-- `ARCHITECTURE.md` — pipeline and package responsibilities
-- `TASKS.md` — what is done, what is next
-- `REPO_RULES.md` — invariants that must not be broken
-
 ---
 
 ## License
 
-[MIT](LICENSE)
+[Elastic License 2.0](LICENSE) — free to use, not for resale as a managed service.
