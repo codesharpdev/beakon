@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	codeindexDir = ".codeindex"
-	filesDir     = ".codeindex/files"
+	beakonDir = ".beakon"
+	nodesDir  = ".beakon/nodes"
 )
 
 // Meta holds top-level index metadata.
@@ -36,7 +36,7 @@ type MapIndex map[string][]string // dir → []symbol names
 
 // Write persists a FileIndex for one source file.
 func Write(root string, fi pkg.FileIndex) error {
-	dir := filepath.Join(root, filesDir)
+	dir := filepath.Join(root, nodesDir)
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return err
 	}
@@ -46,7 +46,7 @@ func Write(root string, fi pkg.FileIndex) error {
 
 // Read loads the FileIndex for a single source file.
 func Read(root, filePath string) (*pkg.FileIndex, error) {
-	path := filepath.Join(root, filesDir, fileKey(filePath)+".json")
+	path := filepath.Join(root, nodesDir, fileKey(filePath)+".json")
 	var fi pkg.FileIndex
 	if err := readJSON(path, &fi); err != nil {
 		return nil, err
@@ -56,7 +56,7 @@ func Read(root, filePath string) (*pkg.FileIndex, error) {
 
 // ReadAll loads every FileIndex in .codeindex/files/
 func ReadAll(root string) ([]pkg.FileIndex, error) {
-	dir := filepath.Join(root, filesDir)
+	dir := filepath.Join(root, nodesDir)
 	entries, err := os.ReadDir(dir)
 	if err != nil {
 		return nil, err
@@ -88,13 +88,13 @@ func ReadAll(root string) ([]pkg.FileIndex, error) {
 
 // WriteSymbols writes the flat symbols.json index.
 func WriteSymbols(root string, symbols []pkg.CodeIndexNode) error {
-	path := filepath.Join(root, codeindexDir, "symbols.json")
+	path := filepath.Join(root, beakonDir, "symbols.json")
 	return writeJSON(path, SymbolsIndex{Symbols: symbols})
 }
 
 // ReadSymbols loads symbols.json.
 func ReadSymbols(root string) ([]pkg.CodeIndexNode, error) {
-	path := filepath.Join(root, codeindexDir, "symbols.json")
+	path := filepath.Join(root, beakonDir, "symbols.json")
 	var si SymbolsIndex
 	if err := readJSON(path, &si); err != nil {
 		return nil, err
@@ -104,13 +104,13 @@ func ReadSymbols(root string) ([]pkg.CodeIndexNode, error) {
 
 // WriteMap writes map.json.
 func WriteMap(root string, m MapIndex) error {
-	path := filepath.Join(root, codeindexDir, "map.json")
+	path := filepath.Join(root, beakonDir, "map.json")
 	return writeJSON(path, m)
 }
 
 // ReadMap loads map.json.
 func ReadMap(root string) (MapIndex, error) {
-	path := filepath.Join(root, codeindexDir, "map.json")
+	path := filepath.Join(root, beakonDir, "map.json")
 	var m MapIndex
 	err := readJSON(path, &m)
 	return m, err
@@ -118,13 +118,13 @@ func ReadMap(root string) (MapIndex, error) {
 
 // WriteMeta writes meta.json.
 func WriteMeta(root string, meta Meta) error {
-	path := filepath.Join(root, codeindexDir, "meta.json")
+	path := filepath.Join(root, beakonDir, "meta.json")
 	return writeJSON(path, meta)
 }
 
 // ReadMeta loads meta.json.
 func ReadMeta(root string) (Meta, error) {
-	path := filepath.Join(root, codeindexDir, "meta.json")
+	path := filepath.Join(root, beakonDir, "meta.json")
 	var m Meta
 	err := readJSON(path, &m)
 	return m, err
@@ -142,9 +142,9 @@ func NeedsUpdate(root, filePath, currentHash string) bool {
 // Init creates the .codeindex directory structure.
 func Init(root string) error {
 	dirs := []string{
-		filepath.Join(root, codeindexDir),
-		filepath.Join(root, filesDir),
-		filepath.Join(root, ".codeindex/graph"),
+		filepath.Join(root, beakonDir),
+		filepath.Join(root, nodesDir),
+		filepath.Join(root, ".beakon/graph"),
 	}
 	for _, d := range dirs {
 		if err := os.MkdirAll(d, 0755); err != nil {
@@ -187,7 +187,7 @@ func readJSON(path string, v any) error {
 
 // DeleteFile removes a file's index entry from .codeindex/files/
 func DeleteFile(root, filePath string) error {
-	path := filepath.Join(root, filesDir, fileKey(filePath)+".json")
+	path := filepath.Join(root, nodesDir, fileKey(filePath)+".json")
 	err := os.Remove(path)
 	if os.IsNotExist(err) {
 		return nil // already gone

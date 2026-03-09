@@ -164,7 +164,7 @@ func (w *Watcher) addDirs(root string) error {
 
 var skipWatchDirs = map[string]bool{
 	".git":         true,
-	".codeindex":   true,
+	".beakon":      true,
 	"node_modules": true,
 	"vendor":       true,
 	"dist":         true,

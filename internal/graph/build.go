@@ -9,7 +9,7 @@ import (
 	"github.com/beakon/beakon/pkg"
 )
 
-const graphDir = ".codeindex/graph"
+const graphDir = ".beakon/graph"
 
 // CallsFrom maps symbol → []symbols it calls
 // Stored in .codeindex/graph/calls_from.json
