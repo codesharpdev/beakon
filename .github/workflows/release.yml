@@ -11,25 +11,30 @@ permissions:
 jobs:
   build:
     name: Build binaries
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
-          - goos: darwin
+          - os: macos-latest
+            goos: darwin
             goarch: amd64
             asset: beakon_darwin_amd64
-          - goos: darwin
+          - os: macos-latest
+            goos: darwin
             goarch: arm64
             asset: beakon_darwin_arm64
-          - goos: linux
+          - os: ubuntu-latest
+            goos: linux
             goarch: amd64
             asset: beakon_linux_amd64
-          - goos: linux
+          - os: ubuntu-24.04-arm
+            goos: linux
             goarch: arm64
             asset: beakon_linux_arm64
-          - goos: windows
+          - os: windows-latest
+            goos: windows
             goarch: amd64
             asset: beakon_windows_amd64.exe
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +47,7 @@ jobs:
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
-          CGO_ENABLED: 0
+          CGO_ENABLED: 1
         run: go build -ldflags="-s -w" -o ${{ matrix.asset }} ./cmd/beakon
 
       - name: Upload binary
