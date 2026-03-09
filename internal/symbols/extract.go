@@ -60,7 +60,7 @@ func extractGo(filePath string, src []byte) ([]pkg.BeakonNode, []pkg.CallEdge) {
 					EndLine:    int(node.EndPoint().Row) + 1,
 					SourceHash: hash,
 				})
-				calls = append(calls, goCallEdges(n, src, name)...)
+				calls = append(calls, goCallEdges(n, src, name, "")...)
 			}
 		case "method_declaration":
 			name, receiver, node := goMethodName(n, src)
@@ -80,7 +80,7 @@ func extractGo(filePath string, src []byte) ([]pkg.BeakonNode, []pkg.CallEdge) {
 					Parent:     receiver,
 					SourceHash: hash,
 				})
-				calls = append(calls, goCallEdges(n, src, qualified)...)
+				calls = append(calls, goCallEdges(n, src, qualified, receiver)...)
 			}
 		case "type_declaration":
 			name, node := goTypeName(n, src)
@@ -140,7 +140,7 @@ func goTypeName(n *sitter.Node, src []byte) (string, *sitter.Node) {
 	return "", nil
 }
 
-func goCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
+func goCallEdges(n *sitter.Node, src []byte, from string, receiver string) []pkg.CallEdge {
 	var edges []pkg.CallEdge
 	var walk func(node *sitter.Node)
 	walk = func(node *sitter.Node) {
@@ -149,6 +149,7 @@ func goCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
 			if fn != nil {
 				callee := strings.TrimSpace(fn.Content(src))
 				if callee != "" && callee != from {
+					callee = qualifyCall(callee, receiver)
 					edges = append(edges, pkg.CallEdge{From: from, To: callee})
 				}
 			}
@@ -159,6 +160,24 @@ func goCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
 	}
 	walk(n)
 	return edges
+}
+
+// qualifyCall rewrites "s.Foo" or "self.Foo" to "ReceiverType.Foo" when receiverType is known.
+func qualifyCall(callee, receiverType string) string {
+	if receiverType == "" {
+		return callee
+	}
+	dot := strings.Index(callee, ".")
+	if dot <= 0 {
+		return callee
+	}
+	prefix := callee[:dot]
+	method := callee[dot+1:]
+	// Short lowercase prefix → likely a receiver variable (s, r, self, this)
+	if len(prefix) <= 6 && len(prefix) > 0 && prefix[0] >= 'a' && prefix[0] <= 'z' {
+		return receiverType + "." + method
+	}
+	return callee
 }
 
 func extractGoReceiver(recv string) string {
@@ -198,7 +217,7 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 					EndLine:   int(n.EndPoint().Row) + 1,
 					SourceHash: hash,
 				})
-				calls = append(calls, tsCallEdges(n, src, name)...)
+				calls = append(calls, tsCallEdges(n, src, name, "")...)
 				for i := 0; i < int(n.ChildCount()); i++ {
 					walk(n.Child(i), name)
 				}
@@ -238,7 +257,7 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 					Parent:    parent,
 					SourceHash: hash,
 				})
-				calls = append(calls, tsCallEdges(n, src, qualified)...)
+				calls = append(calls, tsCallEdges(n, src, qualified, parent)...)
 			}
 		}
 		for i := 0; i < int(n.ChildCount()); i++ {
@@ -250,7 +269,7 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 	return nodes, calls
 }
 
-func tsCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
+func tsCallEdges(n *sitter.Node, src []byte, from string, parent string) []pkg.CallEdge {
 	var edges []pkg.CallEdge
 	var walk func(node *sitter.Node)
 	walk = func(node *sitter.Node) {
@@ -259,6 +278,9 @@ func tsCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
 			if fn != nil {
 				callee := strings.TrimSpace(fn.Content(src))
 				if callee != "" && callee != from {
+					if parent != "" && strings.HasPrefix(callee, "this.") {
+						callee = parent + "." + callee[5:]
+					}
 					edges = append(edges, pkg.CallEdge{From: from, To: callee})
 				}
 			}
@@ -304,7 +326,7 @@ func extractPython(filePath string, src []byte) ([]pkg.BeakonNode, []pkg.CallEdg
 					Parent:    parent,
 					SourceHash: hash,
 				})
-				calls = append(calls, pyCallEdges(n, src, qualified)...)
+				calls = append(calls, pyCallEdges(n, src, qualified, parent)...)
 				for i := 0; i < int(n.ChildCount()); i++ {
 					walk(n.Child(i), qualified)
 				}
@@ -337,7 +359,7 @@ func extractPython(filePath string, src []byte) ([]pkg.BeakonNode, []pkg.CallEdg
 	return nodes, calls
 }
 
-func pyCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
+func pyCallEdges(n *sitter.Node, src []byte, from string, parent string) []pkg.CallEdge {
 	var edges []pkg.CallEdge
 	var walk func(node *sitter.Node)
 	walk = func(node *sitter.Node) {
@@ -346,6 +368,9 @@ func pyCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
 			if fn != nil {
 				callee := strings.TrimSpace(fn.Content(src))
 				if callee != "" && callee != from {
+					if parent != "" && strings.HasPrefix(callee, "self.") {
+						callee = parent + "." + callee[5:]
+					}
 					edges = append(edges, pkg.CallEdge{From: from, To: callee})
 				}
 			}

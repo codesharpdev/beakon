@@ -96,6 +96,53 @@ func TestExtract_UnknownLanguage(t *testing.T) {
 	}
 }
 
+// --- call edge qualification tests ---
+
+const goMethodCallSrc = `package auth
+
+type AuthService struct{}
+
+func (s *AuthService) Login(user string) bool {
+	return s.validatePassword(user)
+}
+
+func (s *AuthService) validatePassword(user string) bool {
+	return true
+}
+`
+
+func TestExtractGo_MethodCallQualified(t *testing.T) {
+	_, calls := Extract("auth/service.go", "go", []byte(goMethodCallSrc))
+	assertEdge(t, calls, "AuthService.Login", "AuthService.validatePassword")
+}
+
+const tsMethodCallSrc = `
+class AuthService {
+  login(user) {
+    return this.validatePassword(user);
+  }
+  validatePassword(user) { return true; }
+}
+`
+
+func TestExtractTS_ThisCallQualified(t *testing.T) {
+	_, calls := Extract("auth/service.ts", "typescript", []byte(tsMethodCallSrc))
+	assertEdge(t, calls, "AuthService.login", "AuthService.validatePassword")
+}
+
+const pyMethodCallSrc = `
+class AuthService:
+    def login(self, user):
+        return self.validate(user)
+    def validate(self, user):
+        return True
+`
+
+func TestExtractPython_SelfCallQualified(t *testing.T) {
+	_, calls := Extract("auth/service.py", "python", []byte(pyMethodCallSrc))
+	assertEdge(t, calls, "AuthService.login", "AuthService.validate")
+}
+
 // --- helpers ---
 
 func symbolNames(nodes []pkg.BeakonNode) []string {
