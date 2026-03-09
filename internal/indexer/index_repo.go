@@ -53,6 +53,13 @@ func Run(root string) (*Result, error) {
 			defer wg.Done()
 			sem <- struct{}{}
 			defer func() { <-sem }()
+			defer func() {
+				if r := recover(); r != nil {
+					mu.Lock()
+					errors = append(errors, fmt.Sprintf("panic processing %s: %v", sf.Path, r))
+					mu.Unlock()
+				}
+			}()
 
 			absPath := filepath.Join(root, sf.Path)
 			src, err := os.ReadFile(absPath)
