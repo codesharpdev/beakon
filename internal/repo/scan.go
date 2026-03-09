@@ -37,12 +37,14 @@ type SourceFile struct {
 func Scan(root string) ([]SourceFile, error) {
 	var files []SourceFile
 
+	ignored := loadGitignore(root)
+
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return nil
 		}
 		if info.IsDir() {
-			if skipDirs[info.Name()] || strings.HasPrefix(info.Name(), ".") {
+			if skipDirs[info.Name()] || strings.HasPrefix(info.Name(), ".") || ignored[info.Name()] {
 				return filepath.SkipDir
 			}
 			return nil
@@ -56,4 +58,24 @@ func Scan(root string) ([]SourceFile, error) {
 	})
 
 	return files, err
+}
+
+// loadGitignore reads root/.gitignore and returns a set of directory/file patterns to skip.
+// Only simple patterns are supported (no glob negation, no complex rules).
+func loadGitignore(root string) map[string]bool {
+	ignored := make(map[string]bool)
+	data, err := os.ReadFile(filepath.Join(root, ".gitignore"))
+	if err != nil {
+		return ignored // no .gitignore — that's fine
+	}
+	for _, line := range strings.Split(string(data), "\n") {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		// Normalize: strip trailing slash (we match dir names)
+		line = strings.TrimSuffix(line, "/")
+		ignored[line] = true
+	}
+	return ignored
 }
