@@ -4,8 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"strings"
+	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 	"github.com/beakon/beakon/internal/code"
@@ -81,45 +84,37 @@ var watchCmd = &cobra.Command{
 
 		fmt.Printf("watching %s — press Ctrl+C to stop\n", repoRoot)
 
-		// Handle Ctrl+C gracefully
-		go func() {
-			ch := make(chan os.Signal, 1)
-			// signal.Notify(ch, os.Interrupt) — wire this up properly
-			<-ch
-			w.Stop()
-		}()
-
-		// Start watching in background, consume events in foreground
 		go w.Start()
 
-		for event := range w.Events {
-			if event.Err != nil {
-				fmt.Fprintf(os.Stderr, "error: %v\n", event.Err)
-				continue
-			}
+		quit := make(chan os.Signal, 1)
+		signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
 
-			rel, _ := filepath.Rel(repoRoot, event.FilePath)
-			r := event.Result
-
-			if r.Skipped {
-				// Don't print skipped events — too noisy
-				continue
-			}
-
-			if human {
-				fmt.Printf("↻ %s  %d→%d symbols  %s\n",
-					rel, r.SymbolsBefore, r.SymbolsAfter,
-					r.Duration.Round(1000000))
-			} else {
-				printJSON(map[string]any{
-					"file":            rel,
-					"symbols_before":  r.SymbolsBefore,
-					"symbols_after":   r.SymbolsAfter,
-					"duration_ms":     r.Duration.Milliseconds(),
-				})
+		for {
+			select {
+			case <-quit:
+				fmt.Println("\nShutting down watcher...")
+				w.Stop()
+				return nil
+			case ev, ok := <-w.Events:
+				if !ok {
+					return nil
+				}
+				if ev.Err != nil {
+					fmt.Fprintf(os.Stderr, "watch error: %v\n", ev.Err)
+					continue
+				}
+				if ev.Result != nil && !ev.Result.Skipped {
+					if human {
+						fmt.Printf("↻ %s  %d→%d symbols  %s\n",
+							ev.Result.FilePath, ev.Result.SymbolsBefore,
+							ev.Result.SymbolsAfter,
+							ev.Result.Duration.Round(time.Millisecond))
+					} else {
+						printJSON(ev.Result)
+					}
+				}
 			}
 		}
-		return nil
 	},
 }
 
