@@ -14,8 +14,9 @@ go build -o beakon ./cmd/beakon
 Verify:
 
 ```bash
-./beakon index ./testdata/sample_repo
+./beakon index
 ./beakon map --human
+./beakon context "AuthService.Login" --human
 ```
 
 ---
@@ -59,14 +60,25 @@ Types: feat, fix, perf, test, docs, refactor
 3. Add to treeSitterLang() in internal/symbols/parse.go
 4. Add extraction logic in internal/symbols/extract.go
 5. Add extension mapping in internal/repo/scan.go
-6. Add test cases in internal/symbols/extract_test.go
-7. Update SPEC.md supported languages section
+6. Add builtin set in internal/resolver/builtins.go
+7. Add import parsing in internal/resolver/imports.go
+8. Add test cases in internal/symbols/extract_test.go
+9. Update SPEC.md supported languages table
+
+---
+
+## Adding a New Lockfile Format
+
+1. Add parser in internal/resolver/lockfile.go
+2. Detect the file in ReadLockfile() by filename pattern
+3. Extract: package name → version + devOnly bool
+4. Add test cases in internal/resolver/resolver_test.go
 
 ---
 
 ## Modifying the Data Model
 
-Before changing BeakonNode:
+Before changing BeakonNode or CallEdge:
 1. Read SPEC.md — understand current schema
 2. Update pkg/types.go
 3. Update SPEC.md to match
@@ -88,20 +100,22 @@ beakon/
 ├── TESTING.md       How to test everything
 ├── CONTRIBUTING.md  This file
 │
-├── cmd/beakon/main.go     CLI entry point
+├── cmd/beakon/main.go     CLI entry point (11 commands)
 │
 ├── internal/
-│   ├── repo/       Repository scanner
-│   ├── symbols/    Tree-sitter parsing
-│   ├── graph/      Call graph
-│   ├── index/      Storage layer
+│   ├── repo/       Repository scanner (.gitignore-aware)
+│   ├── symbols/    Tree-sitter parsing (18 languages)
+│   ├── resolver/   External dependency enrichment
+│   ├── graph/      Bidirectional call graph
+│   ├── index/      Storage layer (.beakon/ JSON)
 │   ├── indexer/    Orchestration (full + incremental + watch)
+│   ├── context/    LLM context bundle assembly
 │   └── code/       Live source extraction
 │
 ├── pkg/types.go    Shared data structures
 │
 └── testdata/
     └── sample_repo/
-        ├── auth/service.go
-        └── api/controller.go
+        ├── auth/service.go      AuthService type + methods
+        └── api/controller.go    UserController type + methods
 ```

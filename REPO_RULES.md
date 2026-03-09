@@ -13,7 +13,7 @@ Allowed top-level directories:
     internal/
     pkg/
     testdata/
-    docs/      (optional, for future)
+    docs/      (optional)
 
 Forbidden:
 
@@ -33,19 +33,25 @@ cmd/ contains only CLI wiring — no business logic.
 Packages may only import at the same level or below.
 
 Allowed:
-    cmd/beakon  → internal/*, pkg
-    internal/indexer → internal/repo, internal/symbols, internal/graph, internal/index, pkg
-    internal/graph   → pkg
-    internal/index   → pkg
-    internal/symbols → pkg
-    internal/repo    → stdlib only
-    internal/code    → stdlib only
-    pkg              → stdlib only
+    cmd/beakon       → internal/context, internal/indexer, internal/graph,
+                       internal/index, internal/code, pkg
+    internal/context  → internal/graph, internal/index, internal/code, pkg
+    internal/indexer  → internal/repo, internal/symbols, internal/resolver,
+                        internal/graph, internal/index, pkg
+    internal/resolver → pkg (+ stdlib only for file I/O)
+    internal/graph    → pkg
+    internal/index    → pkg
+    internal/symbols  → pkg
+    internal/repo     → stdlib only
+    internal/code     → stdlib only
+    pkg               → stdlib only
 
 Forbidden:
     internal/* → cmd/*
     internal/graph → internal/indexer
     internal/index → internal/graph
+    internal/context → internal/indexer
+    internal/symbols → internal/resolver
     pkg → internal/*
 
 Circular imports are forbidden.
@@ -57,7 +63,7 @@ Circular imports are forbidden.
 All symbols must be represented by pkg.BeakonNode.
 
 Do NOT create alternative node structs.
-Do NOT add fields to BeakonNode without updating SPEC.md.
+Do NOT add fields to BeakonNode or CallEdge without updating SPEC.md.
 
 Schema changes require:
 1. Update pkg/types.go
@@ -94,11 +100,10 @@ Binary formats: forbidden.
 Database files: forbidden.
 No SQLite, BoltDB, or any embedded database.
 
-.beakon/files/ and .beakon/graph/ are gitignored (derived artifacts).
-.beakon/config.yaml is committed (user configuration).
+.beakon/ is gitignored (derived artifact).
 
-Writes to symbols.json, map.json, calls_from.json, calls_to.json must be atomic.
-Use: write to temp file → os.Rename to final path.
+Writes to symbols.json, map.json, calls_from.json, calls_to.json, external.json
+must be atomic: write to temp file → os.Rename to final path.
 
 ---
 
@@ -109,6 +114,19 @@ Custom parsers are forbidden.
 Regex-based symbol extraction is forbidden.
 
 If a language is not supported by go-tree-sitter, it is not supported by Beakon.
+
+Tree-sitter parsers are not thread-safe. Create a new parser per goroutine.
+
+---
+
+## Resolver Rules
+
+Resolver (internal/resolver) may only read source files and lockfiles.
+It must not call the network.
+It must not execute any code.
+It must not write to the index.
+
+Enrichment must be a pure annotation pass on []CallEdge.
 
 ---
 
@@ -172,6 +190,7 @@ Examples:
     fix: handle deleted files in watch mode
     perf: atomic writes for symbols.json
     test: add graph BFS cycle detection test
+    feat: add resolver lockfile version pinning
 
 ---
 

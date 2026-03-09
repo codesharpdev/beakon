@@ -27,33 +27,41 @@ Run this after every significant change to verify end-to-end behavior.
 go build -o beakon ./cmd/beakon
 
 # 2. Index the sample repo
-./beakon index ./testdata/sample_repo
+./beakon index
 
 # 3. Map — should show auth/ and api/ directories
 ./beakon map --human
 
-# 4. Trace — should show Login → AuthService.Login call chain
+# 4. Context — primary command: anchor + callers + callees
+./beakon context "AuthService.Login" --human
+
+# 5. Impact — what depends on createJWT
+./beakon impact createJWT --human
+
+# 6. Trace — should show Login → AuthService.Login call chain
 ./beakon trace Login --human
 
-# 5. Explain — should show full feature flow + files
+# 7. Explain — should show full feature flow + files
 ./beakon explain Login --human
 
-# 6. Callers — should return UserController.Login
+# 8. Callers — should return UserController.Login
 ./beakon callers "AuthService.Login" --human
 
-# 7. Deps — should return validatePassword, createJWT
+# 9. Deps — should return validatePassword, createJWT (+ any external calls)
 ./beakon deps "AuthService.Login" --human
 
-# 8. Show — should print the Login function source
+# 10. Show — should print the Login function source
 ./beakon show "AuthService.Login" --human
 
-# 9. Search — should return all login-related symbols
+# 11. Search — should return all login-related symbols
 ./beakon search login --human
 
-# 10. JSON output check — all commands default to JSON
+# 12. JSON output check — all commands default to JSON
 ./beakon map
+./beakon context "AuthService.Login"
 ./beakon trace Login
 ./beakon callers "AuthService.Login"
+./beakon impact createJWT
 ```
 
 ---
@@ -74,38 +82,34 @@ api/
   UserController.Logout
 ```
 
-### beakon trace Login --human
+### beakon context AuthService.Login --human
 
 ```
-Login
-  → AuthService.Login
-      auth/service.go:14
+=== ANCHOR ===
+AuthService.Login  auth/service.go:14-42
+<source code>
 
-      func (s *AuthService) Login(username, password string) (string, error) {
-          if err := validatePassword(username, password); err != nil {
-          ...
+=== CALLS ===
+validatePassword  auth/service.go:28-35
+<source code>
 
-    → validatePassword
-        auth/service.go:28
-        ...
+createJWT  auth/service.go:35-45
+<source code>
 
-    → createJWT
-        auth/service.go:35
-        ...
+=== CALLED BY ===
+UserController.Login  api/controller.go:14-28
+<source code>
+
+files: auth/service.go, api/controller.go
+tokens: ~420
 ```
 
-### beakon explain Login --human
+### beakon impact createJWT --human
 
 ```
-Feature: Login
-
-Flow:
-  Login  (auth/service.go:14)
-  validatePassword  (auth/service.go:28)
-  createJWT  (auth/service.go:35)
-
-Files involved:
-  auth/service.go
+impact: createJWT
+affected (1):
+  AuthService.Login  auth/service.go:14
 ```
 
 ### beakon callers AuthService.Login --human
@@ -144,7 +148,7 @@ echo "// comment" >> ./testdata/sample_repo/auth/service.go
 
 ```bash
 # Index the sample repo
-./beakon index ./testdata/sample_repo
+./beakon index
 
 # Check symbol count
 ./beakon map --human
@@ -158,11 +162,30 @@ func refreshToken(token string) string {
 EOF
 
 # Re-index (should skip unchanged files)
-./beakon index ./testdata/sample_repo
+./beakon index
 
 # Verify new symbol appears
 ./beakon search refresh --human
 # Expected: refreshToken  auth/service.go:XX
+```
+
+---
+
+## External Enrichment Test
+
+```bash
+# After indexing, check external.json
+cat .beakon/graph/external.json
+
+# Should contain entries like:
+# {
+#   "fmt.Errorf": { "package": "fmt", "stdlib": "yes" },
+#   "errors.New": { "package": "errors", "stdlib": "yes" }
+# }
+
+# Context output should include external callee metadata
+./beakon context "AuthService.Login"
+# JSON should show callees with "stdlib", "package" fields
 ```
 
 ---
@@ -172,14 +195,15 @@ EOF
 All commands must produce valid JSON when --human is not set.
 
 ```bash
-# Validate JSON output for each command
-./beakon map | python3 -m json.tool
-./beakon trace Login | python3 -m json.tool
-./beakon callers "AuthService.Login" | python3 -m json.tool
-./beakon deps "AuthService.Login" | python3 -m json.tool
-./beakon show "AuthService.Login" | python3 -m json.tool
-./beakon search login | python3 -m json.tool
-./beakon explain Login | python3 -m json.tool
+./beakon map                          | python3 -m json.tool
+./beakon context "AuthService.Login"  | python3 -m json.tool
+./beakon trace Login                  | python3 -m json.tool
+./beakon callers "AuthService.Login"  | python3 -m json.tool
+./beakon deps "AuthService.Login"     | python3 -m json.tool
+./beakon show "AuthService.Login"     | python3 -m json.tool
+./beakon search login                 | python3 -m json.tool
+./beakon explain Login                | python3 -m json.tool
+./beakon impact createJWT             | python3 -m json.tool
 ```
 
 All must exit 0 with valid JSON.
@@ -188,15 +212,17 @@ All must exit 0 with valid JSON.
 
 ## Unit Test Locations
 
-| Package              | Test File                              |
-|----------------------|----------------------------------------|
-| internal/symbols     | internal/symbols/extract_test.go       |
-| internal/graph       | internal/graph/build_test.go           |
-| internal/index       | internal/index/write_test.go           |
-| internal/indexer     | internal/indexer/update_test.go        |
-| internal/indexer     | internal/indexer/integration_test.go   |
-| internal/repo        | internal/repo/scan_test.go             |
-| internal/code        | internal/code/fetch_test.go            |
+| Package              | Test File                                  |
+|----------------------|--------------------------------------------|
+| internal/symbols     | internal/symbols/extract_test.go           |
+| internal/graph       | internal/graph/build_test.go               |
+| internal/index       | internal/index/write_test.go               |
+| internal/indexer     | internal/indexer/update_test.go            |
+| internal/indexer     | internal/indexer/integration_test.go       |
+| internal/repo        | internal/repo/scan_test.go                 |
+| internal/code        | internal/code/fetch_test.go                |
+| internal/resolver    | internal/resolver/resolver_test.go         |
+| internal/context     | internal/context/engine_test.go            |
 
 ---
 
@@ -246,10 +272,16 @@ func BenchmarkFullIndex(b *testing.B) {
     }
 }
 
+func BenchmarkIncrementalUpdate(b *testing.B) {
+    // setup index once, then update single file in loop
+}
+
+func BenchmarkContextAssemble(b *testing.B) {
+    // setup engine once, then call Assemble in loop
+}
+
 func BenchmarkTraceQuery(b *testing.B) {
-    // setup index once
-    // b.ResetTimer()
-    // run trace in loop
+    // setup index once, run trace in loop
 }
 ```
 
@@ -262,6 +294,6 @@ Before marking any task DONE:
 - [ ] go build ./... passes
 - [ ] go test ./... passes
 - [ ] go vet ./... passes
-- [ ] Smoke test steps 1-10 pass
+- [ ] Smoke test steps 1-12 pass
 - [ ] JSON output is valid for all commands
 - [ ] No new panics under test
