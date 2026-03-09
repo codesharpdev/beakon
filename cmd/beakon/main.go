@@ -317,7 +317,7 @@ var searchCmd = &cobra.Command{
 			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		query := strings.ToLower(args[0])
-		var matches []pkg.Node
+		var matches []pkg.BeakonNode
 		for _, s := range allSyms {
 			if strings.Contains(strings.ToLower(s.Name), query) {
 				matches = append(matches, s)
@@ -360,12 +360,12 @@ var contextCmd = &cobra.Command{
 // ── helpers ───────────────────────────────────────────────────────────────────
 
 // loadSymIndex builds a name→node map for fast lookup during trace enrichment.
-func loadSymIndex(repoRoot string) (map[string]pkg.Node, error) {
+func loadSymIndex(repoRoot string) (map[string]pkg.BeakonNode, error) {
 	syms, err := index.ReadSymbols(repoRoot)
 	if err != nil {
 		return nil, err
 	}
-	m := make(map[string]pkg.Node, len(syms))
+	m := make(map[string]pkg.BeakonNode, len(syms))
 	for _, s := range syms {
 		m[s.Name] = s
 	}
@@ -393,7 +393,7 @@ func printRichTrace(steps []pkg.TraceStep) {
 	}
 }
 
-func findSymbol(repoRoot, name string) (*pkg.Node, error) {
+func findSymbol(repoRoot, name string) (*pkg.BeakonNode, error) {
 	allSyms, err := index.ReadSymbols(repoRoot)
 	if err != nil {
 		return nil, fmt.Errorf("run 'beakon index' first: %w", err)

@@ -2,7 +2,7 @@ package pkg
 
 // Node represents a single symbol in the repository.
 // Slimmed to exactly what V1 needs — no more, no less.
-type Node struct {
+type BeakonNode struct {
 	ID         string `json:"id"`
 	Kind       string `json:"kind"`       // function | method | class | module | variable
 	Name       string `json:"name"`
@@ -24,7 +24,7 @@ type CallEdge struct {
 type FileIndex struct {
 	File    string          `json:"file"`
 	Hash    string          `json:"hash"`
-	Symbols []Node `json:"symbols"`
+	Symbols []BeakonNode `json:"symbols"`
 	Calls   []CallEdge      `json:"calls"`
 }
 

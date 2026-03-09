@@ -96,7 +96,7 @@ func Trace(symbol string, from CallsFrom) []string {
 // TraceRich performs BFS and enriches each step with file location and code snippet.
 // symIndex is a map of symbol name → Node for fast lookup.
 // repoRoot is needed to read source files live.
-func TraceRich(symbol string, from CallsFrom, symIndex map[string]pkg.Node, repoRoot string) []pkg.TraceStep {
+func TraceRich(symbol string, from CallsFrom, symIndex map[string]pkg.BeakonNode, repoRoot string) []pkg.TraceStep {
 	queue := []struct {
 		name  string
 		depth int

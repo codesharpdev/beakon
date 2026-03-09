@@ -28,7 +28,7 @@ type Meta struct {
 
 // SymbolsIndex is the flat list of all symbols — stored in symbols.json
 type SymbolsIndex struct {
-	Symbols []pkg.Node `json:"symbols"`
+	Symbols []pkg.BeakonNode `json:"symbols"`
 }
 
 // MapIndex is the architectural overview — stored in map.json
@@ -87,13 +87,13 @@ func ReadAll(root string) ([]pkg.FileIndex, error) {
 }
 
 // WriteSymbols writes the flat symbols.json index.
-func WriteSymbols(root string, symbols []pkg.Node) error {
+func WriteSymbols(root string, symbols []pkg.BeakonNode) error {
 	path := filepath.Join(root, beakonDir, "symbols.json")
 	return writeJSON(path, SymbolsIndex{Symbols: symbols})
 }
 
 // ReadSymbols loads symbols.json.
-func ReadSymbols(root string) ([]pkg.Node, error) {
+func ReadSymbols(root string) ([]pkg.BeakonNode, error) {
 	path := filepath.Join(root, beakonDir, "symbols.json")
 	var si SymbolsIndex
 	if err := readJSON(path, &si); err != nil {

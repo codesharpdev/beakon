@@ -39,7 +39,7 @@ func Run(root string) (*Result, error) {
 	}
 
 	var mu sync.Mutex
-	var allSymbols []pkg.Node
+	var allSymbols []pkg.BeakonNode
 	var allEdges []pkg.CallEdge
 	var errors []string
 	indexed, skipped := 0, 0
@@ -126,7 +126,7 @@ func Run(root string) (*Result, error) {
 }
 
 // writeIndexFiles rebuilds symbols.json, map.json, and graph files.
-func writeIndexFiles(root string, allSymbols []pkg.Node, allEdges []pkg.CallEdge) error {
+func writeIndexFiles(root string, allSymbols []pkg.BeakonNode, allEdges []pkg.CallEdge) error {
 	callsFrom, callsTo := graph.Build(allEdges)
 	if err := graph.Write(root, callsFrom, callsTo); err != nil {
 		return fmt.Errorf("write graph: %w", err)
@@ -141,7 +141,7 @@ func writeIndexFiles(root string, allSymbols []pkg.Node, allEdges []pkg.CallEdge
 }
 
 // BuildMap groups symbol names by directory.
-func BuildMap(syms []pkg.Node) index.MapIndex {
+func BuildMap(syms []pkg.BeakonNode) index.MapIndex {
 	m := make(index.MapIndex)
 	for _, s := range syms {
 		parts := strings.Split(s.FilePath, "/")

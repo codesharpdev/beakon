@@ -128,14 +128,14 @@ func removeFile(root, rel string, start time.Time) (*UpdateResult, error) {
 // rebuildGlobal reloads all file indexes, replaces the changed file's
 // contribution, and rewrites symbols.json, map.json, and graph files.
 // This is Strategy B — surgical O(files) rebuild, not O(repo).
-func rebuildGlobal(root, changedFile string, newSyms []pkg.Node, newCalls []pkg.CallEdge) error {
+func rebuildGlobal(root, changedFile string, newSyms []pkg.BeakonNode, newCalls []pkg.CallEdge) error {
 	// Load all existing file indexes
 	allFiles, err := index.ReadAll(root)
 	if err != nil {
 		return fmt.Errorf("read all: %w", err)
 	}
 
-	var allSymbols []pkg.Node
+	var allSymbols []pkg.BeakonNode
 	var allEdges []pkg.CallEdge
 
 	for _, fi := range allFiles {
