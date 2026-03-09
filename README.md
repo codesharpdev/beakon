@@ -33,7 +33,7 @@ You get the symbol's source, everything it calls, everything that calls it, all 
 Requirements: **Go 1.21+**
 
 ```bash
-git clone https://github.com/beakon/beakon
+git clone https://github.com/codesharpdev/beakon
 cd beakon
 go build -o beakon ./cmd/beakon
 ```
@@ -230,7 +230,7 @@ Claude will use `beakon context` before exploring files, cutting irrelevant toke
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 ```bash
-git clone https://github.com/beakon/beakon
+git clone https://github.com/codesharpdev/beakon
 cd beakon
 go mod tidy
 go build -o beakon ./cmd/beakon

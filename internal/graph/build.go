@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 const graphDir = ".beakon/graph"

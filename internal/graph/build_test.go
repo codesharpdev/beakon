@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 func edges(pairs ...string) []pkg.CallEdge {

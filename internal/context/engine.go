@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/beakon/beakon/internal/graph"
-	"github.com/beakon/beakon/internal/index"
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/internal/graph"
+	"github.com/codesharpdev/beakon/internal/index"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 

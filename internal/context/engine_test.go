@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/beakon/beakon/internal/indexer"
+	"github.com/codesharpdev/beakon/internal/indexer"
 )
 
 // setupIndex copies the sample repo into a temp dir, runs a full index,

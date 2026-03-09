@@ -5,7 +5,7 @@
 Requirements: Go 1.21+
 
 ```bash
-git clone <repo>
+git clone https://github.com/codesharpdev/beakon
 cd beakon
 go mod tidy
 go build -o beakon ./cmd/beakon

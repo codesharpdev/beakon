@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/beakon/beakon/internal/context"
-	"github.com/beakon/beakon/internal/index"
+	"github.com/codesharpdev/beakon/internal/context"
+	"github.com/codesharpdev/beakon/internal/index"
 )
 
 func TestFullPipeline_IndexAndQuery(t *testing.T) {

@@ -1,6 +1,6 @@
 package api
 
-import "github.com/beakon/beakon/testdata/sample_repo/auth"
+import "github.com/codesharpdev/beakon/testdata/sample_repo/auth"
 
 // UserController handles HTTP requests for user operations.
 type UserController struct {

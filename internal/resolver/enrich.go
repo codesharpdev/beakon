@@ -7,7 +7,7 @@
 package resolver
 
 import (
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 // Enrich filters builtins from the call edges and enriches external callees

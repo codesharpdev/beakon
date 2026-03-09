@@ -11,12 +11,12 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
-	"github.com/beakon/beakon/internal/code"
-	ctx "github.com/beakon/beakon/internal/context"
-	"github.com/beakon/beakon/internal/graph"
-	"github.com/beakon/beakon/internal/index"
-	"github.com/beakon/beakon/internal/indexer"
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/internal/code"
+	ctx "github.com/codesharpdev/beakon/internal/context"
+	"github.com/codesharpdev/beakon/internal/graph"
+	"github.com/codesharpdev/beakon/internal/index"
+	"github.com/codesharpdev/beakon/internal/indexer"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 var human bool

@@ -3,7 +3,7 @@ package symbols
 import (
 	"testing"
 
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 const goSrc = `package auth

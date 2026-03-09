@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 // --- IsBuiltin ---

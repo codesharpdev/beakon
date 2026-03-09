@@ -1,4 +1,4 @@
-module github.com/beakon/beakon
+module github.com/codesharpdev/beakon
 
 go 1.22.2
 

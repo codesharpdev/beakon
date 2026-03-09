@@ -9,12 +9,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/beakon/beakon/internal/graph"
-	"github.com/beakon/beakon/internal/index"
-	"github.com/beakon/beakon/internal/repo"
-	"github.com/beakon/beakon/internal/resolver"
-	"github.com/beakon/beakon/internal/symbols"
-	"github.com/beakon/beakon/pkg"
+	"github.com/codesharpdev/beakon/internal/graph"
+	"github.com/codesharpdev/beakon/internal/index"
+	"github.com/codesharpdev/beakon/internal/repo"
+	"github.com/codesharpdev/beakon/internal/resolver"
+	"github.com/codesharpdev/beakon/internal/symbols"
+	"github.com/codesharpdev/beakon/pkg"
 )
 
 // Result summarizes a completed indexing run.
