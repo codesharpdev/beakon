@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sync"
 	"time"
 
 	"github.com/beakon/beakon/internal/graph"
@@ -11,6 +12,10 @@ import (
 	"github.com/beakon/beakon/internal/symbols"
 	"github.com/beakon/beakon/pkg"
 )
+
+// globalMu serializes all writes to symbols.json, map.json, and graph files.
+// Multiple file updates must not rebuild global indexes concurrently.
+var globalMu sync.Mutex
 
 // UpdateResult summarizes a single-file incremental update.
 type UpdateResult struct {
@@ -90,7 +95,10 @@ func UpdateFile(root, filePath string) (*UpdateResult, error) {
 	}
 
 	// Rebuild global indexes surgically
-	if err := rebuildGlobal(root, rel, newSyms, newCalls); err != nil {
+	globalMu.Lock()
+	err = rebuildGlobal(root, rel, newSyms, newCalls)
+	globalMu.Unlock()
+	if err != nil {
 		return nil, fmt.Errorf("rebuild global: %w", err)
 	}
 
@@ -113,7 +121,10 @@ func removeFile(root, rel string, start time.Time) (*UpdateResult, error) {
 	index.DeleteFile(root, rel)
 
 	// Rebuild global without this file
-	if err := rebuildGlobal(root, rel, nil, nil); err != nil {
+	globalMu.Lock()
+	err := rebuildGlobal(root, rel, nil, nil)
+	globalMu.Unlock()
+	if err != nil {
 		return nil, err
 	}
 
