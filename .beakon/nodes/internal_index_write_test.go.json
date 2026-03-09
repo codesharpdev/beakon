@@ -1,0 +1,286 @@
+{
+  "file": "internal/index/write_test.go",
+  "hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571",
+  "symbols": [
+    {
+      "id": "go:function:internal/index/write_test.go:TestWriteIsAtomic",
+      "kind": "function",
+      "name": "TestWriteIsAtomic",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 11,
+      "end_line": 45,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestReadAll_LoadsAllFiles",
+      "kind": "function",
+      "name": "TestReadAll_LoadsAllFiles",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 47,
+      "end_line": 68,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestNeedsUpdate_NewFile",
+      "kind": "function",
+      "name": "TestNeedsUpdate_NewFile",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 70,
+      "end_line": 76,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestNeedsUpdate_SameHash",
+      "kind": "function",
+      "name": "TestNeedsUpdate_SameHash",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 78,
+      "end_line": 86,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestNeedsUpdate_ChangedHash",
+      "kind": "function",
+      "name": "TestNeedsUpdate_ChangedHash",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 88,
+      "end_line": 96,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestDeleteFile",
+      "kind": "function",
+      "name": "TestDeleteFile",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 98,
+      "end_line": 107,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestWriteSymbols_ReadSymbols",
+      "kind": "function",
+      "name": "TestWriteSymbols_ReadSymbols",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 109,
+      "end_line": 123,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    }
+  ],
+  "calls": [
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "Init"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "Write"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "os.ReadDir"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "filepath.Ext"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "e.Name"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "e.Name"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "Read"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "t.Fatalf"
+    },
+    {
+      "from": "TestWriteIsAtomic",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "Init"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "Write"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "ReadAll"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "len"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestReadAll_LoadsAllFiles",
+      "to": "len"
+    },
+    {
+      "from": "TestNeedsUpdate_NewFile",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestNeedsUpdate_NewFile",
+      "to": "Init"
+    },
+    {
+      "from": "TestNeedsUpdate_NewFile",
+      "to": "NeedsUpdate"
+    },
+    {
+      "from": "TestNeedsUpdate_NewFile",
+      "to": "t.Error"
+    },
+    {
+      "from": "TestNeedsUpdate_SameHash",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestNeedsUpdate_SameHash",
+      "to": "Init"
+    },
+    {
+      "from": "TestNeedsUpdate_SameHash",
+      "to": "Write"
+    },
+    {
+      "from": "TestNeedsUpdate_SameHash",
+      "to": "NeedsUpdate"
+    },
+    {
+      "from": "TestNeedsUpdate_SameHash",
+      "to": "t.Error"
+    },
+    {
+      "from": "TestNeedsUpdate_ChangedHash",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestNeedsUpdate_ChangedHash",
+      "to": "Init"
+    },
+    {
+      "from": "TestNeedsUpdate_ChangedHash",
+      "to": "Write"
+    },
+    {
+      "from": "TestNeedsUpdate_ChangedHash",
+      "to": "NeedsUpdate"
+    },
+    {
+      "from": "TestNeedsUpdate_ChangedHash",
+      "to": "t.Error"
+    },
+    {
+      "from": "TestDeleteFile",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestDeleteFile",
+      "to": "Init"
+    },
+    {
+      "from": "TestDeleteFile",
+      "to": "Write"
+    },
+    {
+      "from": "TestDeleteFile",
+      "to": "DeleteFile"
+    },
+    {
+      "from": "TestDeleteFile",
+      "to": "NeedsUpdate"
+    },
+    {
+      "from": "TestDeleteFile",
+      "to": "t.Error"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "Init"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "WriteSymbols"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "ReadSymbols"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "len"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestWriteSymbols_ReadSymbols",
+      "to": "len"
+    }
+  ]
+}

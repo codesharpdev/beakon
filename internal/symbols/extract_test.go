@@ -90,7 +90,7 @@ func TestExtractPython_CallEdges(t *testing.T) {
 }
 
 func TestExtract_UnknownLanguage(t *testing.T) {
-	nodes, calls := Extract("file.rb", "ruby", []byte("def foo; end"))
+	nodes, calls := Extract("file.lua", "lua", []byte("function foo() end"))
 	if len(nodes) != 0 || len(calls) != 0 {
 		t.Error("expected empty results for unknown language")
 	}

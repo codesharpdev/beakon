@@ -1,6 +1,6 @@
 {
   "file": "cmd/beakon/main.go",
-  "hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713",
+  "hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3",
   "symbols": [
     {
       "id": "go:function:cmd/beakon/main.go:loadSymIndex",
@@ -8,9 +8,9 @@
       "name": "loadSymIndex",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 363,
-      "end_line": 373,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 402,
+      "end_line": 412,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:printRichTrace",
@@ -18,9 +18,9 @@
       "name": "printRichTrace",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 376,
-      "end_line": 394,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 415,
+      "end_line": 433,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:findSymbol",
@@ -28,9 +28,9 @@
       "name": "findSymbol",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 396,
-      "end_line": 411,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 435,
+      "end_line": 450,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:printJSON",
@@ -38,9 +38,9 @@
       "name": "printJSON",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 413,
-      "end_line": 417,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 452,
+      "end_line": 456,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:printContext",
@@ -48,9 +48,9 @@
       "name": "printContext",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 420,
-      "end_line": 450,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 459,
+      "end_line": 489,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:printBlock",
@@ -58,9 +58,9 @@
       "name": "printBlock",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 460,
-      "end_line": 483,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 499,
+      "end_line": 522,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:init",
@@ -68,9 +68,9 @@
       "name": "init",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 485,
-      "end_line": 489,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 524,
+      "end_line": 528,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:function:cmd/beakon/main.go:main",
@@ -78,9 +78,9 @@
       "name": "main",
       "language": "go",
       "file_path": "cmd/beakon/main.go",
-      "start_line": 491,
-      "end_line": 495,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "start_line": 530,
+      "end_line": 534,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     }
   ],
   "calls": [

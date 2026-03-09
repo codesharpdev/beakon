@@ -1,0 +1,382 @@
+{
+  "file": "internal/graph/build_test.go",
+  "hash": "936889a86162802d23e3d99352ee6bb1990dbb98",
+  "symbols": [
+    {
+      "id": "go:function:internal/graph/build_test.go:edges",
+      "kind": "function",
+      "name": "edges",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 10,
+      "end_line": 16,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestBuild_DirectionsCorrect",
+      "kind": "function",
+      "name": "TestBuild_DirectionsCorrect",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 18,
+      "end_line": 32,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestBuild_Deduplicates",
+      "kind": "function",
+      "name": "TestBuild_Deduplicates",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 34,
+      "end_line": 42,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestTrace_BFS",
+      "kind": "function",
+      "name": "TestTrace_BFS",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 44,
+      "end_line": 53,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestTrace_CycleDetection",
+      "kind": "function",
+      "name": "TestTrace_CycleDetection",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 55,
+      "end_line": 65,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestWriteRead_RoundTrip",
+      "kind": "function",
+      "name": "TestWriteRead_RoundTrip",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 67,
+      "end_line": 86,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestWrite_NoTmpFilesLeft",
+      "kind": "function",
+      "name": "TestWrite_NoTmpFilesLeft",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 88,
+      "end_line": 98,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestImpact_ReverseBFS",
+      "kind": "function",
+      "name": "TestImpact_ReverseBFS",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 100,
+      "end_line": 112,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestImpact_CycleDetection",
+      "kind": "function",
+      "name": "TestImpact_CycleDetection",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 114,
+      "end_line": 123,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestImpact_IsolatedSymbol",
+      "kind": "function",
+      "name": "TestImpact_IsolatedSymbol",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 125,
+      "end_line": 131,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:assertSliceContains",
+      "kind": "function",
+      "name": "assertSliceContains",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 133,
+      "end_line": 141,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    }
+  ],
+  "calls": [
+    {
+      "from": "edges",
+      "to": "len"
+    },
+    {
+      "from": "edges",
+      "to": "append"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "Build"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "edges"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestBuild_DirectionsCorrect",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestBuild_Deduplicates",
+      "to": "Build"
+    },
+    {
+      "from": "TestBuild_Deduplicates",
+      "to": "edges"
+    },
+    {
+      "from": "TestBuild_Deduplicates",
+      "to": "len"
+    },
+    {
+      "from": "TestBuild_Deduplicates",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestBuild_Deduplicates",
+      "to": "len"
+    },
+    {
+      "from": "TestTrace_BFS",
+      "to": "Build"
+    },
+    {
+      "from": "TestTrace_BFS",
+      "to": "edges"
+    },
+    {
+      "from": "TestTrace_BFS",
+      "to": "Trace"
+    },
+    {
+      "from": "TestTrace_BFS",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestTrace_BFS",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestTrace_BFS",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestTrace_CycleDetection",
+      "to": "Build"
+    },
+    {
+      "from": "TestTrace_CycleDetection",
+      "to": "edges"
+    },
+    {
+      "from": "TestTrace_CycleDetection",
+      "to": "Trace"
+    },
+    {
+      "from": "TestTrace_CycleDetection",
+      "to": "len"
+    },
+    {
+      "from": "TestTrace_CycleDetection",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestTrace_CycleDetection",
+      "to": "len"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "Build"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "edges"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "Write"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "ReadFrom"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "ReadTo"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestWriteRead_RoundTrip",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "Build"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "edges"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "Write"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "t.Fatal"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "filepath.Glob"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "len"
+    },
+    {
+      "from": "TestWrite_NoTmpFilesLeft",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestImpact_ReverseBFS",
+      "to": "Build"
+    },
+    {
+      "from": "TestImpact_ReverseBFS",
+      "to": "edges"
+    },
+    {
+      "from": "TestImpact_ReverseBFS",
+      "to": "Impact"
+    },
+    {
+      "from": "TestImpact_ReverseBFS",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestImpact_ReverseBFS",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestImpact_ReverseBFS",
+      "to": "assertSliceContains"
+    },
+    {
+      "from": "TestImpact_CycleDetection",
+      "to": "Build"
+    },
+    {
+      "from": "TestImpact_CycleDetection",
+      "to": "edges"
+    },
+    {
+      "from": "TestImpact_CycleDetection",
+      "to": "Impact"
+    },
+    {
+      "from": "TestImpact_CycleDetection",
+      "to": "len"
+    },
+    {
+      "from": "TestImpact_CycleDetection",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "TestImpact_CycleDetection",
+      "to": "len"
+    },
+    {
+      "from": "TestImpact_IsolatedSymbol",
+      "to": "Build"
+    },
+    {
+      "from": "TestImpact_IsolatedSymbol",
+      "to": "edges"
+    },
+    {
+      "from": "TestImpact_IsolatedSymbol",
+      "to": "Impact"
+    },
+    {
+      "from": "TestImpact_IsolatedSymbol",
+      "to": "len"
+    },
+    {
+      "from": "TestImpact_IsolatedSymbol",
+      "to": "t.Errorf"
+    },
+    {
+      "from": "assertSliceContains",
+      "to": "t.Helper"
+    },
+    {
+      "from": "assertSliceContains",
+      "to": "t.Errorf"
+    }
+  ]
+}

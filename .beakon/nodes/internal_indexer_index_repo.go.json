@@ -1,6 +1,6 @@
 {
   "file": "internal/indexer/index_repo.go",
-  "hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c",
+  "hash": "8417cb42bad55d91621803ea8caf2ea9966f2939",
   "symbols": [
     {
       "id": "go:class:internal/indexer/index_repo.go:Result",
@@ -8,9 +8,9 @@
       "name": "Result",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 19,
-      "end_line": 25,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 20,
+      "end_line": 27,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     },
     {
       "id": "go:function:internal/indexer/index_repo.go:Run",
@@ -18,9 +18,9 @@
       "name": "Run",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 29,
-      "end_line": 126,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 31,
+      "end_line": 136,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     },
     {
       "id": "go:function:internal/indexer/index_repo.go:writeIndexFiles",
@@ -28,9 +28,9 @@
       "name": "writeIndexFiles",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 129,
-      "end_line": 141,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 139,
+      "end_line": 151,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     },
     {
       "id": "go:function:internal/indexer/index_repo.go:BuildMap",
@@ -38,9 +38,9 @@
       "name": "BuildMap",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 144,
-      "end_line": 155,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 154,
+      "end_line": 165,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     }
   ],
   "calls": [
@@ -70,11 +70,15 @@
     },
     {
       "from": "Run",
+      "to": "runtime.NumCPU"
+    },
+    {
+      "from": "Run",
       "to": "wg.Add"
     },
     {
       "from": "Run",
-      "to": "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}"
+      "to": "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\t\t\tdefer func() {\n\t\t\t\tif r := recover(); r != nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\terrors = append(errors, fmt.Sprintf(\"panic processing %s: %v\", sf.Path, r))\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t}()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}"
     },
     {
       "from": "Run",
@@ -83,6 +87,30 @@
     {
       "from": "Run",
       "to": "func() { \u003c-sem }"
+    },
+    {
+      "from": "Run",
+      "to": "func() {\n\t\t\t\tif r := recover(); r != nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\terrors = append(errors, fmt.Sprintf(\"panic processing %s: %v\", sf.Path, r))\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t}"
+    },
+    {
+      "from": "Run",
+      "to": "recover"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "fmt.Sprintf"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Unlock"
     },
     {
       "from": "Run",

@@ -17,7 +17,7 @@ func TestScan_RespectsGitignore(t *testing.T) {
 
 	os.WriteFile(filepath.Join(root, ".gitignore"), []byte("generated/\n"), 0644)
 
-	files, err := Scan(root)
+	files, _, err := Scan(root)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -44,7 +44,7 @@ func TestScan_NoGitignore_StillWorks(t *testing.T) {
 	os.MkdirAll(filepath.Join(root, "src"), 0755)
 	os.WriteFile(filepath.Join(root, "src", "main.go"), []byte("package main"), 0644)
 
-	files, err := Scan(root)
+	files, _, err := Scan(root)
 	if err != nil {
 		t.Fatal(err)
 	}

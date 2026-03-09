@@ -1,42 +1,226 @@
 {
+  "Build": [
+    "TestBuild_DirectionsCorrect",
+    "TestBuild_Deduplicates",
+    "TestTrace_BFS",
+    "TestTrace_CycleDetection",
+    "TestWriteRead_RoundTrip",
+    "TestWrite_NoTmpFilesLeft",
+    "TestImpact_ReverseBFS",
+    "TestImpact_CycleDetection",
+    "TestImpact_IsolatedSymbol"
+  ],
   "BuildMap": [
     "rebuildGlobal",
     "writeIndexFiles"
   ],
+  "DeleteFile": [
+    "TestDeleteFile"
+  ],
+  "Engine.ReadFrom": [
+    "Engine.load"
+  ],
+  "Engine.ReadSymbols": [
+    "Engine.load"
+  ],
+  "Engine.ReadTo": [
+    "Engine.load"
+  ],
+  "Engine.findSymbol": [
+    "Engine.Assemble"
+  ],
+  "Engine.load": [
+    "Engine.Assemble"
+  ],
+  "Engine.toBlock": [
+    "Engine.Assemble"
+  ],
+  "Extract": [
+    "TestExtractGo_Symbols",
+    "TestExtractGo_CallEdges",
+    "TestExtractGo_LineNumbers",
+    "TestExtractTS_Symbols",
+    "TestExtractPython_Symbols",
+    "TestExtractPython_CallEdges",
+    "TestExtract_UnknownLanguage",
+    "TestExtractGo_MethodCallQualified",
+    "TestExtractTS_ThisCallQualified",
+    "TestExtractPython_SelfCallQualified"
+  ],
+  "Impact": [
+    "TestImpact_ReverseBFS",
+    "TestImpact_CycleDetection",
+    "TestImpact_IsolatedSymbol"
+  ],
+  "Init": [
+    "TestWriteIsAtomic",
+    "TestReadAll_LoadsAllFiles",
+    "TestNeedsUpdate_NewFile",
+    "TestNeedsUpdate_SameHash",
+    "TestNeedsUpdate_ChangedHash",
+    "TestDeleteFile",
+    "TestWriteSymbols_ReadSymbols"
+  ],
+  "NeedsUpdate": [
+    "TestNeedsUpdate_NewFile",
+    "TestNeedsUpdate_SameHash",
+    "TestNeedsUpdate_ChangedHash",
+    "TestDeleteFile"
+  ],
   "Read": [
+    "TestWriteIsAtomic",
     "NeedsUpdate"
   ],
+  "ReadAll": [
+    "TestReadAll_LoadsAllFiles"
+  ],
+  "ReadFrom": [
+    "TestWriteRead_RoundTrip"
+  ],
+  "ReadSymbols": [
+    "TestWriteSymbols_ReadSymbols"
+  ],
+  "ReadTo": [
+    "TestWriteRead_RoundTrip"
+  ],
+  "Run": [
+    "TestFullPipeline_IndexAndQuery",
+    "TestConcurrentUpdateFileDoesNotRace"
+  ],
+  "Scan": [
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
+  ],
+  "Trace": [
+    "TestTrace_BFS",
+    "TestTrace_CycleDetection"
+  ],
   "UpdateFile": [
-    "Watcher.processFile"
+    "TestFullPipeline_IndexAndQuery",
+    "Watcher.processFile",
+    "TestConcurrentUpdateFileDoesNotRace"
+  ],
+  "Write": [
+    "TestWriteRead_RoundTrip",
+    "TestWrite_NoTmpFilesLeft",
+    "TestWriteIsAtomic",
+    "TestReadAll_LoadsAllFiles",
+    "TestNeedsUpdate_SameHash",
+    "TestNeedsUpdate_ChangedHash",
+    "TestDeleteFile"
+  ],
+  "WriteSymbols": [
+    "TestWriteSymbols_ReadSymbols"
   ],
   "add": [
     "uniqueFiles"
   ],
   "append": [
+    "TestFullPipeline_IndexAndQuery",
     "rebuildGlobal",
-    "Run",
-    "BuildMap",
-    "Engine.Assemble",
-    "uniqueFiles",
-    "ReadAll",
-    "Scan",
-    "Watcher.Start",
+    "edges",
     "Build",
     "Trace",
+    "Impact",
     "TraceRich",
     "splitLines",
+    "Run",
+    "BuildMap",
+    "ReadAll",
+    "Watcher.Start",
+    "Engine.Assemble",
+    "uniqueFiles",
+    "Scan",
+    "symbolNames",
     "extractGo",
     "goCallEdges",
     "extractTS",
     "tsCallEdges",
     "extractPython",
-    "pyCallEdges"
+    "pyCallEdges",
+    "extractRust",
+    "rustCallEdges",
+    "extractJava",
+    "javaCallEdges",
+    "extractC",
+    "cCallEdges",
+    "extractCSharp",
+    "csharpCallEdges",
+    "extractRuby",
+    "rubyCallEdges",
+    "extractKotlin",
+    "kotlinCallEdges",
+    "extractSwift",
+    "swiftCallEdges",
+    "extractPHP",
+    "phpCallEdges",
+    "extractScala",
+    "scalaCallEdges",
+    "extractElixir",
+    "extractOCaml",
+    "ocamlCallEdges",
+    "extractElm",
+    "elmCallEdges"
+  ],
+  "argsNode.Child": [
+    "extractElixir"
+  ],
+  "argsNode.Child(0).Content": [
+    "extractElixir"
+  ],
+  "argsNode.ChildCount": [
+    "extractElixir"
+  ],
+  "argsNode.Content": [
+    "extractElixir"
+  ],
+  "assertContains": [
+    "TestExtractGo_Symbols",
+    "TestExtractTS_Symbols",
+    "TestExtractPython_Symbols"
+  ],
+  "assertEdge": [
+    "TestExtractGo_CallEdges",
+    "TestExtractPython_CallEdges",
+    "TestExtractGo_MethodCallQualified",
+    "TestExtractTS_ThisCallQualified",
+    "TestExtractPython_SelfCallQualified"
+  ],
+  "assertSliceContains": [
+    "TestBuild_DirectionsCorrect",
+    "TestTrace_BFS",
+    "TestWriteRead_RoundTrip",
+    "TestImpact_ReverseBFS"
+  ],
+  "c.Child": [
+    "extractElm"
+  ],
+  "c.Content": [
+    "extractKotlin",
+    "extractSwift",
+    "extractScala",
+    "extractElm"
+  ],
+  "c.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "c.Type": [
+    "extractKotlin",
+    "extractSwift",
+    "extractScala",
+    "extractElm"
   ],
   "c.auth.Login": [
     "UserController.Login"
   ],
   "c.auth.Logout": [
     "UserController.Logout"
+  ],
+  "cCallEdges": [
+    "extractC"
+  ],
+  "cFuncName": [
+    "extractC"
   ],
   "close": [
     "Watcher.Stop"
@@ -47,8 +231,29 @@
   "context.Background": [
     "getParser"
   ],
+  "context.NewEngine": [
+    "TestFullPipeline_IndexAndQuery"
+  ],
+  "copyDir": [
+    "TestFullPipeline_IndexAndQuery"
+  ],
+  "cpp.GetLanguage": [
+    "treeSitterLang"
+  ],
   "createJWT": [
     "AuthService.Login"
+  ],
+  "csharp.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "csharpCallEdges": [
+    "extractCSharp"
+  ],
+  "decl.ChildByFieldName": [
+    "cFuncName"
+  ],
+  "decl.Type": [
+    "cFuncName"
   ],
   "delete": [
     "Watcher.Start"
@@ -61,16 +266,28 @@
     "ReadAll"
   ],
   "e.Name": [
+    "TestWriteIsAtomic",
     "ReadAll"
   ],
-  "e.findSymbol": [
-    "Engine.Assemble"
+  "edges": [
+    "TestBuild_DirectionsCorrect",
+    "TestBuild_Deduplicates",
+    "TestTrace_BFS",
+    "TestTrace_CycleDetection",
+    "TestWriteRead_RoundTrip",
+    "TestWrite_NoTmpFilesLeft",
+    "TestImpact_ReverseBFS",
+    "TestImpact_CycleDetection",
+    "TestImpact_IsolatedSymbol"
   ],
-  "e.load": [
-    "Engine.Assemble"
+  "elixir.GetLanguage": [
+    "treeSitterLang"
   ],
-  "e.toBlock": [
-    "Engine.Assemble"
+  "elm.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "elmCallEdges": [
+    "extractElm"
   ],
   "enc.Encode": [
     "writeJSON",
@@ -80,11 +297,26 @@
     "writeJSON",
     "printJSON"
   ],
+  "engine.Assemble": [
+    "TestFullPipeline_IndexAndQuery"
+  ],
   "errors.New": [
     "validatePassword"
   ],
   "estimateTokens": [
     "Engine.Assemble"
+  ],
+  "extractC": [
+    "Extract"
+  ],
+  "extractCSharp": [
+    "Extract"
+  ],
+  "extractElixir": [
+    "Extract"
+  ],
+  "extractElm": [
+    "Extract"
   ],
   "extractGo": [
     "Extract"
@@ -92,7 +324,31 @@
   "extractGoReceiver": [
     "goMethodName"
   ],
+  "extractJava": [
+    "Extract"
+  ],
+  "extractKotlin": [
+    "Extract"
+  ],
+  "extractOCaml": [
+    "Extract"
+  ],
+  "extractPHP": [
+    "Extract"
+  ],
   "extractPython": [
+    "Extract"
+  ],
+  "extractRuby": [
+    "Extract"
+  ],
+  "extractRust": [
+    "Extract"
+  ],
+  "extractScala": [
+    "Extract"
+  ],
+  "extractSwift": [
     "Extract"
   ],
   "extractTS": [
@@ -117,13 +373,23 @@
     "writeJSON"
   ],
   "filepath.Ext": [
+    "TestWriteIsAtomic",
     "Scan"
   ],
+  "filepath.Glob": [
+    "TestWrite_NoTmpFilesLeft"
+  ],
   "filepath.Join": [
+    "TestFullPipeline_IndexAndQuery",
+    "copyDir",
     "UpdateFile",
-    "Run",
-    "fetchCode",
+    "TestWrite_NoTmpFilesLeft",
     "Write",
+    "ReadFrom",
+    "ReadTo",
+    "fetchSnippet",
+    "Run",
+    "TestWriteIsAtomic",
     "Read",
     "ReadAll",
     "WriteSymbols",
@@ -134,31 +400,42 @@
     "ReadMeta",
     "Init",
     "DeleteFile",
-    "ReadFrom",
-    "ReadTo",
-    "fetchSnippet"
+    "fetchCode",
+    "loadGitignore",
+    "TestConcurrentUpdateFileDoesNotRace",
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
   ],
   "filepath.Rel": [
+    "copyDir",
     "UpdateFile",
     "Scan"
   ],
   "filepath.Walk": [
-    "Scan",
-    "Watcher.addDirs"
+    "copyDir",
+    "Watcher.addDirs",
+    "Scan"
+  ],
+  "firstIdent": [
+    "extractKotlin",
+    "extractScala"
+  ],
+  "firstName": [
+    "extractSwift"
   ],
   "fmt.Errorf": [
     "UpdateFile",
     "rebuildGlobal",
+    "Write",
     "Run",
     "writeIndexFiles",
-    "Fetch",
     "Init",
-    "treeSitterLang",
-    "getParser",
+    "findSymbol",
+    "Fetch",
     "NewWatcher",
     "Watcher.Start",
-    "Write",
-    "findSymbol"
+    "treeSitterLang",
+    "getParser"
   ],
   "fmt.Printf": [
     "printRichTrace",
@@ -176,10 +453,20 @@
   "fn.Content": [
     "goCallEdges",
     "tsCallEdges",
-    "pyCallEdges"
+    "pyCallEdges",
+    "rustCallEdges",
+    "cCallEdges",
+    "csharpCallEdges",
+    "phpCallEdges"
   ],
   "fsnotify.NewWatcher": [
     "NewWatcher"
+  ],
+  "func() {\n\t\t\t\tif r := recover(); r != nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\terrors = append(errors, fmt.Sprintf(\"panic processing %s: %v\", sf.Path, r))\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t}": [
+    "Run"
+  ],
+  "func() {\n\t\t\tdefer wg.Done()\n\t\t\tUpdateFile(root, srcPath)\n\t\t}": [
+    "TestConcurrentUpdateFileDoesNotRace"
   ],
   "func() { \u003c-sem }": [
     "Run"
@@ -187,7 +474,7 @@
   "func(name string) {\n\t\t\tdefer wg.Done()\n\t\t\tvar fi pkg.FileIndex\n\t\t\tif err := readJSON(filepath.Join(dir, name), \u0026fi); err == nil {\n\t\t\t\tmu.Lock()\n\t\t\t\tall = append(all, fi)\n\t\t\t\tmu.Unlock()\n\t\t\t}\n\t\t}": [
     "ReadAll"
   ],
-  "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}": [
+  "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\t\t\tdefer func() {\n\t\t\t\tif r := recover(); r != nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\terrors = append(errors, fmt.Sprintf(\"panic processing %s: %v\", sf.Path, r))\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t}()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}": [
     "Run"
   ],
   "fw.Close": [
@@ -195,6 +482,14 @@
   ],
   "getParser": [
     "parseSource"
+  ],
+  "globalMu.Lock": [
+    "UpdateFile",
+    "removeFile"
+  ],
+  "globalMu.Unlock": [
+    "UpdateFile",
+    "removeFile"
   ],
   "goCallEdges": [
     "extractGo"
@@ -215,15 +510,12 @@
     "rebuildGlobal",
     "writeIndexFiles"
   ],
-  "graph.ReadFrom": [
-    "Engine.load"
-  ],
-  "graph.ReadTo": [
-    "Engine.load"
-  ],
   "graph.Write": [
     "rebuildGlobal",
     "writeIndexFiles"
+  ],
+  "groovy.GetLanguage": [
+    "treeSitterLang"
   ],
   "hasSuffix": [
     "detectLang",
@@ -232,7 +524,19 @@
   "hashBytes": [
     "extractGo",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "hex.EncodeToString": [
     "HashFile",
@@ -257,7 +561,7 @@
     "rebuildGlobal"
   ],
   "index.ReadSymbols": [
-    "Engine.load",
+    "TestFullPipeline_IndexAndQuery",
     "loadSymIndex",
     "findSymbol"
   ],
@@ -277,13 +581,20 @@
     "writeIndexFiles"
   ],
   "info.IsDir": [
-    "Scan",
+    "copyDir",
     "Watcher.Start",
-    "Watcher.addDirs"
+    "Watcher.addDirs",
+    "Scan"
+  ],
+  "info.Mode": [
+    "copyDir"
   ],
   "info.Name": [
-    "Scan",
-    "Watcher.addDirs"
+    "Watcher.addDirs",
+    "Scan"
+  ],
+  "inner.Content": [
+    "cFuncName"
   ],
   "int": [
     "extractGo",
@@ -292,13 +603,42 @@
     "extractTS",
     "tsCallEdges",
     "extractPython",
-    "pyCallEdges"
+    "pyCallEdges",
+    "extractRust",
+    "rustCallEdges",
+    "extractJava",
+    "javaCallEdges",
+    "extractC",
+    "cCallEdges",
+    "extractCSharp",
+    "csharpCallEdges",
+    "extractRuby",
+    "rubyCallEdges",
+    "extractKotlin",
+    "kotlinCallEdges",
+    "extractSwift",
+    "swiftCallEdges",
+    "extractPHP",
+    "phpCallEdges",
+    "extractScala",
+    "scalaCallEdges",
+    "extractElixir",
+    "extractOCaml",
+    "ocamlCallEdges",
+    "extractElm",
+    "elmCallEdges"
   ],
   "invalidateToken": [
     "AuthService.Logout"
   ],
   "isSupportedFile": [
     "Watcher.Start"
+  ],
+  "java.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "javaCallEdges": [
+    "extractJava"
   ],
   "javascript.GetLanguage": [
     "treeSitterLang"
@@ -313,34 +653,62 @@
     "writeJSON",
     "printJSON"
   ],
+  "kotlin.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "kotlinCallEdges": [
+    "extractKotlin"
+  ],
   "len": [
+    "TestFullPipeline_IndexAndQuery",
     "UpdateFile",
     "removeFile",
     "hasSuffix",
+    "edges",
+    "TestBuild_Deduplicates",
+    "TestTrace_CycleDetection",
+    "TestWrite_NoTmpFilesLeft",
+    "TestImpact_CycleDetection",
+    "TestImpact_IsolatedSymbol",
+    "Trace",
+    "Impact",
+    "TraceRich",
+    "fetchSnippet",
+    "splitLines",
     "Run",
     "BuildMap",
+    "TestReadAll_LoadsAllFiles",
+    "TestWriteSymbols_ReadSymbols",
+    "loadSymIndex",
+    "printContext",
     "Fetch",
     "Engine.load",
     "fetchCode",
     "estimateTokens",
-    "Trace",
-    "TraceRich",
-    "fetchSnippet",
-    "splitLines",
-    "loadSymIndex",
-    "printContext",
+    "TestExtract_UnknownLanguage",
+    "TestConcurrentUpdateFileDoesNotRace",
+    "TestScan_NoGitignore_StillWorks",
+    "qualifyCall",
     "extractGoReceiver"
   ],
+  "loadGitignore": [
+    "Scan"
+  ],
   "make": [
-    "Run",
-    "BuildMap",
-    "Engine.load",
-    "NewWatcher",
-    "Watcher.Start",
     "Build",
     "ReadFrom",
     "ReadTo",
-    "loadSymIndex"
+    "Run",
+    "BuildMap",
+    "loadSymIndex",
+    "NewWatcher",
+    "Watcher.Start",
+    "Engine.load",
+    "Scan",
+    "loadGitignore"
+  ],
+  "methodNode.Content": [
+    "rubyCallEdges"
   ],
   "mu.Lock": [
     "Run",
@@ -356,54 +724,170 @@
     "extractGo",
     "goTypeName",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
+  ],
+  "n.Child(i).Type": [
+    "extractOCaml"
   ],
   "n.ChildByFieldName": [
     "goFuncName",
     "goMethodName",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "cFuncName",
+    "extractCSharp",
+    "extractRuby",
+    "extractPHP",
+    "extractOCaml"
   ],
   "n.ChildCount": [
     "extractGo",
     "goTypeName",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "n.EndPoint": [
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "n.StartPoint": [
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "n.Type": [
     "extractGo",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "nameNode.Content": [
     "goFuncName",
     "goMethodName",
     "goTypeName",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "javaCallEdges",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractPHP",
+    "phpCallEdges",
+    "extractOCaml",
+    "extractElm"
   ],
   "node.Child": [
     "goCallEdges",
     "tsCallEdges",
-    "pyCallEdges"
+    "pyCallEdges",
+    "rustCallEdges",
+    "javaCallEdges",
+    "cCallEdges",
+    "csharpCallEdges",
+    "rubyCallEdges",
+    "kotlinCallEdges",
+    "swiftCallEdges",
+    "phpCallEdges",
+    "scalaCallEdges",
+    "ocamlCallEdges",
+    "elmCallEdges"
+  ],
+  "node.Child(0).Content": [
+    "kotlinCallEdges",
+    "swiftCallEdges",
+    "scalaCallEdges",
+    "ocamlCallEdges",
+    "elmCallEdges"
   ],
   "node.ChildByFieldName": [
     "goCallEdges",
     "tsCallEdges",
-    "pyCallEdges"
+    "pyCallEdges",
+    "rustCallEdges",
+    "javaCallEdges",
+    "cCallEdges",
+    "csharpCallEdges",
+    "rubyCallEdges",
+    "phpCallEdges"
   ],
   "node.ChildCount": [
     "goCallEdges",
     "tsCallEdges",
-    "pyCallEdges"
+    "pyCallEdges",
+    "rustCallEdges",
+    "javaCallEdges",
+    "cCallEdges",
+    "csharpCallEdges",
+    "rubyCallEdges",
+    "kotlinCallEdges",
+    "swiftCallEdges",
+    "phpCallEdges",
+    "scalaCallEdges",
+    "ocamlCallEdges",
+    "elmCallEdges"
   ],
   "node.EndPoint": [
     "extractGo"
@@ -414,10 +898,30 @@
   "node.Type": [
     "goCallEdges",
     "tsCallEdges",
-    "pyCallEdges"
+    "pyCallEdges",
+    "rustCallEdges",
+    "javaCallEdges",
+    "cCallEdges",
+    "csharpCallEdges",
+    "rubyCallEdges",
+    "kotlinCallEdges",
+    "swiftCallEdges",
+    "phpCallEdges",
+    "scalaCallEdges",
+    "ocamlCallEdges",
+    "elmCallEdges"
   ],
   "now.Sub": [
     "Watcher.Start"
+  ],
+  "objNode.Content": [
+    "javaCallEdges"
+  ],
+  "ocaml.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "ocamlCallEdges": [
+    "extractOCaml"
   ],
   "os.Create": [
     "writeJSON"
@@ -430,30 +934,49 @@
     "DeleteFile"
   ],
   "os.MkdirAll": [
+    "copyDir",
     "Write",
+    "writeJSON",
     "Init",
-    "writeJSON"
+    "TestConcurrentUpdateFileDoesNotRace",
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
   ],
   "os.Open": [
     "readJSON"
   ],
   "os.ReadDir": [
+    "TestWriteIsAtomic",
     "ReadAll"
   ],
   "os.ReadFile": [
+    "TestFullPipeline_IndexAndQuery",
+    "copyDir",
     "UpdateFile",
+    "fetchSnippet",
     "Run",
     "Fetch",
     "fetchCode",
-    "fetchSnippet",
+    "loadGitignore",
     "HashFile"
   ],
   "os.Remove": [
+    "writeJSON",
     "DeleteFile"
+  ],
+  "os.Rename": [
+    "writeJSON"
   ],
   "os.Stat": [
     "UpdateFile",
     "Watcher.Start"
+  ],
+  "os.WriteFile": [
+    "TestFullPipeline_IndexAndQuery",
+    "copyDir",
+    "TestConcurrentUpdateFileDoesNotRace",
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
   ],
   "p.ParseCtx": [
     "getParser"
@@ -464,12 +987,42 @@
   "parseSource": [
     "extractGo",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
+  ],
+  "php.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "phpCallEdges": [
+    "extractPHP"
   ],
   "pkg.NodeID": [
     "extractGo",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "printBlock": [
     "printContext"
@@ -480,18 +1033,31 @@
   "python.GetLanguage": [
     "treeSitterLang"
   ],
+  "qualifyCall": [
+    "goCallEdges",
+    "rustCallEdges",
+    "csharpCallEdges",
+    "rubyCallEdges",
+    "kotlinCallEdges",
+    "swiftCallEdges",
+    "phpCallEdges",
+    "scalaCallEdges"
+  ],
   "readJSON": [
+    "ReadFrom",
+    "ReadTo",
     "Read",
     "ReadAll",
     "ReadSymbols",
     "ReadMap",
-    "ReadMeta",
-    "ReadFrom",
-    "ReadTo"
+    "ReadMeta"
   ],
   "rebuildGlobal": [
     "UpdateFile",
     "removeFile"
+  ],
+  "recover": [
+    "Run"
   ],
   "recvNode.Content": [
     "goMethodName"
@@ -514,6 +1080,27 @@
   "root.PersistentFlags().BoolVar": [
     "init"
   ],
+  "ruby.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "rubyCallEdges": [
+    "extractRuby"
+  ],
+  "runtime.NumCPU": [
+    "Run"
+  ],
+  "rust.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "rustCallEdges": [
+    "extractRust"
+  ],
+  "scala.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "scalaCallEdges": [
+    "extractScala"
+  ],
   "sha1.Sum": [
     "HashFile",
     "hashBytes"
@@ -531,27 +1118,37 @@
     "fetchSnippet"
   ],
   "string": [
+    "fetchSnippet",
     "Fetch",
     "fetchCode",
-    "fetchSnippet"
+    "loadGitignore"
+  ],
+  "strings.Contains": [
+    "TestScan_RespectsGitignore"
   ],
   "strings.Fields": [
     "extractGoReceiver"
   ],
   "strings.HasPrefix": [
+    "Watcher.addDirs",
     "Scan",
-    "Watcher.addDirs"
+    "loadGitignore",
+    "tsCallEdges",
+    "pyCallEdges"
   ],
   "strings.HasSuffix": [
-    "Engine.findSymbol",
     "ReadAll",
-    "findSymbol"
+    "findSymbol",
+    "Engine.findSymbol"
+  ],
+  "strings.Index": [
+    "qualifyCall"
   ],
   "strings.Join": [
     "BuildMap",
+    "printContext",
     "Fetch",
-    "fetchCode",
-    "printContext"
+    "fetchCode"
   ],
   "strings.LastIndex": [
     "printBlock"
@@ -565,15 +1162,16 @@
   ],
   "strings.Split": [
     "BuildMap",
+    "printRichTrace",
+    "printBlock",
     "Fetch",
     "fetchCode",
-    "printRichTrace",
-    "printBlock"
+    "loadGitignore"
   ],
   "strings.ToLower": [
+    "findSymbol",
     "Engine.findSymbol",
-    "Scan",
-    "findSymbol"
+    "Scan"
   ],
   "strings.Trim": [
     "extractGoReceiver"
@@ -585,9 +1183,40 @@
     "printRichTrace"
   ],
   "strings.TrimSpace": [
+    "loadGitignore",
     "goCallEdges",
     "tsCallEdges",
-    "pyCallEdges"
+    "pyCallEdges",
+    "extractRust",
+    "rustCallEdges",
+    "javaCallEdges",
+    "cFuncName",
+    "cCallEdges",
+    "csharpCallEdges",
+    "rubyCallEdges",
+    "kotlinCallEdges",
+    "swiftCallEdges",
+    "phpCallEdges",
+    "scalaCallEdges",
+    "extractElixir",
+    "extractOCaml",
+    "ocamlCallEdges",
+    "extractElm",
+    "elmCallEdges"
+  ],
+  "strings.TrimSuffix": [
+    "loadGitignore"
+  ],
+  "swift.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "swiftCallEdges": [
+    "extractSwift"
+  ],
+  "symbolNames": [
+    "TestExtractGo_Symbols",
+    "TestExtractTS_Symbols",
+    "TestExtractPython_Symbols"
   ],
   "symbols.Extract": [
     "UpdateFile",
@@ -596,6 +1225,71 @@
   "symbols.HashFile": [
     "UpdateFile",
     "Run"
+  ],
+  "t.Error": [
+    "TestFullPipeline_IndexAndQuery",
+    "TestNeedsUpdate_NewFile",
+    "TestNeedsUpdate_SameHash",
+    "TestNeedsUpdate_ChangedHash",
+    "TestDeleteFile",
+    "TestExtract_UnknownLanguage",
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
+  ],
+  "t.Errorf": [
+    "TestFullPipeline_IndexAndQuery",
+    "TestBuild_Deduplicates",
+    "TestTrace_CycleDetection",
+    "TestWrite_NoTmpFilesLeft",
+    "TestImpact_CycleDetection",
+    "TestImpact_IsolatedSymbol",
+    "assertSliceContains",
+    "TestWriteIsAtomic",
+    "TestReadAll_LoadsAllFiles",
+    "TestWriteSymbols_ReadSymbols",
+    "TestExtractGo_LineNumbers",
+    "assertContains",
+    "assertEdge",
+    "TestScan_RespectsGitignore"
+  ],
+  "t.Fatal": [
+    "copyDir",
+    "TestWriteRead_RoundTrip",
+    "TestWrite_NoTmpFilesLeft",
+    "TestWriteIsAtomic",
+    "TestReadAll_LoadsAllFiles",
+    "TestWriteSymbols_ReadSymbols",
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
+  ],
+  "t.Fatalf": [
+    "TestFullPipeline_IndexAndQuery",
+    "TestWriteIsAtomic",
+    "TestConcurrentUpdateFileDoesNotRace"
+  ],
+  "t.Helper": [
+    "copyDir",
+    "assertSliceContains",
+    "assertContains",
+    "assertEdge"
+  ],
+  "t.TempDir": [
+    "TestFullPipeline_IndexAndQuery",
+    "TestWriteRead_RoundTrip",
+    "TestWrite_NoTmpFilesLeft",
+    "TestWriteIsAtomic",
+    "TestReadAll_LoadsAllFiles",
+    "TestNeedsUpdate_NewFile",
+    "TestNeedsUpdate_SameHash",
+    "TestNeedsUpdate_ChangedHash",
+    "TestDeleteFile",
+    "TestWriteSymbols_ReadSymbols",
+    "TestConcurrentUpdateFileDoesNotRace",
+    "TestScan_RespectsGitignore",
+    "TestScan_NoGitignore_StillWorks"
+  ],
+  "target.Content": [
+    "extractElixir"
   ],
   "ticker.Stop": [
     "Watcher.Start"
@@ -616,13 +1310,28 @@
   "tree.RootNode": [
     "extractGo",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "treeSitterLang": [
     "getParser"
   ],
   "tsCallEdges": [
     "extractTS"
+  ],
+  "typeNode.Content": [
+    "extractRust"
   ],
   "typescript.GetLanguage": [
     "treeSitterLang"
@@ -655,19 +1364,45 @@
     "extractTS",
     "tsCallEdges",
     "extractPython",
-    "pyCallEdges"
+    "pyCallEdges",
+    "extractRust",
+    "rustCallEdges",
+    "extractJava",
+    "javaCallEdges",
+    "extractC",
+    "cCallEdges",
+    "extractCSharp",
+    "csharpCallEdges",
+    "extractRuby",
+    "rubyCallEdges",
+    "extractKotlin",
+    "kotlinCallEdges",
+    "extractSwift",
+    "swiftCallEdges",
+    "extractPHP",
+    "phpCallEdges",
+    "extractScala",
+    "scalaCallEdges",
+    "extractElixir",
+    "extractOCaml",
+    "ocamlCallEdges",
+    "extractElm",
+    "elmCallEdges"
   ],
   "wg.Add": [
     "Run",
-    "ReadAll"
+    "ReadAll",
+    "TestConcurrentUpdateFileDoesNotRace"
   ],
   "wg.Done": [
     "Run",
-    "ReadAll"
+    "ReadAll",
+    "TestConcurrentUpdateFileDoesNotRace"
   ],
   "wg.Wait": [
     "Run",
-    "ReadAll"
+    "ReadAll",
+    "TestConcurrentUpdateFileDoesNotRace"
   ],
   "writeIndexFiles": [
     "Run"

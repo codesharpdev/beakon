@@ -1,6 +1,6 @@
 {
   "file": "internal/index/write.go",
-  "hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d",
+  "hash": "64ed624ae4922d92135766fabe120e01206329a0",
   "symbols": [
     {
       "id": "go:class:internal/index/write.go:Meta",
@@ -10,7 +10,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 21,
       "end_line": 27,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:class:internal/index/write.go:SymbolsIndex",
@@ -20,7 +20,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 30,
       "end_line": 32,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:class:internal/index/write.go:MapIndex",
@@ -30,7 +30,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 35,
       "end_line": 35,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:Write",
@@ -40,7 +40,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 38,
       "end_line": 45,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:Read",
@@ -50,7 +50,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 48,
       "end_line": 55,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:ReadAll",
@@ -60,7 +60,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 58,
       "end_line": 87,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:WriteSymbols",
@@ -70,7 +70,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 90,
       "end_line": 93,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:ReadSymbols",
@@ -80,7 +80,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 96,
       "end_line": 103,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:WriteMap",
@@ -90,7 +90,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 106,
       "end_line": 109,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:ReadMap",
@@ -100,7 +100,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 112,
       "end_line": 117,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:WriteMeta",
@@ -110,7 +110,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 120,
       "end_line": 123,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:ReadMeta",
@@ -120,7 +120,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 126,
       "end_line": 131,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:NeedsUpdate",
@@ -130,7 +130,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 134,
       "end_line": 140,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:Init",
@@ -140,7 +140,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 143,
       "end_line": 155,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:fileKey",
@@ -150,7 +150,7 @@
       "file_path": "internal/index/write.go",
       "start_line": 159,
       "end_line": 163,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:writeJSON",
@@ -159,8 +159,8 @@
       "language": "go",
       "file_path": "internal/index/write.go",
       "start_line": 165,
-      "end_line": 177,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "end_line": 186,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:readJSON",
@@ -168,9 +168,9 @@
       "name": "readJSON",
       "language": "go",
       "file_path": "internal/index/write.go",
-      "start_line": 179,
-      "end_line": 186,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "start_line": 188,
+      "end_line": 195,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     },
     {
       "id": "go:function:internal/index/write.go:DeleteFile",
@@ -178,9 +178,9 @@
       "name": "DeleteFile",
       "language": "go",
       "file_path": "internal/index/write.go",
-      "start_line": 189,
-      "end_line": 196,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
+      "start_line": 198,
+      "end_line": 205,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
     }
   ],
   "calls": [
@@ -370,10 +370,6 @@
     },
     {
       "from": "writeJSON",
-      "to": "f.Close"
-    },
-    {
-      "from": "writeJSON",
       "to": "json.NewEncoder"
     },
     {
@@ -383,6 +379,26 @@
     {
       "from": "writeJSON",
       "to": "enc.Encode"
+    },
+    {
+      "from": "writeJSON",
+      "to": "f.Close"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Remove"
+    },
+    {
+      "from": "writeJSON",
+      "to": "f.Close"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Remove"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Rename"
     },
     {
       "from": "readJSON",

@@ -1,6 +1,6 @@
 {
   "file": "internal/context/engine.go",
-  "hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d",
+  "hash": "95f5540fd81ba4053b492392a6e709707ddac97e",
   "symbols": [
     {
       "id": "go:class:internal/context/engine.go:CodeBlock",
@@ -10,7 +10,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 14,
       "end_line": 21,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:class:internal/context/engine.go:Bundle",
@@ -20,7 +20,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 24,
       "end_line": 31,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:class:internal/context/engine.go:Engine",
@@ -30,7 +30,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 34,
       "end_line": 40,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:function:internal/context/engine.go:NewEngine",
@@ -40,7 +40,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 43,
       "end_line": 45,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:method:internal/context/engine.go:Engine.load",
@@ -51,7 +51,7 @@
       "start_line": 48,
       "end_line": 73,
       "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:method:internal/context/engine.go:Engine.Assemble",
@@ -62,7 +62,7 @@
       "start_line": 76,
       "end_line": 119,
       "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:method:internal/context/engine.go:Engine.toBlock",
@@ -73,7 +73,7 @@
       "start_line": 122,
       "end_line": 132,
       "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:method:internal/context/engine.go:Engine.findSymbol",
@@ -84,7 +84,7 @@
       "start_line": 135,
       "end_line": 151,
       "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:function:internal/context/engine.go:fetchCode",
@@ -94,7 +94,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 154,
       "end_line": 174,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:function:internal/context/engine.go:uniqueFiles",
@@ -104,7 +104,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 177,
       "end_line": 196,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:function:internal/context/engine.go:estimateTokens",
@@ -114,7 +114,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 199,
       "end_line": 208,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:class:internal/context/engine.go:SymbolNotFound",
@@ -124,7 +124,7 @@
       "file_path": "internal/context/engine.go",
       "start_line": 211,
       "end_line": 213,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
       "id": "go:method:internal/context/engine.go:SymbolNotFound.Error",
@@ -135,13 +135,13 @@
       "start_line": 215,
       "end_line": 217,
       "parent": "SymbolNotFound",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     }
   ],
   "calls": [
     {
       "from": "Engine.load",
-      "to": "index.ReadSymbols"
+      "to": "Engine.ReadSymbols"
     },
     {
       "from": "Engine.load",
@@ -153,35 +153,27 @@
     },
     {
       "from": "Engine.load",
-      "to": "graph.ReadFrom"
+      "to": "Engine.ReadFrom"
     },
     {
       "from": "Engine.load",
-      "to": "graph.ReadTo"
+      "to": "Engine.ReadTo"
     },
     {
       "from": "Engine.Assemble",
-      "to": "e.load"
+      "to": "Engine.load"
     },
     {
       "from": "Engine.Assemble",
-      "to": "e.findSymbol"
+      "to": "Engine.findSymbol"
     },
     {
       "from": "Engine.Assemble",
-      "to": "e.toBlock"
+      "to": "Engine.toBlock"
     },
     {
       "from": "Engine.Assemble",
-      "to": "e.findSymbol"
-    },
-    {
-      "from": "Engine.Assemble",
-      "to": "append"
-    },
-    {
-      "from": "Engine.Assemble",
-      "to": "e.toBlock"
+      "to": "Engine.findSymbol"
     },
     {
       "from": "Engine.Assemble",
@@ -189,7 +181,7 @@
     },
     {
       "from": "Engine.Assemble",
-      "to": "e.findSymbol"
+      "to": "Engine.toBlock"
     },
     {
       "from": "Engine.Assemble",
@@ -197,7 +189,15 @@
     },
     {
       "from": "Engine.Assemble",
-      "to": "e.toBlock"
+      "to": "Engine.findSymbol"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "append"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "Engine.toBlock"
     },
     {
       "from": "Engine.Assemble",

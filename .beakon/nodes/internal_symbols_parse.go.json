@@ -1,6 +1,6 @@
 {
   "file": "internal/symbols/parse.go",
-  "hash": "26c30dcb7478fd131f1c4edfba562e753730dd85",
+  "hash": "d330e8a59e03737ea114310f44741aa60f587c6b",
   "symbols": [
     {
       "id": "go:function:internal/symbols/parse.go:treeSitterLang",
@@ -8,9 +8,9 @@
       "name": "treeSitterLang",
       "language": "go",
       "file_path": "internal/symbols/parse.go",
-      "start_line": 14,
-      "end_line": 27,
-      "source_hash": "26c30dcb7478fd131f1c4edfba562e753730dd85"
+      "start_line": 28,
+      "end_line": 69,
+      "source_hash": "d330e8a59e03737ea114310f44741aa60f587c6b"
     },
     {
       "id": "go:function:internal/symbols/parse.go:getParser",
@@ -18,9 +18,9 @@
       "name": "getParser",
       "language": "go",
       "file_path": "internal/symbols/parse.go",
-      "start_line": 31,
-      "end_line": 43,
-      "source_hash": "26c30dcb7478fd131f1c4edfba562e753730dd85"
+      "start_line": 73,
+      "end_line": 85,
+      "source_hash": "d330e8a59e03737ea114310f44741aa60f587c6b"
     }
   ],
   "calls": [
@@ -39,6 +39,62 @@
     {
       "from": "treeSitterLang",
       "to": "python.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "rust.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "java.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "c.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "cpp.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "csharp.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "ruby.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "kotlin.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "swift.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "php.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "scala.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "elixir.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "ocaml.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "elm.GetLanguage"
+    },
+    {
+      "from": "treeSitterLang",
+      "to": "groovy.GetLanguage"
     },
     {
       "from": "treeSitterLang",

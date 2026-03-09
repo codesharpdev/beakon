@@ -63,14 +63,34 @@
       "source_hash": "348f8cab9ecfcd34dc9e9bedfb1a2e6dd40272ce"
     },
     {
+      "id": "go:function:internal/indexer/integration_test.go:TestFullPipeline_IndexAndQuery",
+      "kind": "function",
+      "name": "TestFullPipeline_IndexAndQuery",
+      "language": "go",
+      "file_path": "internal/indexer/integration_test.go",
+      "start_line": 12,
+      "end_line": 69,
+      "source_hash": "447ca54d7d6cf03f8e7c365259058f2bc2e048ab"
+    },
+    {
+      "id": "go:function:internal/indexer/integration_test.go:copyDir",
+      "kind": "function",
+      "name": "copyDir",
+      "language": "go",
+      "file_path": "internal/indexer/integration_test.go",
+      "start_line": 71,
+      "end_line": 91,
+      "source_hash": "447ca54d7d6cf03f8e7c365259058f2bc2e048ab"
+    },
+    {
       "id": "go:class:internal/indexer/update.go:UpdateResult",
       "kind": "class",
       "name": "UpdateResult",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 16,
-      "end_line": 23,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 21,
+      "end_line": 28,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:UpdateFile",
@@ -78,9 +98,9 @@
       "name": "UpdateFile",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 28,
-      "end_line": 103,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 33,
+      "end_line": 111,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:removeFile",
@@ -88,9 +108,9 @@
       "name": "removeFile",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 106,
-      "end_line": 126,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 114,
+      "end_line": 137,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:rebuildGlobal",
@@ -98,9 +118,9 @@
       "name": "rebuildGlobal",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 131,
-      "end_line": 163,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 142,
+      "end_line": 174,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:detectLang",
@@ -108,9 +128,9 @@
       "name": "detectLang",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 165,
-      "end_line": 177,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 176,
+      "end_line": 188,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:hasSuffix",
@@ -118,9 +138,279 @@
       "name": "hasSuffix",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 179,
+      "start_line": 190,
+      "end_line": 192,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:edges",
+      "kind": "function",
+      "name": "edges",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 10,
+      "end_line": 16,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestBuild_DirectionsCorrect",
+      "kind": "function",
+      "name": "TestBuild_DirectionsCorrect",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 18,
+      "end_line": 32,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestBuild_Deduplicates",
+      "kind": "function",
+      "name": "TestBuild_Deduplicates",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 34,
+      "end_line": 42,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestTrace_BFS",
+      "kind": "function",
+      "name": "TestTrace_BFS",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 44,
+      "end_line": 53,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestTrace_CycleDetection",
+      "kind": "function",
+      "name": "TestTrace_CycleDetection",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 55,
+      "end_line": 65,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestWriteRead_RoundTrip",
+      "kind": "function",
+      "name": "TestWriteRead_RoundTrip",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 67,
+      "end_line": 86,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestWrite_NoTmpFilesLeft",
+      "kind": "function",
+      "name": "TestWrite_NoTmpFilesLeft",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 88,
+      "end_line": 98,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestImpact_ReverseBFS",
+      "kind": "function",
+      "name": "TestImpact_ReverseBFS",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 100,
+      "end_line": 112,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestImpact_CycleDetection",
+      "kind": "function",
+      "name": "TestImpact_CycleDetection",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 114,
+      "end_line": 123,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:TestImpact_IsolatedSymbol",
+      "kind": "function",
+      "name": "TestImpact_IsolatedSymbol",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 125,
+      "end_line": 131,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:function:internal/graph/build_test.go:assertSliceContains",
+      "kind": "function",
+      "name": "assertSliceContains",
+      "language": "go",
+      "file_path": "internal/graph/build_test.go",
+      "start_line": 133,
+      "end_line": 141,
+      "source_hash": "936889a86162802d23e3d99352ee6bb1990dbb98"
+    },
+    {
+      "id": "go:class:internal/graph/build.go:CallsFrom",
+      "kind": "class",
+      "name": "CallsFrom",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 16,
+      "end_line": 16,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:class:internal/graph/build.go:CallsTo",
+      "kind": "class",
+      "name": "CallsTo",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 20,
+      "end_line": 20,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Build",
+      "kind": "function",
+      "name": "Build",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 23,
+      "end_line": 38,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Write",
+      "kind": "function",
+      "name": "Write",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 41,
+      "end_line": 53,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:ReadFrom",
+      "kind": "function",
+      "name": "ReadFrom",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 56,
+      "end_line": 63,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:ReadTo",
+      "kind": "function",
+      "name": "ReadTo",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 66,
+      "end_line": 73,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Trace",
+      "kind": "function",
+      "name": "Trace",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 76,
+      "end_line": 94,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Impact",
+      "kind": "function",
+      "name": "Impact",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 99,
+      "end_line": 117,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:TraceRich",
+      "kind": "function",
+      "name": "TraceRich",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 122,
+      "end_line": 173,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:class:internal/graph/build.go:ExplainResult",
+      "kind": "class",
+      "name": "ExplainResult",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 176,
       "end_line": 181,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:fetchSnippet",
+      "kind": "function",
+      "name": "fetchSnippet",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 184,
+      "end_line": 213,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:splitLines",
+      "kind": "function",
+      "name": "splitLines",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 215,
+      "end_line": 228,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:hasSuffix",
+      "kind": "function",
+      "name": "hasSuffix",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 230,
+      "end_line": 232,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:contains",
+      "kind": "function",
+      "name": "contains",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 234,
+      "end_line": 241,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:writeJSON",
+      "kind": "function",
+      "name": "writeJSON",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 243,
+      "end_line": 264,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:readJSON",
+      "kind": "function",
+      "name": "readJSON",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 266,
+      "end_line": 273,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:class:internal/indexer/index_repo.go:Result",
@@ -128,9 +418,9 @@
       "name": "Result",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 19,
-      "end_line": 25,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 20,
+      "end_line": 27,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     },
     {
       "id": "go:function:internal/indexer/index_repo.go:Run",
@@ -138,9 +428,9 @@
       "name": "Run",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 29,
-      "end_line": 126,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 31,
+      "end_line": 136,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     },
     {
       "id": "go:function:internal/indexer/index_repo.go:writeIndexFiles",
@@ -148,9 +438,9 @@
       "name": "writeIndexFiles",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 129,
-      "end_line": 141,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "start_line": 139,
+      "end_line": 151,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
     },
     {
       "id": "go:function:internal/indexer/index_repo.go:BuildMap",
@@ -158,9 +448,339 @@
       "name": "BuildMap",
       "language": "go",
       "file_path": "internal/indexer/index_repo.go",
-      "start_line": 144,
+      "start_line": 154,
+      "end_line": 165,
+      "source_hash": "8417cb42bad55d91621803ea8caf2ea9966f2939"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestWriteIsAtomic",
+      "kind": "function",
+      "name": "TestWriteIsAtomic",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 11,
+      "end_line": 45,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestReadAll_LoadsAllFiles",
+      "kind": "function",
+      "name": "TestReadAll_LoadsAllFiles",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 47,
+      "end_line": 68,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestNeedsUpdate_NewFile",
+      "kind": "function",
+      "name": "TestNeedsUpdate_NewFile",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 70,
+      "end_line": 76,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestNeedsUpdate_SameHash",
+      "kind": "function",
+      "name": "TestNeedsUpdate_SameHash",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 78,
+      "end_line": 86,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestNeedsUpdate_ChangedHash",
+      "kind": "function",
+      "name": "TestNeedsUpdate_ChangedHash",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 88,
+      "end_line": 96,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestDeleteFile",
+      "kind": "function",
+      "name": "TestDeleteFile",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 98,
+      "end_line": 107,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:function:internal/index/write_test.go:TestWriteSymbols_ReadSymbols",
+      "kind": "function",
+      "name": "TestWriteSymbols_ReadSymbols",
+      "language": "go",
+      "file_path": "internal/index/write_test.go",
+      "start_line": 109,
+      "end_line": 123,
+      "source_hash": "8d75e064c9b01c461fe9f0e14b91f6caf7c63571"
+    },
+    {
+      "id": "go:class:internal/index/write.go:Meta",
+      "kind": "class",
+      "name": "Meta",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 21,
+      "end_line": 27,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:class:internal/index/write.go:SymbolsIndex",
+      "kind": "class",
+      "name": "SymbolsIndex",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 30,
+      "end_line": 32,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:class:internal/index/write.go:MapIndex",
+      "kind": "class",
+      "name": "MapIndex",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 35,
+      "end_line": 35,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:Write",
+      "kind": "function",
+      "name": "Write",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 38,
+      "end_line": 45,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:Read",
+      "kind": "function",
+      "name": "Read",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 48,
+      "end_line": 55,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:ReadAll",
+      "kind": "function",
+      "name": "ReadAll",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 58,
+      "end_line": 87,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:WriteSymbols",
+      "kind": "function",
+      "name": "WriteSymbols",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 90,
+      "end_line": 93,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:ReadSymbols",
+      "kind": "function",
+      "name": "ReadSymbols",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 96,
+      "end_line": 103,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:WriteMap",
+      "kind": "function",
+      "name": "WriteMap",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 106,
+      "end_line": 109,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:ReadMap",
+      "kind": "function",
+      "name": "ReadMap",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 112,
+      "end_line": 117,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:WriteMeta",
+      "kind": "function",
+      "name": "WriteMeta",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 120,
+      "end_line": 123,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:ReadMeta",
+      "kind": "function",
+      "name": "ReadMeta",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 126,
+      "end_line": 131,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:NeedsUpdate",
+      "kind": "function",
+      "name": "NeedsUpdate",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 134,
+      "end_line": 140,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:Init",
+      "kind": "function",
+      "name": "Init",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 143,
       "end_line": 155,
-      "source_hash": "4e156798e3382433d55b1c6affca7c92f0a45c3c"
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:fileKey",
+      "kind": "function",
+      "name": "fileKey",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 159,
+      "end_line": 163,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:writeJSON",
+      "kind": "function",
+      "name": "writeJSON",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 165,
+      "end_line": 186,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:readJSON",
+      "kind": "function",
+      "name": "readJSON",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 188,
+      "end_line": 195,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:internal/index/write.go:DeleteFile",
+      "kind": "function",
+      "name": "DeleteFile",
+      "language": "go",
+      "file_path": "internal/index/write.go",
+      "start_line": 198,
+      "end_line": 205,
+      "source_hash": "64ed624ae4922d92135766fabe120e01206329a0"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:loadSymIndex",
+      "kind": "function",
+      "name": "loadSymIndex",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 402,
+      "end_line": 412,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:printRichTrace",
+      "kind": "function",
+      "name": "printRichTrace",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 415,
+      "end_line": 433,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:findSymbol",
+      "kind": "function",
+      "name": "findSymbol",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 435,
+      "end_line": 450,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:printJSON",
+      "kind": "function",
+      "name": "printJSON",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 452,
+      "end_line": 456,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:printContext",
+      "kind": "function",
+      "name": "printContext",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 459,
+      "end_line": 489,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:printBlock",
+      "kind": "function",
+      "name": "printBlock",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 499,
+      "end_line": 522,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:init",
+      "kind": "function",
+      "name": "init",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 524,
+      "end_line": 528,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
+    },
+    {
+      "id": "go:function:cmd/beakon/main.go:main",
+      "kind": "function",
+      "name": "main",
+      "language": "go",
+      "file_path": "cmd/beakon/main.go",
+      "start_line": 530,
+      "end_line": 534,
+      "source_hash": "8173651f25f31b7890b3ad94bde5cce84e8f8dc3"
     },
     {
       "id": "go:class:internal/code/fetch.go:Block",
@@ -181,443 +801,6 @@
       "start_line": 18,
       "end_line": 44,
       "source_hash": "81bf511a62e1beb224755bdf14bc356486e27214"
-    },
-    {
-      "id": "go:class:internal/context/engine.go:CodeBlock",
-      "kind": "class",
-      "name": "CodeBlock",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 14,
-      "end_line": 21,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:class:internal/context/engine.go:Bundle",
-      "kind": "class",
-      "name": "Bundle",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 24,
-      "end_line": 31,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:class:internal/context/engine.go:Engine",
-      "kind": "class",
-      "name": "Engine",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 34,
-      "end_line": 40,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:function:internal/context/engine.go:NewEngine",
-      "kind": "function",
-      "name": "NewEngine",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 43,
-      "end_line": 45,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:method:internal/context/engine.go:Engine.load",
-      "kind": "method",
-      "name": "Engine.load",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 48,
-      "end_line": 73,
-      "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:method:internal/context/engine.go:Engine.Assemble",
-      "kind": "method",
-      "name": "Engine.Assemble",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 76,
-      "end_line": 119,
-      "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:method:internal/context/engine.go:Engine.toBlock",
-      "kind": "method",
-      "name": "Engine.toBlock",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 122,
-      "end_line": 132,
-      "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:method:internal/context/engine.go:Engine.findSymbol",
-      "kind": "method",
-      "name": "Engine.findSymbol",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 135,
-      "end_line": 151,
-      "parent": "Engine",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:function:internal/context/engine.go:fetchCode",
-      "kind": "function",
-      "name": "fetchCode",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 154,
-      "end_line": 174,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:function:internal/context/engine.go:uniqueFiles",
-      "kind": "function",
-      "name": "uniqueFiles",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 177,
-      "end_line": 196,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:function:internal/context/engine.go:estimateTokens",
-      "kind": "function",
-      "name": "estimateTokens",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 199,
-      "end_line": 208,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:class:internal/context/engine.go:SymbolNotFound",
-      "kind": "class",
-      "name": "SymbolNotFound",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 211,
-      "end_line": 213,
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:method:internal/context/engine.go:SymbolNotFound.Error",
-      "kind": "method",
-      "name": "SymbolNotFound.Error",
-      "language": "go",
-      "file_path": "internal/context/engine.go",
-      "start_line": 215,
-      "end_line": 217,
-      "parent": "SymbolNotFound",
-      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
-    },
-    {
-      "id": "go:class:pkg/types.go:CodeIndexNode",
-      "kind": "class",
-      "name": "CodeIndexNode",
-      "language": "go",
-      "file_path": "pkg/types.go",
-      "start_line": 5,
-      "end_line": 15,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
-    },
-    {
-      "id": "go:class:pkg/types.go:CallEdge",
-      "kind": "class",
-      "name": "CallEdge",
-      "language": "go",
-      "file_path": "pkg/types.go",
-      "start_line": 18,
-      "end_line": 21,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
-    },
-    {
-      "id": "go:class:pkg/types.go:FileIndex",
-      "kind": "class",
-      "name": "FileIndex",
-      "language": "go",
-      "file_path": "pkg/types.go",
-      "start_line": 24,
-      "end_line": 29,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
-    },
-    {
-      "id": "go:class:pkg/types.go:TraceStep",
-      "kind": "class",
-      "name": "TraceStep",
-      "language": "go",
-      "file_path": "pkg/types.go",
-      "start_line": 32,
-      "end_line": 39,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
-    },
-    {
-      "id": "go:function:pkg/types.go:NodeID",
-      "kind": "function",
-      "name": "NodeID",
-      "language": "go",
-      "file_path": "pkg/types.go",
-      "start_line": 44,
-      "end_line": 46,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
-    },
-    {
-      "id": "go:class:internal/index/write.go:Meta",
-      "kind": "class",
-      "name": "Meta",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 21,
-      "end_line": 27,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:class:internal/index/write.go:SymbolsIndex",
-      "kind": "class",
-      "name": "SymbolsIndex",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 30,
-      "end_line": 32,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:class:internal/index/write.go:MapIndex",
-      "kind": "class",
-      "name": "MapIndex",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 35,
-      "end_line": 35,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:Write",
-      "kind": "function",
-      "name": "Write",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 38,
-      "end_line": 45,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:Read",
-      "kind": "function",
-      "name": "Read",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 48,
-      "end_line": 55,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:ReadAll",
-      "kind": "function",
-      "name": "ReadAll",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 58,
-      "end_line": 87,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:WriteSymbols",
-      "kind": "function",
-      "name": "WriteSymbols",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 90,
-      "end_line": 93,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:ReadSymbols",
-      "kind": "function",
-      "name": "ReadSymbols",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 96,
-      "end_line": 103,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:WriteMap",
-      "kind": "function",
-      "name": "WriteMap",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 106,
-      "end_line": 109,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:ReadMap",
-      "kind": "function",
-      "name": "ReadMap",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 112,
-      "end_line": 117,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:WriteMeta",
-      "kind": "function",
-      "name": "WriteMeta",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 120,
-      "end_line": 123,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:ReadMeta",
-      "kind": "function",
-      "name": "ReadMeta",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 126,
-      "end_line": 131,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:NeedsUpdate",
-      "kind": "function",
-      "name": "NeedsUpdate",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 134,
-      "end_line": 140,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:Init",
-      "kind": "function",
-      "name": "Init",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 143,
-      "end_line": 155,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:fileKey",
-      "kind": "function",
-      "name": "fileKey",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 159,
-      "end_line": 163,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:writeJSON",
-      "kind": "function",
-      "name": "writeJSON",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 165,
-      "end_line": 177,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:readJSON",
-      "kind": "function",
-      "name": "readJSON",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 179,
-      "end_line": 186,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:function:internal/index/write.go:DeleteFile",
-      "kind": "function",
-      "name": "DeleteFile",
-      "language": "go",
-      "file_path": "internal/index/write.go",
-      "start_line": 189,
-      "end_line": 196,
-      "source_hash": "8802ec01fb56b5973bd4f35c0a07fe31eb75a55d"
-    },
-    {
-      "id": "go:class:testdata/sample_repo/api/controller.go:UserController",
-      "kind": "class",
-      "name": "UserController",
-      "language": "go",
-      "file_path": "testdata/sample_repo/api/controller.go",
-      "start_line": 6,
-      "end_line": 8,
-      "source_hash": "5f5faf263dabbd1c5e53f2106e82285ce60e05d9"
-    },
-    {
-      "id": "go:method:testdata/sample_repo/api/controller.go:UserController.Login",
-      "kind": "method",
-      "name": "UserController.Login",
-      "language": "go",
-      "file_path": "testdata/sample_repo/api/controller.go",
-      "start_line": 11,
-      "end_line": 13,
-      "parent": "UserController",
-      "source_hash": "5f5faf263dabbd1c5e53f2106e82285ce60e05d9"
-    },
-    {
-      "id": "go:method:testdata/sample_repo/api/controller.go:UserController.Logout",
-      "kind": "method",
-      "name": "UserController.Logout",
-      "language": "go",
-      "file_path": "testdata/sample_repo/api/controller.go",
-      "start_line": 16,
-      "end_line": 18,
-      "parent": "UserController",
-      "source_hash": "5f5faf263dabbd1c5e53f2106e82285ce60e05d9"
-    },
-    {
-      "id": "go:class:internal/repo/scan.go:SourceFile",
-      "kind": "class",
-      "name": "SourceFile",
-      "language": "go",
-      "file_path": "internal/repo/scan.go",
-      "start_line": 31,
-      "end_line": 34,
-      "source_hash": "c5e6cc675afbca1e739d6efd6668294300ab32a9"
-    },
-    {
-      "id": "go:function:internal/repo/scan.go:Scan",
-      "kind": "function",
-      "name": "Scan",
-      "language": "go",
-      "file_path": "internal/repo/scan.go",
-      "start_line": 37,
-      "end_line": 59,
-      "source_hash": "c5e6cc675afbca1e739d6efd6668294300ab32a9"
-    },
-    {
-      "id": "go:function:internal/symbols/parse.go:treeSitterLang",
-      "kind": "function",
-      "name": "treeSitterLang",
-      "language": "go",
-      "file_path": "internal/symbols/parse.go",
-      "start_line": 14,
-      "end_line": 27,
-      "source_hash": "26c30dcb7478fd131f1c4edfba562e753730dd85"
-    },
-    {
-      "id": "go:function:internal/symbols/parse.go:getParser",
-      "kind": "function",
-      "name": "getParser",
-      "language": "go",
-      "file_path": "internal/symbols/parse.go",
-      "start_line": 31,
-      "end_line": 43,
-      "source_hash": "26c30dcb7478fd131f1c4edfba562e753730dd85"
     },
     {
       "id": "go:class:internal/indexer/watch.go:WatchEvent",
@@ -704,234 +887,431 @@
       "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
     },
     {
-      "id": "go:class:internal/graph/build.go:CallsFrom",
+      "id": "go:class:internal/context/engine.go:CodeBlock",
       "kind": "class",
-      "name": "CallsFrom",
+      "name": "CodeBlock",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 16,
-      "end_line": 16,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/context/engine.go",
+      "start_line": 14,
+      "end_line": 21,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:class:internal/graph/build.go:CallsTo",
+      "id": "go:class:internal/context/engine.go:Bundle",
       "kind": "class",
-      "name": "CallsTo",
+      "name": "Bundle",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 20,
-      "end_line": 20,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/context/engine.go",
+      "start_line": 24,
+      "end_line": 31,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:Build",
-      "kind": "function",
-      "name": "Build",
+      "id": "go:class:internal/context/engine.go:Engine",
+      "kind": "class",
+      "name": "Engine",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 23,
-      "end_line": 38,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/context/engine.go",
+      "start_line": 34,
+      "end_line": 40,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:Write",
+      "id": "go:function:internal/context/engine.go:NewEngine",
       "kind": "function",
-      "name": "Write",
+      "name": "NewEngine",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 41,
-      "end_line": 53,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/context/engine.go",
+      "start_line": 43,
+      "end_line": 45,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:ReadFrom",
-      "kind": "function",
-      "name": "ReadFrom",
+      "id": "go:method:internal/context/engine.go:Engine.load",
+      "kind": "method",
+      "name": "Engine.load",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 56,
-      "end_line": 63,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
-    },
-    {
-      "id": "go:function:internal/graph/build.go:ReadTo",
-      "kind": "function",
-      "name": "ReadTo",
-      "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 66,
+      "file_path": "internal/context/engine.go",
+      "start_line": 48,
       "end_line": 73,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "parent": "Engine",
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:Trace",
-      "kind": "function",
-      "name": "Trace",
+      "id": "go:method:internal/context/engine.go:Engine.Assemble",
+      "kind": "method",
+      "name": "Engine.Assemble",
       "language": "go",
-      "file_path": "internal/graph/build.go",
+      "file_path": "internal/context/engine.go",
       "start_line": 76,
-      "end_line": 94,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "end_line": 119,
+      "parent": "Engine",
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:TraceRich",
-      "kind": "function",
-      "name": "TraceRich",
+      "id": "go:method:internal/context/engine.go:Engine.toBlock",
+      "kind": "method",
+      "name": "Engine.toBlock",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 99,
-      "end_line": 150,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/context/engine.go",
+      "start_line": 122,
+      "end_line": 132,
+      "parent": "Engine",
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:class:internal/graph/build.go:ExplainResult",
+      "id": "go:method:internal/context/engine.go:Engine.findSymbol",
+      "kind": "method",
+      "name": "Engine.findSymbol",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 135,
+      "end_line": 151,
+      "parent": "Engine",
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:fetchCode",
+      "kind": "function",
+      "name": "fetchCode",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 154,
+      "end_line": 174,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:uniqueFiles",
+      "kind": "function",
+      "name": "uniqueFiles",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 177,
+      "end_line": 196,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:estimateTokens",
+      "kind": "function",
+      "name": "estimateTokens",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 199,
+      "end_line": 208,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
+    },
+    {
+      "id": "go:class:internal/context/engine.go:SymbolNotFound",
       "kind": "class",
-      "name": "ExplainResult",
+      "name": "SymbolNotFound",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 153,
-      "end_line": 158,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
-    },
-    {
-      "id": "go:function:internal/graph/build.go:fetchSnippet",
-      "kind": "function",
-      "name": "fetchSnippet",
-      "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 161,
-      "end_line": 190,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
-    },
-    {
-      "id": "go:function:internal/graph/build.go:splitLines",
-      "kind": "function",
-      "name": "splitLines",
-      "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 192,
-      "end_line": 205,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
-    },
-    {
-      "id": "go:function:internal/graph/build.go:hasSuffix",
-      "kind": "function",
-      "name": "hasSuffix",
-      "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 207,
-      "end_line": 209,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
-    },
-    {
-      "id": "go:function:internal/graph/build.go:contains",
-      "kind": "function",
-      "name": "contains",
-      "language": "go",
-      "file_path": "internal/graph/build.go",
+      "file_path": "internal/context/engine.go",
       "start_line": 211,
-      "end_line": 218,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "end_line": 213,
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:writeJSON",
-      "kind": "function",
-      "name": "writeJSON",
+      "id": "go:method:internal/context/engine.go:SymbolNotFound.Error",
+      "kind": "method",
+      "name": "SymbolNotFound.Error",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 220,
-      "end_line": 229,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/context/engine.go",
+      "start_line": 215,
+      "end_line": 217,
+      "parent": "SymbolNotFound",
+      "source_hash": "95f5540fd81ba4053b492392a6e709707ddac97e"
     },
     {
-      "id": "go:function:internal/graph/build.go:readJSON",
-      "kind": "function",
-      "name": "readJSON",
+      "id": "go:class:internal/repo/scan.go:SourceFile",
+      "kind": "class",
+      "name": "SourceFile",
       "language": "go",
-      "file_path": "internal/graph/build.go",
-      "start_line": 231,
-      "end_line": 238,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "file_path": "internal/repo/scan.go",
+      "start_line": 58,
+      "end_line": 61,
+      "source_hash": "ece29b50f5679f8dcc206d04cc4c5a64cb0d6bd1"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:loadSymIndex",
+      "id": "go:function:internal/repo/scan.go:Scan",
       "kind": "function",
-      "name": "loadSymIndex",
+      "name": "Scan",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 363,
-      "end_line": 373,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/repo/scan.go",
+      "start_line": 64,
+      "end_line": 94,
+      "source_hash": "ece29b50f5679f8dcc206d04cc4c5a64cb0d6bd1"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:printRichTrace",
+      "id": "go:function:internal/repo/scan.go:loadGitignore",
       "kind": "function",
-      "name": "printRichTrace",
+      "name": "loadGitignore",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 376,
-      "end_line": 394,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/repo/scan.go",
+      "start_line": 98,
+      "end_line": 114,
+      "source_hash": "ece29b50f5679f8dcc206d04cc4c5a64cb0d6bd1"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:findSymbol",
+      "id": "go:function:internal/symbols/parse.go:treeSitterLang",
       "kind": "function",
-      "name": "findSymbol",
+      "name": "treeSitterLang",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 396,
-      "end_line": 411,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/symbols/parse.go",
+      "start_line": 28,
+      "end_line": 69,
+      "source_hash": "d330e8a59e03737ea114310f44741aa60f587c6b"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:printJSON",
+      "id": "go:function:internal/symbols/parse.go:getParser",
       "kind": "function",
-      "name": "printJSON",
+      "name": "getParser",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 413,
-      "end_line": 417,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/symbols/parse.go",
+      "start_line": 73,
+      "end_line": 85,
+      "source_hash": "d330e8a59e03737ea114310f44741aa60f587c6b"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:printContext",
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractGo_Symbols",
       "kind": "function",
-      "name": "printContext",
+      "name": "TestExtractGo_Symbols",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 420,
-      "end_line": 450,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 43,
+      "end_line": 49,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:printBlock",
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractGo_CallEdges",
       "kind": "function",
-      "name": "printBlock",
+      "name": "TestExtractGo_CallEdges",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 460,
-      "end_line": 483,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 51,
+      "end_line": 55,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:init",
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractGo_LineNumbers",
       "kind": "function",
-      "name": "init",
+      "name": "TestExtractGo_LineNumbers",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 485,
-      "end_line": 489,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 57,
+      "end_line": 69,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
     },
     {
-      "id": "go:function:cmd/beakon/main.go:main",
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractTS_Symbols",
       "kind": "function",
-      "name": "main",
+      "name": "TestExtractTS_Symbols",
       "language": "go",
-      "file_path": "cmd/beakon/main.go",
-      "start_line": 491,
-      "end_line": 495,
-      "source_hash": "35bc9d855396f1d3eeb2ba077628b740a0e46713"
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 71,
+      "end_line": 77,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractPython_Symbols",
+      "kind": "function",
+      "name": "TestExtractPython_Symbols",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 79,
+      "end_line": 85,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractPython_CallEdges",
+      "kind": "function",
+      "name": "TestExtractPython_CallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 87,
+      "end_line": 90,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:TestExtract_UnknownLanguage",
+      "kind": "function",
+      "name": "TestExtract_UnknownLanguage",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 92,
+      "end_line": 97,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractGo_MethodCallQualified",
+      "kind": "function",
+      "name": "TestExtractGo_MethodCallQualified",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 114,
+      "end_line": 117,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractTS_ThisCallQualified",
+      "kind": "function",
+      "name": "TestExtractTS_ThisCallQualified",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 128,
+      "end_line": 131,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:TestExtractPython_SelfCallQualified",
+      "kind": "function",
+      "name": "TestExtractPython_SelfCallQualified",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 141,
+      "end_line": 144,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:symbolNames",
+      "kind": "function",
+      "name": "symbolNames",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 148,
+      "end_line": 154,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:assertContains",
+      "kind": "function",
+      "name": "assertContains",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 156,
+      "end_line": 164,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:function:internal/symbols/extract_test.go:assertEdge",
+      "kind": "function",
+      "name": "assertEdge",
+      "language": "go",
+      "file_path": "internal/symbols/extract_test.go",
+      "start_line": 166,
+      "end_line": 174,
+      "source_hash": "5710b490307194f8645b6810d2e20b2567d0e678"
+    },
+    {
+      "id": "go:class:pkg/types.go:BeakonNode",
+      "kind": "class",
+      "name": "BeakonNode",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 5,
+      "end_line": 15,
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
+    },
+    {
+      "id": "go:class:pkg/types.go:CallEdge",
+      "kind": "class",
+      "name": "CallEdge",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 18,
+      "end_line": 21,
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
+    },
+    {
+      "id": "go:class:pkg/types.go:FileIndex",
+      "kind": "class",
+      "name": "FileIndex",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 24,
+      "end_line": 29,
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
+    },
+    {
+      "id": "go:class:pkg/types.go:TraceStep",
+      "kind": "class",
+      "name": "TraceStep",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 32,
+      "end_line": 39,
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
+    },
+    {
+      "id": "go:function:pkg/types.go:NodeID",
+      "kind": "function",
+      "name": "NodeID",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 44,
+      "end_line": 46,
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
+    },
+    {
+      "id": "go:class:testdata/sample_repo/api/controller.go:UserController",
+      "kind": "class",
+      "name": "UserController",
+      "language": "go",
+      "file_path": "testdata/sample_repo/api/controller.go",
+      "start_line": 6,
+      "end_line": 8,
+      "source_hash": "5f5faf263dabbd1c5e53f2106e82285ce60e05d9"
+    },
+    {
+      "id": "go:method:testdata/sample_repo/api/controller.go:UserController.Login",
+      "kind": "method",
+      "name": "UserController.Login",
+      "language": "go",
+      "file_path": "testdata/sample_repo/api/controller.go",
+      "start_line": 11,
+      "end_line": 13,
+      "parent": "UserController",
+      "source_hash": "5f5faf263dabbd1c5e53f2106e82285ce60e05d9"
+    },
+    {
+      "id": "go:method:testdata/sample_repo/api/controller.go:UserController.Logout",
+      "kind": "method",
+      "name": "UserController.Logout",
+      "language": "go",
+      "file_path": "testdata/sample_repo/api/controller.go",
+      "start_line": 16,
+      "end_line": 18,
+      "parent": "UserController",
+      "source_hash": "5f5faf263dabbd1c5e53f2106e82285ce60e05d9"
+    },
+    {
+      "id": "go:function:internal/indexer/update_test.go:TestConcurrentUpdateFileDoesNotRace",
+      "kind": "function",
+      "name": "TestConcurrentUpdateFileDoesNotRace",
+      "language": "go",
+      "file_path": "internal/indexer/update_test.go",
+      "start_line": 10,
+      "end_line": 40,
+      "source_hash": "57758162fa1d1ec89eef1ab14748e81e3bd0cfd1"
+    },
+    {
+      "id": "go:function:internal/repo/scan_test.go:TestScan_RespectsGitignore",
+      "kind": "function",
+      "name": "TestScan_RespectsGitignore",
+      "language": "go",
+      "file_path": "internal/repo/scan_test.go",
+      "start_line": 10,
+      "end_line": 40,
+      "source_hash": "63175b5030feab3d900236662881b850e8b8b8ad"
+    },
+    {
+      "id": "go:function:internal/repo/scan_test.go:TestScan_NoGitignore_StillWorks",
+      "kind": "function",
+      "name": "TestScan_NoGitignore_StillWorks",
+      "language": "go",
+      "file_path": "internal/repo/scan_test.go",
+      "start_line": 42,
+      "end_line": 54,
+      "source_hash": "63175b5030feab3d900236662881b850e8b8b8ad"
     },
     {
       "id": "go:function:internal/symbols/extract.go:Extract",
@@ -940,8 +1320,8 @@
       "language": "go",
       "file_path": "internal/symbols/extract.go",
       "start_line": 14,
-      "end_line": 24,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "end_line": 48,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:HashFile",
@@ -949,9 +1329,9 @@
       "name": "HashFile",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 27,
-      "end_line": 34,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 51,
+      "end_line": 58,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractGo",
@@ -959,9 +1339,9 @@
       "name": "extractGo",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 38,
-      "end_line": 107,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 62,
+      "end_line": 131,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goFuncName",
@@ -969,9 +1349,9 @@
       "name": "goFuncName",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 109,
-      "end_line": 115,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 133,
+      "end_line": 139,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goMethodName",
@@ -979,9 +1359,9 @@
       "name": "goMethodName",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 117,
-      "end_line": 128,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 141,
+      "end_line": 152,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goTypeName",
@@ -989,9 +1369,9 @@
       "name": "goTypeName",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 130,
-      "end_line": 141,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 154,
+      "end_line": 165,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goCallEdges",
@@ -999,9 +1379,19 @@
       "name": "goCallEdges",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 143,
-      "end_line": 162,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 167,
+      "end_line": 187,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:qualifyCall",
+      "kind": "function",
+      "name": "qualifyCall",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 190,
+      "end_line": 205,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractGoReceiver",
@@ -1009,9 +1399,9 @@
       "name": "extractGoReceiver",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 164,
-      "end_line": 173,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 207,
+      "end_line": 216,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractTS",
@@ -1019,9 +1409,9 @@
       "name": "extractTS",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 177,
-      "end_line": 251,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 220,
+      "end_line": 294,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:tsCallEdges",
@@ -1029,9 +1419,9 @@
       "name": "tsCallEdges",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 253,
-      "end_line": 272,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 296,
+      "end_line": 318,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractPython",
@@ -1039,9 +1429,9 @@
       "name": "extractPython",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 276,
-      "end_line": 338,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 322,
+      "end_line": 384,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:pyCallEdges",
@@ -1049,9 +1439,9 @@
       "name": "pyCallEdges",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 340,
-      "end_line": 359,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 386,
+      "end_line": 408,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:hashBytes",
@@ -1059,9 +1449,9 @@
       "name": "hashBytes",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 363,
-      "end_line": 366,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 412,
+      "end_line": 415,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:parseSource",
@@ -1069,9 +1459,249 @@
       "name": "parseSource",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 368,
-      "end_line": 371,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 417,
+      "end_line": 420,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractRust",
+      "kind": "function",
+      "name": "extractRust",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 424,
+      "end_line": 497,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:rustCallEdges",
+      "kind": "function",
+      "name": "rustCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 499,
+      "end_line": 519,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractJava",
+      "kind": "function",
+      "name": "extractJava",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 523,
+      "end_line": 586,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:javaCallEdges",
+      "kind": "function",
+      "name": "javaCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 588,
+      "end_line": 618,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractC",
+      "kind": "function",
+      "name": "extractC",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 622,
+      "end_line": 680,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:cFuncName",
+      "kind": "function",
+      "name": "cFuncName",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 684,
+      "end_line": 701,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:cCallEdges",
+      "kind": "function",
+      "name": "cCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 703,
+      "end_line": 722,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractCSharp",
+      "kind": "function",
+      "name": "extractCSharp",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 726,
+      "end_line": 789,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:csharpCallEdges",
+      "kind": "function",
+      "name": "csharpCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 791,
+      "end_line": 811,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractRuby",
+      "kind": "function",
+      "name": "extractRuby",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 815,
+      "end_line": 878,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:rubyCallEdges",
+      "kind": "function",
+      "name": "rubyCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 880,
+      "end_line": 900,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractKotlin",
+      "kind": "function",
+      "name": "extractKotlin",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 904,
+      "end_line": 976,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:kotlinCallEdges",
+      "kind": "function",
+      "name": "kotlinCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 978,
+      "end_line": 995,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractSwift",
+      "kind": "function",
+      "name": "extractSwift",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 999,
+      "end_line": 1071,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:swiftCallEdges",
+      "kind": "function",
+      "name": "swiftCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1073,
+      "end_line": 1092,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractPHP",
+      "kind": "function",
+      "name": "extractPHP",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1096,
+      "end_line": 1159,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:phpCallEdges",
+      "kind": "function",
+      "name": "phpCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1161,
+      "end_line": 1190,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractScala",
+      "kind": "function",
+      "name": "extractScala",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1194,
+      "end_line": 1266,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:scalaCallEdges",
+      "kind": "function",
+      "name": "scalaCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1268,
+      "end_line": 1287,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractElixir",
+      "kind": "function",
+      "name": "extractElixir",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1291,
+      "end_line": 1376,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractOCaml",
+      "kind": "function",
+      "name": "extractOCaml",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1380,
+      "end_line": 1451,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:ocamlCallEdges",
+      "kind": "function",
+      "name": "ocamlCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1453,
+      "end_line": 1471,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractElm",
+      "kind": "function",
+      "name": "extractElm",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1475,
+      "end_line": 1538,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:elmCallEdges",
+      "kind": "function",
+      "name": "elmCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1540,
+      "end_line": 1558,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     }
   ]
 }

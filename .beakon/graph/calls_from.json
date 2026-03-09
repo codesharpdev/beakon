@@ -25,9 +25,9 @@
     "os.IsNotExist"
   ],
   "Engine.Assemble": [
-    "e.load",
-    "e.findSymbol",
-    "e.toBlock",
+    "Engine.load",
+    "Engine.findSymbol",
+    "Engine.toBlock",
     "append",
     "uniqueFiles",
     "estimateTokens"
@@ -37,11 +37,11 @@
     "strings.HasSuffix"
   ],
   "Engine.load": [
-    "index.ReadSymbols",
+    "Engine.ReadSymbols",
     "make",
     "len",
-    "graph.ReadFrom",
-    "graph.ReadTo"
+    "Engine.ReadFrom",
+    "Engine.ReadTo"
   ],
   "Engine.toBlock": [
     "fetchCode"
@@ -49,7 +49,19 @@
   "Extract": [
     "extractGo",
     "extractTS",
-    "extractPython"
+    "extractPython",
+    "extractRust",
+    "extractJava",
+    "extractC",
+    "extractCSharp",
+    "extractRuby",
+    "extractKotlin",
+    "extractSwift",
+    "extractPHP",
+    "extractScala",
+    "extractElixir",
+    "extractOCaml",
+    "extractElm"
   ],
   "Fetch": [
     "os.ReadFile",
@@ -63,6 +75,10 @@
     "os.ReadFile",
     "sha1.Sum",
     "hex.EncodeToString"
+  ],
+  "Impact": [
+    "len",
+    "append"
   ],
   "Init": [
     "filepath.Join",
@@ -127,16 +143,19 @@
     "fmt.Errorf",
     "repo.Scan",
     "make",
+    "runtime.NumCPU",
     "wg.Add",
-    "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}",
+    "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\t\t\tdefer func() {\n\t\t\t\tif r := recover(); r != nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\terrors = append(errors, fmt.Sprintf(\"panic processing %s: %v\", sf.Path, r))\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t}()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}",
     "wg.Done",
     "func() { \u003c-sem }",
-    "filepath.Join",
-    "os.ReadFile",
+    "func() {\n\t\t\t\tif r := recover(); r != nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\terrors = append(errors, fmt.Sprintf(\"panic processing %s: %v\", sf.Path, r))\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t}",
+    "recover",
     "mu.Lock",
     "append",
     "fmt.Sprintf",
     "mu.Unlock",
+    "filepath.Join",
+    "os.ReadFile",
     "symbols.HashFile",
     "index.NeedsUpdate",
     "index.Read",
@@ -149,6 +168,8 @@
     "time.Since"
   ],
   "Scan": [
+    "make",
+    "loadGitignore",
     "filepath.Walk",
     "info.IsDir",
     "info.Name",
@@ -157,6 +178,226 @@
     "filepath.Ext",
     "filepath.Rel",
     "append"
+  ],
+  "TestBuild_Deduplicates": [
+    "Build",
+    "edges",
+    "len",
+    "t.Errorf"
+  ],
+  "TestBuild_DirectionsCorrect": [
+    "Build",
+    "edges",
+    "assertSliceContains"
+  ],
+  "TestConcurrentUpdateFileDoesNotRace": [
+    "t.TempDir",
+    "filepath.Join",
+    "os.MkdirAll",
+    "os.WriteFile",
+    "Run",
+    "len",
+    "t.Fatalf",
+    "wg.Add",
+    "func() {\n\t\t\tdefer wg.Done()\n\t\t\tUpdateFile(root, srcPath)\n\t\t}",
+    "wg.Done",
+    "UpdateFile",
+    "wg.Wait"
+  ],
+  "TestDeleteFile": [
+    "t.TempDir",
+    "Init",
+    "Write",
+    "DeleteFile",
+    "NeedsUpdate",
+    "t.Error"
+  ],
+  "TestExtractGo_CallEdges": [
+    "Extract",
+    "assertEdge"
+  ],
+  "TestExtractGo_LineNumbers": [
+    "Extract",
+    "t.Errorf"
+  ],
+  "TestExtractGo_MethodCallQualified": [
+    "Extract",
+    "assertEdge"
+  ],
+  "TestExtractGo_Symbols": [
+    "Extract",
+    "symbolNames",
+    "assertContains"
+  ],
+  "TestExtractPython_CallEdges": [
+    "Extract",
+    "assertEdge"
+  ],
+  "TestExtractPython_SelfCallQualified": [
+    "Extract",
+    "assertEdge"
+  ],
+  "TestExtractPython_Symbols": [
+    "Extract",
+    "symbolNames",
+    "assertContains"
+  ],
+  "TestExtractTS_Symbols": [
+    "Extract",
+    "symbolNames",
+    "assertContains"
+  ],
+  "TestExtractTS_ThisCallQualified": [
+    "Extract",
+    "assertEdge"
+  ],
+  "TestExtract_UnknownLanguage": [
+    "Extract",
+    "len",
+    "t.Error"
+  ],
+  "TestFullPipeline_IndexAndQuery": [
+    "t.TempDir",
+    "copyDir",
+    "Run",
+    "t.Fatalf",
+    "len",
+    "t.Error",
+    "index.ReadSymbols",
+    "context.NewEngine",
+    "engine.Assemble",
+    "t.Errorf",
+    "filepath.Join",
+    "os.ReadFile",
+    "os.WriteFile",
+    "append",
+    "UpdateFile"
+  ],
+  "TestImpact_CycleDetection": [
+    "Build",
+    "edges",
+    "Impact",
+    "len",
+    "t.Errorf"
+  ],
+  "TestImpact_IsolatedSymbol": [
+    "Build",
+    "edges",
+    "Impact",
+    "len",
+    "t.Errorf"
+  ],
+  "TestImpact_ReverseBFS": [
+    "Build",
+    "edges",
+    "Impact",
+    "assertSliceContains"
+  ],
+  "TestNeedsUpdate_ChangedHash": [
+    "t.TempDir",
+    "Init",
+    "Write",
+    "NeedsUpdate",
+    "t.Error"
+  ],
+  "TestNeedsUpdate_NewFile": [
+    "t.TempDir",
+    "Init",
+    "NeedsUpdate",
+    "t.Error"
+  ],
+  "TestNeedsUpdate_SameHash": [
+    "t.TempDir",
+    "Init",
+    "Write",
+    "NeedsUpdate",
+    "t.Error"
+  ],
+  "TestReadAll_LoadsAllFiles": [
+    "t.TempDir",
+    "Init",
+    "Write",
+    "t.Fatal",
+    "ReadAll",
+    "len",
+    "t.Errorf"
+  ],
+  "TestScan_NoGitignore_StillWorks": [
+    "t.TempDir",
+    "os.MkdirAll",
+    "filepath.Join",
+    "os.WriteFile",
+    "Scan",
+    "t.Fatal",
+    "len",
+    "t.Error"
+  ],
+  "TestScan_RespectsGitignore": [
+    "t.TempDir",
+    "os.MkdirAll",
+    "filepath.Join",
+    "os.WriteFile",
+    "Scan",
+    "t.Fatal",
+    "strings.Contains",
+    "t.Errorf",
+    "t.Error"
+  ],
+  "TestTrace_BFS": [
+    "Build",
+    "edges",
+    "Trace",
+    "assertSliceContains"
+  ],
+  "TestTrace_CycleDetection": [
+    "Build",
+    "edges",
+    "Trace",
+    "len",
+    "t.Errorf"
+  ],
+  "TestWriteIsAtomic": [
+    "t.TempDir",
+    "Init",
+    "t.Fatal",
+    "Write",
+    "os.ReadDir",
+    "filepath.Join",
+    "filepath.Ext",
+    "e.Name",
+    "t.Errorf",
+    "Read",
+    "t.Fatalf"
+  ],
+  "TestWriteRead_RoundTrip": [
+    "t.TempDir",
+    "Build",
+    "edges",
+    "Write",
+    "t.Fatal",
+    "ReadFrom",
+    "ReadTo",
+    "assertSliceContains"
+  ],
+  "TestWriteSymbols_ReadSymbols": [
+    "t.TempDir",
+    "Init",
+    "WriteSymbols",
+    "t.Fatal",
+    "ReadSymbols",
+    "len",
+    "t.Errorf"
+  ],
+  "TestWrite_NoTmpFilesLeft": [
+    "t.TempDir",
+    "Build",
+    "edges",
+    "Write",
+    "t.Fatal",
+    "filepath.Glob",
+    "filepath.Join",
+    "len",
+    "t.Errorf"
   ],
   "Trace": [
     "len",
@@ -185,7 +426,9 @@
     "index.Read",
     "len",
     "index.Write",
-    "rebuildGlobal"
+    "globalMu.Lock",
+    "rebuildGlobal",
+    "globalMu.Unlock"
   ],
   "UserController.Login": [
     "c.auth.Login"
@@ -228,9 +471,9 @@
   "Write": [
     "filepath.Join",
     "os.MkdirAll",
-    "fileKey",
     "writeJSON",
-    "fmt.Errorf"
+    "fmt.Errorf",
+    "fileKey"
   ],
   "WriteMap": [
     "filepath.Join",
@@ -244,11 +487,154 @@
     "filepath.Join",
     "writeJSON"
   ],
+  "assertContains": [
+    "t.Helper",
+    "t.Errorf"
+  ],
+  "assertEdge": [
+    "t.Helper",
+    "t.Errorf"
+  ],
+  "assertSliceContains": [
+    "t.Helper",
+    "t.Errorf"
+  ],
+  "cCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "cFuncName": [
+    "n.ChildByFieldName",
+    "decl.Type",
+    "decl.ChildByFieldName",
+    "strings.TrimSpace",
+    "inner.Content"
+  ],
+  "copyDir": [
+    "t.Helper",
+    "filepath.Walk",
+    "filepath.Rel",
+    "filepath.Join",
+    "info.IsDir",
+    "os.MkdirAll",
+    "os.ReadFile",
+    "os.WriteFile",
+    "info.Mode",
+    "t.Fatal"
+  ],
+  "csharpCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "qualifyCall",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
   "detectLang": [
     "hasSuffix"
   ],
+  "edges": [
+    "len",
+    "append"
+  ],
+  "elmCallEdges": [
+    "node.Type",
+    "node.ChildCount",
+    "strings.TrimSpace",
+    "node.Child(0).Content",
+    "node.Child",
+    "append",
+    "int",
+    "walk"
+  ],
   "estimateTokens": [
     "len"
+  ],
+  "extractC": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "cFuncName",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "cCallEdges",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "tree.RootNode"
+  ],
+  "extractCSharp": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "csharpCallEdges",
+    "tree.RootNode"
+  ],
+  "extractElixir": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildCount",
+    "n.Child",
+    "strings.TrimSpace",
+    "target.Content",
+    "argsNode.ChildCount",
+    "argsNode.Child(0).Content",
+    "argsNode.Child",
+    "argsNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "walk",
+    "tree.RootNode"
+  ],
+  "extractElm": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "int",
+    "n.ChildCount",
+    "n.Child",
+    "c.Type",
+    "c.Content",
+    "append",
+    "pkg.NodeID",
+    "n.StartPoint",
+    "n.EndPoint",
+    "c.Child",
+    "strings.TrimSpace",
+    "nameNode.Content",
+    "elmCallEdges",
+    "walk",
+    "tree.RootNode"
   ],
   "extractGo": [
     "parseSource",
@@ -274,6 +660,77 @@
     "strings.TrimPrefix",
     "len"
   ],
+  "extractJava": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "javaCallEdges",
+    "tree.RootNode"
+  ],
+  "extractKotlin": [
+    "parseSource",
+    "hashBytes",
+    "int",
+    "n.ChildCount",
+    "n.Child",
+    "c.Type",
+    "c.Content",
+    "n.Type",
+    "firstIdent",
+    "append",
+    "pkg.NodeID",
+    "n.StartPoint",
+    "n.EndPoint",
+    "walk",
+    "kotlinCallEdges",
+    "tree.RootNode"
+  ],
+  "extractOCaml": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "n.Child(i).Type",
+    "strings.TrimSpace",
+    "ocamlCallEdges",
+    "tree.RootNode"
+  ],
+  "extractPHP": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "phpCallEdges",
+    "tree.RootNode"
+  ],
   "extractPython": [
     "parseSource",
     "hashBytes",
@@ -289,6 +746,78 @@
     "n.ChildCount",
     "walk",
     "n.Child",
+    "tree.RootNode"
+  ],
+  "extractRuby": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "rubyCallEdges",
+    "tree.RootNode"
+  ],
+  "extractRust": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "rustCallEdges",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "strings.TrimSpace",
+    "typeNode.Content",
+    "tree.RootNode"
+  ],
+  "extractScala": [
+    "parseSource",
+    "hashBytes",
+    "int",
+    "n.ChildCount",
+    "n.Child",
+    "c.Type",
+    "c.Content",
+    "n.Type",
+    "firstIdent",
+    "append",
+    "pkg.NodeID",
+    "n.StartPoint",
+    "n.EndPoint",
+    "walk",
+    "scalaCallEdges",
+    "tree.RootNode"
+  ],
+  "extractSwift": [
+    "parseSource",
+    "hashBytes",
+    "int",
+    "n.ChildCount",
+    "n.Child",
+    "c.Type",
+    "c.Content",
+    "n.Type",
+    "firstName",
+    "append",
+    "pkg.NodeID",
+    "n.StartPoint",
+    "n.EndPoint",
+    "walk",
+    "swiftCallEdges",
     "tree.RootNode"
   ],
   "extractTS": [
@@ -345,6 +874,7 @@
     "node.ChildByFieldName",
     "strings.TrimSpace",
     "fn.Content",
+    "qualifyCall",
     "append",
     "int",
     "node.ChildCount",
@@ -384,6 +914,39 @@
   "isSupportedFile": [
     "detectLang"
   ],
+  "javaCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "nameNode.Content",
+    "strings.TrimSpace",
+    "objNode.Content",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "kotlinCallEdges": [
+    "node.Type",
+    "strings.TrimSpace",
+    "node.Child(0).Content",
+    "node.Child",
+    "qualifyCall",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk"
+  ],
+  "loadGitignore": [
+    "make",
+    "os.ReadFile",
+    "filepath.Join",
+    "strings.Split",
+    "string",
+    "strings.TrimSpace",
+    "strings.HasPrefix",
+    "strings.TrimSuffix"
+  ],
   "loadSymIndex": [
     "index.ReadSymbols",
     "make",
@@ -393,8 +956,31 @@
     "root.Execute",
     "os.Exit"
   ],
+  "ocamlCallEdges": [
+    "node.Type",
+    "node.ChildCount",
+    "strings.TrimSpace",
+    "node.Child(0).Content",
+    "node.Child",
+    "append",
+    "int",
+    "walk"
+  ],
   "parseSource": [
     "getParser"
+  ],
+  "phpCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "append",
+    "nameNode.Content",
+    "qualifyCall",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
   ],
   "printBlock": [
     "strings.LastIndex",
@@ -427,11 +1013,16 @@
     "node.ChildByFieldName",
     "strings.TrimSpace",
     "fn.Content",
+    "strings.HasPrefix",
     "append",
     "int",
     "node.ChildCount",
     "walk",
     "node.Child"
+  ],
+  "qualifyCall": [
+    "strings.Index",
+    "len"
   ],
   "readJSON": [
     "os.Open",
@@ -453,11 +1044,62 @@
     "index.Read",
     "len",
     "index.DeleteFile",
+    "globalMu.Lock",
     "rebuildGlobal",
+    "globalMu.Unlock",
     "time.Since"
+  ],
+  "rubyCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "methodNode.Content",
+    "qualifyCall",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "rustCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "qualifyCall",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "scalaCallEdges": [
+    "node.Type",
+    "node.ChildCount",
+    "strings.TrimSpace",
+    "node.Child(0).Content",
+    "node.Child",
+    "qualifyCall",
+    "append",
+    "int",
+    "walk"
   ],
   "splitLines": [
     "len",
+    "append"
+  ],
+  "swiftCallEdges": [
+    "node.Type",
+    "node.ChildCount",
+    "strings.TrimSpace",
+    "node.Child(0).Content",
+    "node.Child",
+    "qualifyCall",
+    "append",
+    "int",
+    "walk"
+  ],
+  "symbolNames": [
     "append"
   ],
   "treeSitterLang": [
@@ -465,6 +1107,20 @@
     "typescript.GetLanguage",
     "javascript.GetLanguage",
     "python.GetLanguage",
+    "rust.GetLanguage",
+    "java.GetLanguage",
+    "c.GetLanguage",
+    "cpp.GetLanguage",
+    "csharp.GetLanguage",
+    "ruby.GetLanguage",
+    "kotlin.GetLanguage",
+    "swift.GetLanguage",
+    "php.GetLanguage",
+    "scala.GetLanguage",
+    "elixir.GetLanguage",
+    "ocaml.GetLanguage",
+    "elm.GetLanguage",
+    "groovy.GetLanguage",
     "fmt.Errorf"
   ],
   "tsCallEdges": [
@@ -472,6 +1128,7 @@
     "node.ChildByFieldName",
     "strings.TrimSpace",
     "fn.Content",
+    "strings.HasPrefix",
     "append",
     "int",
     "node.ChildCount",
@@ -497,9 +1154,11 @@
     "os.MkdirAll",
     "filepath.Dir",
     "os.Create",
-    "f.Close",
     "json.NewEncoder",
     "enc.SetIndent",
-    "enc.Encode"
+    "enc.Encode",
+    "f.Close",
+    "os.Remove",
+    "os.Rename"
   ]
 }

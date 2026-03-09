@@ -1,16 +1,16 @@
 {
   "file": "pkg/types.go",
-  "hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3",
+  "hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe",
   "symbols": [
     {
-      "id": "go:class:pkg/types.go:CodeIndexNode",
+      "id": "go:class:pkg/types.go:BeakonNode",
       "kind": "class",
-      "name": "CodeIndexNode",
+      "name": "BeakonNode",
       "language": "go",
       "file_path": "pkg/types.go",
       "start_line": 5,
       "end_line": 15,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
     },
     {
       "id": "go:class:pkg/types.go:CallEdge",
@@ -20,7 +20,7 @@
       "file_path": "pkg/types.go",
       "start_line": 18,
       "end_line": 21,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
     },
     {
       "id": "go:class:pkg/types.go:FileIndex",
@@ -30,7 +30,7 @@
       "file_path": "pkg/types.go",
       "start_line": 24,
       "end_line": 29,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
     },
     {
       "id": "go:class:pkg/types.go:TraceStep",
@@ -40,7 +40,7 @@
       "file_path": "pkg/types.go",
       "start_line": 32,
       "end_line": 39,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
     },
     {
       "id": "go:function:pkg/types.go:NodeID",
@@ -50,7 +50,7 @@
       "file_path": "pkg/types.go",
       "start_line": 44,
       "end_line": 46,
-      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+      "source_hash": "1bd730f0bbaf009d2ad1ef9473763e720c7251fe"
     }
   ],
   "calls": null

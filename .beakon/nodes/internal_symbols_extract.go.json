@@ -1,6 +1,6 @@
 {
   "file": "internal/symbols/extract.go",
-  "hash": "7dda64e6a665d968972ca4a5d86b17da8582f702",
+  "hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb",
   "symbols": [
     {
       "id": "go:function:internal/symbols/extract.go:Extract",
@@ -9,8 +9,8 @@
       "language": "go",
       "file_path": "internal/symbols/extract.go",
       "start_line": 14,
-      "end_line": 24,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "end_line": 48,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:HashFile",
@@ -18,9 +18,9 @@
       "name": "HashFile",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 27,
-      "end_line": 34,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 51,
+      "end_line": 58,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractGo",
@@ -28,9 +28,9 @@
       "name": "extractGo",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 38,
-      "end_line": 107,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 62,
+      "end_line": 131,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goFuncName",
@@ -38,9 +38,9 @@
       "name": "goFuncName",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 109,
-      "end_line": 115,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 133,
+      "end_line": 139,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goMethodName",
@@ -48,9 +48,9 @@
       "name": "goMethodName",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 117,
-      "end_line": 128,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 141,
+      "end_line": 152,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goTypeName",
@@ -58,9 +58,9 @@
       "name": "goTypeName",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 130,
-      "end_line": 141,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 154,
+      "end_line": 165,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:goCallEdges",
@@ -68,9 +68,19 @@
       "name": "goCallEdges",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 143,
-      "end_line": 162,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 167,
+      "end_line": 187,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:qualifyCall",
+      "kind": "function",
+      "name": "qualifyCall",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 190,
+      "end_line": 205,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractGoReceiver",
@@ -78,9 +88,9 @@
       "name": "extractGoReceiver",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 164,
-      "end_line": 173,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 207,
+      "end_line": 216,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractTS",
@@ -88,9 +98,9 @@
       "name": "extractTS",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 177,
-      "end_line": 251,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 220,
+      "end_line": 294,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:tsCallEdges",
@@ -98,9 +108,9 @@
       "name": "tsCallEdges",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 253,
-      "end_line": 272,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 296,
+      "end_line": 318,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:extractPython",
@@ -108,9 +118,9 @@
       "name": "extractPython",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 276,
-      "end_line": 338,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 322,
+      "end_line": 384,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:pyCallEdges",
@@ -118,9 +128,9 @@
       "name": "pyCallEdges",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 340,
-      "end_line": 359,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 386,
+      "end_line": 408,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:hashBytes",
@@ -128,9 +138,9 @@
       "name": "hashBytes",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 363,
-      "end_line": 366,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 412,
+      "end_line": 415,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     },
     {
       "id": "go:function:internal/symbols/extract.go:parseSource",
@@ -138,9 +148,249 @@
       "name": "parseSource",
       "language": "go",
       "file_path": "internal/symbols/extract.go",
-      "start_line": 368,
-      "end_line": 371,
-      "source_hash": "7dda64e6a665d968972ca4a5d86b17da8582f702"
+      "start_line": 417,
+      "end_line": 420,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractRust",
+      "kind": "function",
+      "name": "extractRust",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 424,
+      "end_line": 497,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:rustCallEdges",
+      "kind": "function",
+      "name": "rustCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 499,
+      "end_line": 519,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractJava",
+      "kind": "function",
+      "name": "extractJava",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 523,
+      "end_line": 586,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:javaCallEdges",
+      "kind": "function",
+      "name": "javaCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 588,
+      "end_line": 618,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractC",
+      "kind": "function",
+      "name": "extractC",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 622,
+      "end_line": 680,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:cFuncName",
+      "kind": "function",
+      "name": "cFuncName",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 684,
+      "end_line": 701,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:cCallEdges",
+      "kind": "function",
+      "name": "cCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 703,
+      "end_line": 722,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractCSharp",
+      "kind": "function",
+      "name": "extractCSharp",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 726,
+      "end_line": 789,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:csharpCallEdges",
+      "kind": "function",
+      "name": "csharpCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 791,
+      "end_line": 811,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractRuby",
+      "kind": "function",
+      "name": "extractRuby",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 815,
+      "end_line": 878,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:rubyCallEdges",
+      "kind": "function",
+      "name": "rubyCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 880,
+      "end_line": 900,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractKotlin",
+      "kind": "function",
+      "name": "extractKotlin",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 904,
+      "end_line": 976,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:kotlinCallEdges",
+      "kind": "function",
+      "name": "kotlinCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 978,
+      "end_line": 995,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractSwift",
+      "kind": "function",
+      "name": "extractSwift",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 999,
+      "end_line": 1071,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:swiftCallEdges",
+      "kind": "function",
+      "name": "swiftCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1073,
+      "end_line": 1092,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractPHP",
+      "kind": "function",
+      "name": "extractPHP",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1096,
+      "end_line": 1159,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:phpCallEdges",
+      "kind": "function",
+      "name": "phpCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1161,
+      "end_line": 1190,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractScala",
+      "kind": "function",
+      "name": "extractScala",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1194,
+      "end_line": 1266,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:scalaCallEdges",
+      "kind": "function",
+      "name": "scalaCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1268,
+      "end_line": 1287,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractElixir",
+      "kind": "function",
+      "name": "extractElixir",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1291,
+      "end_line": 1376,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractOCaml",
+      "kind": "function",
+      "name": "extractOCaml",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1380,
+      "end_line": 1451,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:ocamlCallEdges",
+      "kind": "function",
+      "name": "ocamlCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1453,
+      "end_line": 1471,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:extractElm",
+      "kind": "function",
+      "name": "extractElm",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1475,
+      "end_line": 1538,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
+    },
+    {
+      "id": "go:function:internal/symbols/extract.go:elmCallEdges",
+      "kind": "function",
+      "name": "elmCallEdges",
+      "language": "go",
+      "file_path": "internal/symbols/extract.go",
+      "start_line": 1540,
+      "end_line": 1558,
+      "source_hash": "abdb0bc238acb33a8b88c044de59c7a0023c67eb"
     }
   ],
   "calls": [
@@ -155,6 +405,54 @@
     {
       "from": "Extract",
       "to": "extractPython"
+    },
+    {
+      "from": "Extract",
+      "to": "extractRust"
+    },
+    {
+      "from": "Extract",
+      "to": "extractJava"
+    },
+    {
+      "from": "Extract",
+      "to": "extractC"
+    },
+    {
+      "from": "Extract",
+      "to": "extractCSharp"
+    },
+    {
+      "from": "Extract",
+      "to": "extractRuby"
+    },
+    {
+      "from": "Extract",
+      "to": "extractKotlin"
+    },
+    {
+      "from": "Extract",
+      "to": "extractSwift"
+    },
+    {
+      "from": "Extract",
+      "to": "extractPHP"
+    },
+    {
+      "from": "Extract",
+      "to": "extractScala"
+    },
+    {
+      "from": "Extract",
+      "to": "extractElixir"
+    },
+    {
+      "from": "Extract",
+      "to": "extractOCaml"
+    },
+    {
+      "from": "Extract",
+      "to": "extractElm"
     },
     {
       "from": "HashFile",
@@ -374,6 +672,10 @@
     },
     {
       "from": "goCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "goCallEdges",
       "to": "append"
     },
     {
@@ -395,6 +697,18 @@
     {
       "from": "goCallEdges",
       "to": "walk"
+    },
+    {
+      "from": "qualifyCall",
+      "to": "strings.Index"
+    },
+    {
+      "from": "qualifyCall",
+      "to": "len"
+    },
+    {
+      "from": "qualifyCall",
+      "to": "len"
     },
     {
       "from": "extractGoReceiver",
@@ -610,6 +924,10 @@
     },
     {
       "from": "tsCallEdges",
+      "to": "strings.HasPrefix"
+    },
+    {
+      "from": "tsCallEdges",
       "to": "append"
     },
     {
@@ -790,6 +1108,10 @@
     },
     {
       "from": "pyCallEdges",
+      "to": "strings.HasPrefix"
+    },
+    {
+      "from": "pyCallEdges",
       "to": "append"
     },
     {
@@ -823,6 +1145,2182 @@
     {
       "from": "parseSource",
       "to": "getParser"
+    },
+    {
+      "from": "extractRust",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractRust",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractRust",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractRust",
+      "to": "append"
+    },
+    {
+      "from": "extractRust",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractRust",
+      "to": "append"
+    },
+    {
+      "from": "extractRust",
+      "to": "rustCallEdges"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractRust",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractRust",
+      "to": "append"
+    },
+    {
+      "from": "extractRust",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractRust",
+      "to": "walk"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractRust",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractRust",
+      "to": "typeNode.Content"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractRust",
+      "to": "walk"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractRust",
+      "to": "int"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractRust",
+      "to": "walk"
+    },
+    {
+      "from": "extractRust",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractRust",
+      "to": "walk"
+    },
+    {
+      "from": "extractRust",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "fn.Content"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "rustCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractJava",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractJava",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractJava",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractJava",
+      "to": "append"
+    },
+    {
+      "from": "extractJava",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractJava",
+      "to": "int"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractJava",
+      "to": "int"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractJava",
+      "to": "int"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractJava",
+      "to": "walk"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractJava",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractJava",
+      "to": "append"
+    },
+    {
+      "from": "extractJava",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractJava",
+      "to": "int"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractJava",
+      "to": "int"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractJava",
+      "to": "append"
+    },
+    {
+      "from": "extractJava",
+      "to": "javaCallEdges"
+    },
+    {
+      "from": "extractJava",
+      "to": "int"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractJava",
+      "to": "walk"
+    },
+    {
+      "from": "extractJava",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractJava",
+      "to": "walk"
+    },
+    {
+      "from": "extractJava",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "objNode.Content"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "javaCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractC",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractC",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractC",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractC",
+      "to": "cFuncName"
+    },
+    {
+      "from": "extractC",
+      "to": "append"
+    },
+    {
+      "from": "extractC",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractC",
+      "to": "int"
+    },
+    {
+      "from": "extractC",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractC",
+      "to": "int"
+    },
+    {
+      "from": "extractC",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractC",
+      "to": "append"
+    },
+    {
+      "from": "extractC",
+      "to": "cCallEdges"
+    },
+    {
+      "from": "extractC",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractC",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractC",
+      "to": "append"
+    },
+    {
+      "from": "extractC",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractC",
+      "to": "int"
+    },
+    {
+      "from": "extractC",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractC",
+      "to": "int"
+    },
+    {
+      "from": "extractC",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractC",
+      "to": "int"
+    },
+    {
+      "from": "extractC",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractC",
+      "to": "walk"
+    },
+    {
+      "from": "extractC",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractC",
+      "to": "int"
+    },
+    {
+      "from": "extractC",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractC",
+      "to": "walk"
+    },
+    {
+      "from": "extractC",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractC",
+      "to": "walk"
+    },
+    {
+      "from": "extractC",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "cFuncName",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "cFuncName",
+      "to": "decl.Type"
+    },
+    {
+      "from": "cFuncName",
+      "to": "decl.ChildByFieldName"
+    },
+    {
+      "from": "cFuncName",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "cFuncName",
+      "to": "inner.Content"
+    },
+    {
+      "from": "cFuncName",
+      "to": "decl.ChildByFieldName"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "fn.Content"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "cCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "append"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "int"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "int"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "int"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "walk"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "append"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "int"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "int"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "append"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "csharpCallEdges"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "int"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "walk"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "walk"
+    },
+    {
+      "from": "extractCSharp",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "fn.Content"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "csharpCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractRuby",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractRuby",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractRuby",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractRuby",
+      "to": "append"
+    },
+    {
+      "from": "extractRuby",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractRuby",
+      "to": "int"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractRuby",
+      "to": "int"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractRuby",
+      "to": "int"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractRuby",
+      "to": "walk"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractRuby",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractRuby",
+      "to": "append"
+    },
+    {
+      "from": "extractRuby",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractRuby",
+      "to": "int"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractRuby",
+      "to": "int"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractRuby",
+      "to": "append"
+    },
+    {
+      "from": "extractRuby",
+      "to": "rubyCallEdges"
+    },
+    {
+      "from": "extractRuby",
+      "to": "int"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractRuby",
+      "to": "walk"
+    },
+    {
+      "from": "extractRuby",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractRuby",
+      "to": "walk"
+    },
+    {
+      "from": "extractRuby",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "methodNode.Content"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "rubyCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "c.Type"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "c.Content"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "firstIdent"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "append"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "walk"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "firstIdent"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "append"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "append"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "kotlinCallEdges"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "int"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "walk"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "walk"
+    },
+    {
+      "from": "extractKotlin",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "node.Child(0).Content"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "kotlinCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractSwift",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractSwift",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractSwift",
+      "to": "c.Type"
+    },
+    {
+      "from": "extractSwift",
+      "to": "c.Type"
+    },
+    {
+      "from": "extractSwift",
+      "to": "c.Content"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractSwift",
+      "to": "firstName"
+    },
+    {
+      "from": "extractSwift",
+      "to": "append"
+    },
+    {
+      "from": "extractSwift",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractSwift",
+      "to": "walk"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractSwift",
+      "to": "firstName"
+    },
+    {
+      "from": "extractSwift",
+      "to": "append"
+    },
+    {
+      "from": "extractSwift",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractSwift",
+      "to": "append"
+    },
+    {
+      "from": "extractSwift",
+      "to": "swiftCallEdges"
+    },
+    {
+      "from": "extractSwift",
+      "to": "int"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractSwift",
+      "to": "walk"
+    },
+    {
+      "from": "extractSwift",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractSwift",
+      "to": "walk"
+    },
+    {
+      "from": "extractSwift",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "node.Child(0).Content"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "swiftCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractPHP",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractPHP",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractPHP",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractPHP",
+      "to": "append"
+    },
+    {
+      "from": "extractPHP",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractPHP",
+      "to": "int"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractPHP",
+      "to": "int"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractPHP",
+      "to": "int"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractPHP",
+      "to": "walk"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractPHP",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractPHP",
+      "to": "append"
+    },
+    {
+      "from": "extractPHP",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractPHP",
+      "to": "int"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractPHP",
+      "to": "int"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractPHP",
+      "to": "append"
+    },
+    {
+      "from": "extractPHP",
+      "to": "phpCallEdges"
+    },
+    {
+      "from": "extractPHP",
+      "to": "int"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractPHP",
+      "to": "walk"
+    },
+    {
+      "from": "extractPHP",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractPHP",
+      "to": "walk"
+    },
+    {
+      "from": "extractPHP",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "fn.Content"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "node.ChildByFieldName"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "phpCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractScala",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractScala",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractScala",
+      "to": "c.Type"
+    },
+    {
+      "from": "extractScala",
+      "to": "c.Content"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractScala",
+      "to": "firstIdent"
+    },
+    {
+      "from": "extractScala",
+      "to": "append"
+    },
+    {
+      "from": "extractScala",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractScala",
+      "to": "walk"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractScala",
+      "to": "firstIdent"
+    },
+    {
+      "from": "extractScala",
+      "to": "append"
+    },
+    {
+      "from": "extractScala",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractScala",
+      "to": "append"
+    },
+    {
+      "from": "extractScala",
+      "to": "scalaCallEdges"
+    },
+    {
+      "from": "extractScala",
+      "to": "int"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractScala",
+      "to": "walk"
+    },
+    {
+      "from": "extractScala",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractScala",
+      "to": "walk"
+    },
+    {
+      "from": "extractScala",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "node.Child(0).Content"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "qualifyCall"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "scalaCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractElixir",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractElixir",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractElixir",
+      "to": "target.Content"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.Child(0).Content"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.Content"
+    },
+    {
+      "from": "extractElixir",
+      "to": "append"
+    },
+    {
+      "from": "extractElixir",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractElixir",
+      "to": "int"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractElixir",
+      "to": "int"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractElixir",
+      "to": "int"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "walk"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.Child(0).Content"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractElixir",
+      "to": "argsNode.Content"
+    },
+    {
+      "from": "extractElixir",
+      "to": "append"
+    },
+    {
+      "from": "extractElixir",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractElixir",
+      "to": "int"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractElixir",
+      "to": "int"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractElixir",
+      "to": "int"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElixir",
+      "to": "walk"
+    },
+    {
+      "from": "extractElixir",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElixir",
+      "to": "walk"
+    },
+    {
+      "from": "extractElixir",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "append"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "walk"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.ChildByFieldName"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.Child(i).Type"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "append"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "append"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "ocamlCallEdges"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "int"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "walk"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "walk"
+    },
+    {
+      "from": "extractOCaml",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "node.Child(0).Content"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "ocamlCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "extractElm",
+      "to": "parseSource"
+    },
+    {
+      "from": "extractElm",
+      "to": "hashBytes"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.Type"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElm",
+      "to": "c.Type"
+    },
+    {
+      "from": "extractElm",
+      "to": "c.Content"
+    },
+    {
+      "from": "extractElm",
+      "to": "append"
+    },
+    {
+      "from": "extractElm",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElm",
+      "to": "c.Type"
+    },
+    {
+      "from": "extractElm",
+      "to": "c.Child"
+    },
+    {
+      "from": "extractElm",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "extractElm",
+      "to": "nameNode.Content"
+    },
+    {
+      "from": "extractElm",
+      "to": "append"
+    },
+    {
+      "from": "extractElm",
+      "to": "pkg.NodeID"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.StartPoint"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.EndPoint"
+    },
+    {
+      "from": "extractElm",
+      "to": "append"
+    },
+    {
+      "from": "extractElm",
+      "to": "elmCallEdges"
+    },
+    {
+      "from": "extractElm",
+      "to": "int"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.ChildCount"
+    },
+    {
+      "from": "extractElm",
+      "to": "walk"
+    },
+    {
+      "from": "extractElm",
+      "to": "n.Child"
+    },
+    {
+      "from": "extractElm",
+      "to": "walk"
+    },
+    {
+      "from": "extractElm",
+      "to": "tree.RootNode"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "node.Type"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "strings.TrimSpace"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "node.Child(0).Content"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "append"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "int"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "node.ChildCount"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "walk"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "node.Child"
+    },
+    {
+      "from": "elmCallEdges",
+      "to": "walk"
     }
   ]
 }

@@ -44,13 +44,20 @@ var indexCmd = &cobra.Command{
 			for _, e := range result.Errors {
 				fmt.Fprintf(os.Stderr, "  warn: %s\n", e)
 			}
+			if len(result.UnsupportedExts) > 0 {
+				fmt.Println("\nNot indexed (no parser available):")
+				for ext, count := range result.UnsupportedExts {
+					fmt.Printf("  %s  (%d files) — add Tree-sitter grammar to support this language\n", ext, count)
+				}
+			}
 		} else {
 			printJSON(map[string]any{
-				"files_indexed": result.FilesIndexed,
-				"files_skipped": result.FilesSkipped,
-				"symbols":       result.SymbolsFound,
-				"duration_ms":   result.Duration.Milliseconds(),
-				"errors":        result.Errors,
+				"files_indexed":    result.FilesIndexed,
+				"files_skipped":    result.FilesSkipped,
+				"symbols":          result.SymbolsFound,
+				"duration_ms":      result.Duration.Milliseconds(),
+				"errors":           result.Errors,
+				"unsupported_exts": result.UnsupportedExts,
 			})
 		}
 		return nil

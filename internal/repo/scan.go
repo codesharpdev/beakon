@@ -25,6 +25,33 @@ var langByExt = map[string]string{
 	".js":  "javascript",
 	".jsx": "javascript",
 	".py":  "python",
+	// Rust
+	".rs": "rust",
+	// Java
+	".java": "java",
+	// C / C++
+	".c": "c", ".h": "c",
+	".cpp": "cpp", ".cc": "cpp", ".cxx": "cpp", ".hpp": "cpp",
+	// C#
+	".cs": "csharp",
+	// Ruby
+	".rb": "ruby",
+	// Kotlin
+	".kt": "kotlin", ".kts": "kotlin",
+	// Swift
+	".swift": "swift",
+	// PHP
+	".php": "php",
+	// Scala
+	".scala": "scala",
+	// Elixir
+	".ex": "elixir", ".exs": "elixir",
+	// OCaml
+	".ml": "ocaml", ".mli": "ocaml",
+	// Elm
+	".elm": "elm",
+	// Groovy
+	".groovy": "groovy",
 }
 
 // SourceFile is a discovered file with its detected language.
@@ -33,9 +60,10 @@ type SourceFile struct {
 	Language string
 }
 
-// Scan walks root and returns all supported source files.
-func Scan(root string) ([]SourceFile, error) {
+// Scan walks root and returns all supported source files and a map of unsupported extensions encountered.
+func Scan(root string) ([]SourceFile, map[string]int, error) {
 	var files []SourceFile
+	unsupported := make(map[string]int)
 
 	ignored := loadGitignore(root)
 
@@ -50,14 +78,19 @@ func Scan(root string) ([]SourceFile, error) {
 			return nil
 		}
 		ext := strings.ToLower(filepath.Ext(path))
+		if ext == "" {
+			return nil
+		}
 		if lang, ok := langByExt[ext]; ok {
 			rel, _ := filepath.Rel(root, path)
 			files = append(files, SourceFile{Path: rel, Language: lang})
+		} else {
+			unsupported[ext]++
 		}
 		return nil
 	})
 
-	return files, err
+	return files, unsupported, err
 }
 
 // loadGitignore reads root/.gitignore and returns a set of directory/file patterns to skip.

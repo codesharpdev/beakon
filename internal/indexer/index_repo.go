@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -17,11 +18,12 @@ import (
 
 // Result summarizes a completed indexing run.
 type Result struct {
-	FilesIndexed int
-	FilesSkipped int
-	SymbolsFound int
-	Duration     time.Duration
-	Errors       []string
+	FilesIndexed    int
+	FilesSkipped    int
+	SymbolsFound    int
+	Duration        time.Duration
+	Errors          []string
+	UnsupportedExts map[string]int // ext -> file count, not indexed
 }
 
 // Run performs a full index of the repository at root.
@@ -33,7 +35,7 @@ func Run(root string) (*Result, error) {
 		return nil, fmt.Errorf("init: %w", err)
 	}
 
-	files, err := repo.Scan(root)
+	files, unsupportedExts, err := repo.Scan(root)
 	if err != nil {
 		return nil, fmt.Errorf("scan: %w", err)
 	}
@@ -45,7 +47,7 @@ func Run(root string) (*Result, error) {
 	indexed, skipped := 0, 0
 
 	var wg sync.WaitGroup
-	sem := make(chan struct{}, 8)
+	sem := make(chan struct{}, runtime.NumCPU())
 
 	for _, f := range files {
 		wg.Add(1)
@@ -124,11 +126,12 @@ func Run(root string) (*Result, error) {
 	})
 
 	return &Result{
-		FilesIndexed: indexed,
-		FilesSkipped: skipped,
-		SymbolsFound: len(allSymbols),
-		Duration:     time.Since(start),
-		Errors:       errors,
+		FilesIndexed:    indexed,
+		FilesSkipped:    skipped,
+		SymbolsFound:    len(allSymbols),
+		Duration:        time.Since(start),
+		Errors:          errors,
+		UnsupportedExts: unsupportedExts,
 	}, nil
 }
 

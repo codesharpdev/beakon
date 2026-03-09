@@ -1,6 +1,6 @@
 {
   "file": "internal/indexer/update.go",
-  "hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec",
+  "hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9",
   "symbols": [
     {
       "id": "go:class:internal/indexer/update.go:UpdateResult",
@@ -8,9 +8,9 @@
       "name": "UpdateResult",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 16,
-      "end_line": 23,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 21,
+      "end_line": 28,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:UpdateFile",
@@ -18,9 +18,9 @@
       "name": "UpdateFile",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 28,
-      "end_line": 103,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 33,
+      "end_line": 111,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:removeFile",
@@ -28,9 +28,9 @@
       "name": "removeFile",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 106,
-      "end_line": 126,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 114,
+      "end_line": 137,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:rebuildGlobal",
@@ -38,9 +38,9 @@
       "name": "rebuildGlobal",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 131,
-      "end_line": 163,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 142,
+      "end_line": 174,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:detectLang",
@@ -48,9 +48,9 @@
       "name": "detectLang",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 165,
-      "end_line": 177,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 176,
+      "end_line": 188,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     },
     {
       "id": "go:function:internal/indexer/update.go:hasSuffix",
@@ -58,9 +58,9 @@
       "name": "hasSuffix",
       "language": "go",
       "file_path": "internal/indexer/update.go",
-      "start_line": 179,
-      "end_line": 181,
-      "source_hash": "d7e9d0ff5d1c0fc2973d9f54a85113a5310b1cec"
+      "start_line": 190,
+      "end_line": 192,
+      "source_hash": "f1a96c95c25c2bc6b515ff654cf7a4f8beef62d9"
     }
   ],
   "calls": [
@@ -138,7 +138,15 @@
     },
     {
       "from": "UpdateFile",
+      "to": "globalMu.Lock"
+    },
+    {
+      "from": "UpdateFile",
       "to": "rebuildGlobal"
+    },
+    {
+      "from": "UpdateFile",
+      "to": "globalMu.Unlock"
     },
     {
       "from": "UpdateFile",
@@ -166,7 +174,15 @@
     },
     {
       "from": "removeFile",
+      "to": "globalMu.Lock"
+    },
+    {
+      "from": "removeFile",
       "to": "rebuildGlobal"
+    },
+    {
+      "from": "removeFile",
+      "to": "globalMu.Unlock"
     },
     {
       "from": "removeFile",

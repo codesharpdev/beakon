@@ -1,6 +1,6 @@
 {
   "file": "internal/graph/build.go",
-  "hash": "d3621121cc5d380246c363c7c4d712ff00f19692",
+  "hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e",
   "symbols": [
     {
       "id": "go:class:internal/graph/build.go:CallsFrom",
@@ -10,7 +10,7 @@
       "file_path": "internal/graph/build.go",
       "start_line": 16,
       "end_line": 16,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:class:internal/graph/build.go:CallsTo",
@@ -20,7 +20,7 @@
       "file_path": "internal/graph/build.go",
       "start_line": 20,
       "end_line": 20,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:Build",
@@ -30,7 +30,7 @@
       "file_path": "internal/graph/build.go",
       "start_line": 23,
       "end_line": 38,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:Write",
@@ -40,7 +40,7 @@
       "file_path": "internal/graph/build.go",
       "start_line": 41,
       "end_line": 53,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:ReadFrom",
@@ -50,7 +50,7 @@
       "file_path": "internal/graph/build.go",
       "start_line": 56,
       "end_line": 63,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:ReadTo",
@@ -60,7 +60,7 @@
       "file_path": "internal/graph/build.go",
       "start_line": 66,
       "end_line": 73,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:Trace",
@@ -70,7 +70,17 @@
       "file_path": "internal/graph/build.go",
       "start_line": 76,
       "end_line": 94,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Impact",
+      "kind": "function",
+      "name": "Impact",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 99,
+      "end_line": 117,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:TraceRich",
@@ -78,9 +88,9 @@
       "name": "TraceRich",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 99,
-      "end_line": 150,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 122,
+      "end_line": 173,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:class:internal/graph/build.go:ExplainResult",
@@ -88,9 +98,9 @@
       "name": "ExplainResult",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 153,
-      "end_line": 158,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 176,
+      "end_line": 181,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:fetchSnippet",
@@ -98,9 +108,9 @@
       "name": "fetchSnippet",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 161,
-      "end_line": 190,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 184,
+      "end_line": 213,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:splitLines",
@@ -108,9 +118,9 @@
       "name": "splitLines",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 192,
-      "end_line": 205,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 215,
+      "end_line": 228,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:hasSuffix",
@@ -118,9 +128,9 @@
       "name": "hasSuffix",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 207,
-      "end_line": 209,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 230,
+      "end_line": 232,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:contains",
@@ -128,9 +138,9 @@
       "name": "contains",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 211,
-      "end_line": 218,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 234,
+      "end_line": 241,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:writeJSON",
@@ -138,9 +148,9 @@
       "name": "writeJSON",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 220,
-      "end_line": 229,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 243,
+      "end_line": 264,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     },
     {
       "id": "go:function:internal/graph/build.go:readJSON",
@@ -148,9 +158,9 @@
       "name": "readJSON",
       "language": "go",
       "file_path": "internal/graph/build.go",
-      "start_line": 231,
-      "end_line": 238,
-      "source_hash": "d3621121cc5d380246c363c7c4d712ff00f19692"
+      "start_line": 266,
+      "end_line": 273,
+      "source_hash": "5fe7603169827f45354bc80f87fd9e3c1ecf1a0e"
     }
   ],
   "calls": [
@@ -247,6 +257,18 @@
       "to": "append"
     },
     {
+      "from": "Impact",
+      "to": "len"
+    },
+    {
+      "from": "Impact",
+      "to": "append"
+    },
+    {
+      "from": "Impact",
+      "to": "append"
+    },
+    {
       "from": "TraceRich",
       "to": "len"
     },
@@ -332,11 +354,15 @@
     },
     {
       "from": "writeJSON",
-      "to": "os.Create"
+      "to": "os.MkdirAll"
     },
     {
       "from": "writeJSON",
-      "to": "f.Close"
+      "to": "filepath.Dir"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Create"
     },
     {
       "from": "writeJSON",
@@ -349,6 +375,26 @@
     {
       "from": "writeJSON",
       "to": "enc.Encode"
+    },
+    {
+      "from": "writeJSON",
+      "to": "f.Close"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Remove"
+    },
+    {
+      "from": "writeJSON",
+      "to": "f.Close"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Remove"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Rename"
     },
     {
       "from": "readJSON",

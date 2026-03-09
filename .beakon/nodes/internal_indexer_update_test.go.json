@@ -1,0 +1,70 @@
+{
+  "file": "internal/indexer/update_test.go",
+  "hash": "57758162fa1d1ec89eef1ab14748e81e3bd0cfd1",
+  "symbols": [
+    {
+      "id": "go:function:internal/indexer/update_test.go:TestConcurrentUpdateFileDoesNotRace",
+      "kind": "function",
+      "name": "TestConcurrentUpdateFileDoesNotRace",
+      "language": "go",
+      "file_path": "internal/indexer/update_test.go",
+      "start_line": 10,
+      "end_line": 40,
+      "source_hash": "57758162fa1d1ec89eef1ab14748e81e3bd0cfd1"
+    }
+  ],
+  "calls": [
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "t.TempDir"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "os.MkdirAll"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "os.WriteFile"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "Run"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "len"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "t.Fatalf"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "wg.Add"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "func() {\n\t\t\tdefer wg.Done()\n\t\t\tUpdateFile(root, srcPath)\n\t\t}"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "wg.Done"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "UpdateFile"
+    },
+    {
+      "from": "TestConcurrentUpdateFileDoesNotRace",
+      "to": "wg.Wait"
+    }
+  ]
+}
