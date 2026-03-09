@@ -28,7 +28,7 @@ type Meta struct {
 
 // SymbolsIndex is the flat list of all symbols — stored in symbols.json
 type SymbolsIndex struct {
-	Symbols []pkg.CodeIndexNode `json:"symbols"`
+	Symbols []pkg.Node `json:"symbols"`
 }
 
 // MapIndex is the architectural overview — stored in map.json
@@ -54,7 +54,7 @@ func Read(root, filePath string) (*pkg.FileIndex, error) {
 	return &fi, nil
 }
 
-// ReadAll loads every FileIndex in .codeindex/files/
+// ReadAll loads every FileIndex in .beakon/nodes/
 func ReadAll(root string) ([]pkg.FileIndex, error) {
 	dir := filepath.Join(root, nodesDir)
 	entries, err := os.ReadDir(dir)
@@ -87,13 +87,13 @@ func ReadAll(root string) ([]pkg.FileIndex, error) {
 }
 
 // WriteSymbols writes the flat symbols.json index.
-func WriteSymbols(root string, symbols []pkg.CodeIndexNode) error {
+func WriteSymbols(root string, symbols []pkg.Node) error {
 	path := filepath.Join(root, beakonDir, "symbols.json")
 	return writeJSON(path, SymbolsIndex{Symbols: symbols})
 }
 
 // ReadSymbols loads symbols.json.
-func ReadSymbols(root string) ([]pkg.CodeIndexNode, error) {
+func ReadSymbols(root string) ([]pkg.Node, error) {
 	path := filepath.Join(root, beakonDir, "symbols.json")
 	var si SymbolsIndex
 	if err := readJSON(path, &si); err != nil {
@@ -139,7 +139,7 @@ func NeedsUpdate(root, filePath, currentHash string) bool {
 	return fi.Hash != currentHash
 }
 
-// Init creates the .codeindex directory structure.
+// Init creates the .beakon directory structure.
 func Init(root string) error {
 	dirs := []string{
 		filepath.Join(root, beakonDir),
@@ -185,7 +185,7 @@ func readJSON(path string, v any) error {
 	return json.NewDecoder(f).Decode(v)
 }
 
-// DeleteFile removes a file's index entry from .codeindex/files/
+// DeleteFile removes a file's index entry from .beakon/nodes/
 func DeleteFile(root, filePath string) error {
 	path := filepath.Join(root, nodesDir, fileKey(filePath)+".json")
 	err := os.Remove(path)

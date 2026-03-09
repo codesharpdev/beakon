@@ -135,7 +135,7 @@ go test ./...
 ## Invariants
 
 1. All parsing uses Tree-sitter only
-2. All symbols use CodeIndexNode — no alternative structs
+2. All symbols use pkg.Node — no alternative structs
 3. Node IDs: <language>:<kind>:<filepath>:<symbol>
 4. Disk storage: JSON only
 5. No filesystem scanning during queries

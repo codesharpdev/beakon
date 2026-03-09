@@ -19,7 +19,7 @@ import (
 var human bool
 
 var root = &cobra.Command{
-	Use:   "codeindex",
+	Use:   "beakon",
 	Short: "Structural code intelligence for AI agents",
 }
 
@@ -132,7 +132,7 @@ var mapCmd = &cobra.Command{
 		repoRoot, _ := os.Getwd()
 		m, err := index.ReadMap(repoRoot)
 		if err != nil {
-			return fmt.Errorf("run 'codeindex index' first: %w", err)
+			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		if human {
 			for dir, syms := range m {
@@ -158,7 +158,7 @@ var traceCmd = &cobra.Command{
 		repoRoot, _ := os.Getwd()
 		callsFrom, err := graph.ReadFrom(repoRoot)
 		if err != nil {
-			return fmt.Errorf("run 'codeindex index' first: %w", err)
+			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		if human {
 			symIdx, _ := loadSymIndex(repoRoot)
@@ -182,7 +182,7 @@ var explainCmd = &cobra.Command{
 		repoRoot, _ := os.Getwd()
 		callsFrom, err := graph.ReadFrom(repoRoot)
 		if err != nil {
-			return fmt.Errorf("run 'codeindex index' first: %w", err)
+			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		symIdx, _ := loadSymIndex(repoRoot)
 		steps := graph.TraceRich(args[0], callsFrom, symIdx, repoRoot)
@@ -230,7 +230,7 @@ var callersCmd = &cobra.Command{
 		repoRoot, _ := os.Getwd()
 		callsTo, err := graph.ReadTo(repoRoot)
 		if err != nil {
-			return fmt.Errorf("run 'codeindex index' first: %w", err)
+			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		callers := callsTo[args[0]]
 		if callers == nil {
@@ -258,7 +258,7 @@ var depsCmd = &cobra.Command{
 		repoRoot, _ := os.Getwd()
 		callsFrom, err := graph.ReadFrom(repoRoot)
 		if err != nil {
-			return fmt.Errorf("run 'codeindex index' first: %w", err)
+			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		deps := callsFrom[args[0]]
 		if deps == nil {
@@ -314,10 +314,10 @@ var searchCmd = &cobra.Command{
 		repoRoot, _ := os.Getwd()
 		allSyms, err := index.ReadSymbols(repoRoot)
 		if err != nil {
-			return fmt.Errorf("run 'codeindex index' first: %w", err)
+			return fmt.Errorf("run 'beakon index' first: %w", err)
 		}
 		query := strings.ToLower(args[0])
-		var matches []pkg.CodeIndexNode
+		var matches []pkg.Node
 		for _, s := range allSyms {
 			if strings.Contains(strings.ToLower(s.Name), query) {
 				matches = append(matches, s)
@@ -360,12 +360,12 @@ var contextCmd = &cobra.Command{
 // ── helpers ───────────────────────────────────────────────────────────────────
 
 // loadSymIndex builds a name→node map for fast lookup during trace enrichment.
-func loadSymIndex(repoRoot string) (map[string]pkg.CodeIndexNode, error) {
+func loadSymIndex(repoRoot string) (map[string]pkg.Node, error) {
 	syms, err := index.ReadSymbols(repoRoot)
 	if err != nil {
 		return nil, err
 	}
-	m := make(map[string]pkg.CodeIndexNode, len(syms))
+	m := make(map[string]pkg.Node, len(syms))
 	for _, s := range syms {
 		m[s.Name] = s
 	}
@@ -393,10 +393,10 @@ func printRichTrace(steps []pkg.TraceStep) {
 	}
 }
 
-func findSymbol(repoRoot, name string) (*pkg.CodeIndexNode, error) {
+func findSymbol(repoRoot, name string) (*pkg.Node, error) {
 	allSyms, err := index.ReadSymbols(repoRoot)
 	if err != nil {
-		return nil, fmt.Errorf("run 'codeindex index' first: %w", err)
+		return nil, fmt.Errorf("run 'beakon index' first: %w", err)
 	}
 	nameLower := strings.ToLower(name)
 	for _, s := range allSyms {
@@ -465,7 +465,7 @@ func printBlock(label string, b ctx.CodeBlock) {
 			pkg := b.Symbol[:dot]
 			sym := b.Symbol[dot+1:]
 			if !stdlibPkgs[pkg] {
-				fmt.Printf("%s  %s  (external — ./codeindex context %s)\n\n", label, b.Symbol, sym)
+				fmt.Printf("%s  %s  (external — ./beakon context %s)\n\n", label, b.Symbol, sym)
 				return
 			}
 		}

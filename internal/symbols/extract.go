@@ -11,7 +11,7 @@ import (
 )
 
 // Extract parses a source file and returns all symbols and call edges.
-func Extract(filePath, language string, source []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge) {
+func Extract(filePath, language string, source []byte) ([]pkg.Node, []pkg.CallEdge) {
 	switch language {
 	case "go":
 		return extractGo(filePath, source)
@@ -35,13 +35,13 @@ func HashFile(path string) string {
 
 // --- Go ---
 
-func extractGo(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge) {
+func extractGo(filePath string, src []byte) ([]pkg.Node, []pkg.CallEdge) {
 	tree, err := parseSource(src, "go")
 	if err != nil {
 		return nil, nil
 	}
 	hash := hashBytes(src)
-	var nodes []pkg.CodeIndexNode
+	var nodes []pkg.Node
 	var calls []pkg.CallEdge
 
 	var walk func(n *sitter.Node, parent string)
@@ -50,7 +50,7 @@ func extractGo(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge
 		case "function_declaration":
 			name, node := goFuncName(n, src)
 			if name != "" {
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID:         pkg.NodeID("go", "function", filePath, name),
 					Kind:       "function",
 					Name:       name,
@@ -69,7 +69,7 @@ func extractGo(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge
 				if receiver != "" {
 					qualified = receiver + "." + name
 				}
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID:         pkg.NodeID("go", "method", filePath, qualified),
 					Kind:       "method",
 					Name:       qualified,
@@ -85,7 +85,7 @@ func extractGo(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge
 		case "type_declaration":
 			name, node := goTypeName(n, src)
 			if name != "" {
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID:         pkg.NodeID("go", "class", filePath, name),
 					Kind:       "class",
 					Name:       name,
@@ -174,13 +174,13 @@ func extractGoReceiver(recv string) string {
 
 // --- TypeScript / JavaScript ---
 
-func extractTS(filePath, language string, src []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge) {
+func extractTS(filePath, language string, src []byte) ([]pkg.Node, []pkg.CallEdge) {
 	tree, err := parseSource(src, language)
 	if err != nil {
 		return nil, nil
 	}
 	hash := hashBytes(src)
-	var nodes []pkg.CodeIndexNode
+	var nodes []pkg.Node
 	var calls []pkg.CallEdge
 
 	var walk func(n *sitter.Node, parent string)
@@ -190,7 +190,7 @@ func extractTS(filePath, language string, src []byte) ([]pkg.CodeIndexNode, []pk
 			nameNode := n.ChildByFieldName("name")
 			if nameNode != nil {
 				name := nameNode.Content(src)
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID: pkg.NodeID(language, "function", filePath, name),
 					Kind: "function", Name: name, Language: language,
 					FilePath: filePath,
@@ -208,7 +208,7 @@ func extractTS(filePath, language string, src []byte) ([]pkg.CodeIndexNode, []pk
 			nameNode := n.ChildByFieldName("name")
 			if nameNode != nil {
 				name := nameNode.Content(src)
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID: pkg.NodeID(language, "class", filePath, name),
 					Kind: "class", Name: name, Language: language,
 					FilePath: filePath,
@@ -229,7 +229,7 @@ func extractTS(filePath, language string, src []byte) ([]pkg.CodeIndexNode, []pk
 				if parent != "" {
 					qualified = parent + "." + name
 				}
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID: pkg.NodeID(language, "method", filePath, qualified),
 					Kind: "method", Name: qualified, Language: language,
 					FilePath: filePath,
@@ -273,13 +273,13 @@ func tsCallEdges(n *sitter.Node, src []byte, from string) []pkg.CallEdge {
 
 // --- Python ---
 
-func extractPython(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.CallEdge) {
+func extractPython(filePath string, src []byte) ([]pkg.Node, []pkg.CallEdge) {
 	tree, err := parseSource(src, "python")
 	if err != nil {
 		return nil, nil
 	}
 	hash := hashBytes(src)
-	var nodes []pkg.CodeIndexNode
+	var nodes []pkg.Node
 	var calls []pkg.CallEdge
 
 	var walk func(n *sitter.Node, parent string)
@@ -295,7 +295,7 @@ func extractPython(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.Call
 					kind = "method"
 					qualified = parent + "." + name
 				}
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID: pkg.NodeID("python", kind, filePath, qualified),
 					Kind: kind, Name: qualified, Language: "python",
 					FilePath: filePath,
@@ -314,7 +314,7 @@ func extractPython(filePath string, src []byte) ([]pkg.CodeIndexNode, []pkg.Call
 			nameNode := n.ChildByFieldName("name")
 			if nameNode != nil {
 				name := nameNode.Content(src)
-				nodes = append(nodes, pkg.CodeIndexNode{
+				nodes = append(nodes, pkg.Node{
 					ID: pkg.NodeID("python", "class", filePath, name),
 					Kind: "class", Name: name, Language: "python",
 					FilePath: filePath,

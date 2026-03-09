@@ -1,0 +1,287 @@
+{
+  "file": "internal/context/engine.go",
+  "hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d",
+  "symbols": [
+    {
+      "id": "go:class:internal/context/engine.go:CodeBlock",
+      "kind": "class",
+      "name": "CodeBlock",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 14,
+      "end_line": 21,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:class:internal/context/engine.go:Bundle",
+      "kind": "class",
+      "name": "Bundle",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 24,
+      "end_line": 31,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:class:internal/context/engine.go:Engine",
+      "kind": "class",
+      "name": "Engine",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 34,
+      "end_line": 40,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:NewEngine",
+      "kind": "function",
+      "name": "NewEngine",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 43,
+      "end_line": 45,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:method:internal/context/engine.go:Engine.load",
+      "kind": "method",
+      "name": "Engine.load",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 48,
+      "end_line": 73,
+      "parent": "Engine",
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:method:internal/context/engine.go:Engine.Assemble",
+      "kind": "method",
+      "name": "Engine.Assemble",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 76,
+      "end_line": 119,
+      "parent": "Engine",
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:method:internal/context/engine.go:Engine.toBlock",
+      "kind": "method",
+      "name": "Engine.toBlock",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 122,
+      "end_line": 132,
+      "parent": "Engine",
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:method:internal/context/engine.go:Engine.findSymbol",
+      "kind": "method",
+      "name": "Engine.findSymbol",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 135,
+      "end_line": 151,
+      "parent": "Engine",
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:fetchCode",
+      "kind": "function",
+      "name": "fetchCode",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 154,
+      "end_line": 174,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:uniqueFiles",
+      "kind": "function",
+      "name": "uniqueFiles",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 177,
+      "end_line": 196,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:function:internal/context/engine.go:estimateTokens",
+      "kind": "function",
+      "name": "estimateTokens",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 199,
+      "end_line": 208,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:class:internal/context/engine.go:SymbolNotFound",
+      "kind": "class",
+      "name": "SymbolNotFound",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 211,
+      "end_line": 213,
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    },
+    {
+      "id": "go:method:internal/context/engine.go:SymbolNotFound.Error",
+      "kind": "method",
+      "name": "SymbolNotFound.Error",
+      "language": "go",
+      "file_path": "internal/context/engine.go",
+      "start_line": 215,
+      "end_line": 217,
+      "parent": "SymbolNotFound",
+      "source_hash": "a499b7e7608fac7e279363c6ce7c4cee5ae4759d"
+    }
+  ],
+  "calls": [
+    {
+      "from": "Engine.load",
+      "to": "index.ReadSymbols"
+    },
+    {
+      "from": "Engine.load",
+      "to": "make"
+    },
+    {
+      "from": "Engine.load",
+      "to": "len"
+    },
+    {
+      "from": "Engine.load",
+      "to": "graph.ReadFrom"
+    },
+    {
+      "from": "Engine.load",
+      "to": "graph.ReadTo"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.load"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.findSymbol"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.toBlock"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.findSymbol"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "append"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.toBlock"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "append"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.findSymbol"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "append"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "e.toBlock"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "uniqueFiles"
+    },
+    {
+      "from": "Engine.Assemble",
+      "to": "estimateTokens"
+    },
+    {
+      "from": "Engine.toBlock",
+      "to": "fetchCode"
+    },
+    {
+      "from": "Engine.findSymbol",
+      "to": "strings.ToLower"
+    },
+    {
+      "from": "Engine.findSymbol",
+      "to": "strings.ToLower"
+    },
+    {
+      "from": "Engine.findSymbol",
+      "to": "strings.HasSuffix"
+    },
+    {
+      "from": "Engine.findSymbol",
+      "to": "strings.ToLower"
+    },
+    {
+      "from": "fetchCode",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "fetchCode",
+      "to": "os.ReadFile"
+    },
+    {
+      "from": "fetchCode",
+      "to": "strings.Split"
+    },
+    {
+      "from": "fetchCode",
+      "to": "string"
+    },
+    {
+      "from": "fetchCode",
+      "to": "len"
+    },
+    {
+      "from": "fetchCode",
+      "to": "len"
+    },
+    {
+      "from": "fetchCode",
+      "to": "strings.Join"
+    },
+    {
+      "from": "uniqueFiles",
+      "to": "append"
+    },
+    {
+      "from": "uniqueFiles",
+      "to": "add"
+    },
+    {
+      "from": "uniqueFiles",
+      "to": "add"
+    },
+    {
+      "from": "uniqueFiles",
+      "to": "add"
+    },
+    {
+      "from": "estimateTokens",
+      "to": "len"
+    },
+    {
+      "from": "estimateTokens",
+      "to": "len"
+    },
+    {
+      "from": "estimateTokens",
+      "to": "len"
+    }
+  ]
+}

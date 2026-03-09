@@ -1,13 +1,13 @@
-# CodeIndex — Specification
+# Beakon — Specification
 
 ## Core Data Structures
 
-### CodeIndexNode
+### BeakonNode
 
 Defined in pkg/types.go.
 
 ```go
-type CodeIndexNode struct {
+type BeakonNode struct {
     ID         string `json:"id"`
     Kind       string `json:"kind"`
     Name       string `json:"name"`
@@ -39,13 +39,13 @@ type CallEdge struct {
 
 ### FileIndex
 
-Stored per source file in .codeindex/files/*.json
+Stored per source file in .beakon/files/*.json
 
 ```go
 type FileIndex struct {
     File    string          `json:"file"`
     Hash    string          `json:"hash"`
-    Symbols []CodeIndexNode `json:"symbols"`
+    Symbols []BeakonNode `json:"symbols"`
     Calls   []CallEdge      `json:"calls"`
 }
 ```
@@ -91,7 +91,7 @@ Rules:
 ## Storage Layout
 
 ```
-.codeindex/
+.beakon/
 ├── meta.json           index metadata
 ├── symbols.json        flat list of all symbols
 ├── map.json            dir → []symbol names

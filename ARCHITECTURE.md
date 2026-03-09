@@ -1,4 +1,4 @@
-# CodeIndex — Architecture
+# Beakon — Architecture
 
 ## Pipeline
 
@@ -11,10 +11,10 @@ internal/symbols    — Tree-sitter parsing, symbol + call extraction
     ↓
 internal/indexer    — orchestrate: full index, incremental update, watch mode
     ↓
-internal/index      — read/write .codeindex/ JSON files
+internal/index      — read/write .beakon/ JSON files
 internal/graph      — build + query call graph
     ↓
-cmd/codeindex       — CLI commands (Cobra)
+cmd/beakon       — CLI commands (Cobra)
 ```
 
 ---
@@ -24,7 +24,7 @@ cmd/codeindex       — CLI commands (Cobra)
 ### pkg/
 Shared data structures only. No logic.
 
-    types.go    CodeIndexNode, CallEdge, FileIndex, TraceStep, NodeID()
+    types.go    BeakonNode, CallEdge, FileIndex, TraceStep, NodeID()
 
 No other packages in pkg/. If unsure, put it in internal/.
 
@@ -44,10 +44,10 @@ Does NOT know about: symbols, graph, index.
 Tree-sitter parsing and symbol extraction.
 
     parse.go    Tree-sitter language wiring
-    extract.go  Walk AST → []CodeIndexNode + []CallEdge
+    extract.go  Walk AST → []BeakonNode + []CallEdge
 
 One function per language family: extractGo, extractTS, extractPython.
-Knows about: AST nodes, pkg.CodeIndexNode, pkg.CallEdge.
+Knows about: AST nodes, pkg.BeakonNode, pkg.CallEdge.
 Does NOT know about: files, storage, graph.
 
 ---
@@ -67,7 +67,7 @@ Does NOT know about: indexer, repo scanner, CLI.
 ---
 
 ### internal/index/
-Filesystem storage layer for .codeindex/.
+Filesystem storage layer for .beakon/.
 
     write.go    Init, Write, Read, ReadAll, DeleteFile
                 WriteSymbols, ReadSymbols
@@ -75,7 +75,7 @@ Filesystem storage layer for .codeindex/.
                 WriteMeta, ReadMeta
                 NeedsUpdate(root, file, hash) bool
 
-Knows about: pkg.FileIndex, pkg.CodeIndexNode, disk paths.
+Knows about: pkg.FileIndex, pkg.BeakonNode, disk paths.
 Does NOT know about: graph, parser, CLI.
 
 ---
@@ -101,7 +101,7 @@ Reads live from source files. Never reads from index.
 
 ---
 
-### cmd/codeindex/
+### cmd/beakon/
 CLI entry point. No business logic.
 
     main.go     Cobra commands: index, watch, map, trace, explain,
@@ -119,7 +119,7 @@ Each command:
 Allowed imports (each layer may only import layers below it):
 
 ```
-cmd/codeindex
+cmd/beakon
     → internal/indexer
     → internal/graph
     → internal/index
@@ -148,15 +148,15 @@ Example: internal/graph must never import internal/indexer.
 
 ## Storage Strategy
 
-All index data lives in .codeindex/ as JSON.
+All index data lives in .beakon/ as JSON.
 
 Queries read from JSON files — never scan source files.
 Exception: show command and snippet extraction read source files live.
 
-.codeindex/files/ mirrors the repository structure.
+.beakon/files/ mirrors the repository structure.
 One JSON file per source file.
 
-.codeindex/graph/ holds precomputed bidirectional edges.
+.beakon/graph/ holds precomputed bidirectional edges.
 Both directions are built at index time so callers queries are O(1).
 
 ---

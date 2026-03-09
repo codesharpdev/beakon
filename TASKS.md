@@ -1,4 +1,4 @@
-# CodeIndex — Tasks
+# Beakon — Tasks
 
 ## Status Legend
 
@@ -13,7 +13,7 @@ PARTIAL  started but incomplete
 ### 1.1 Repository Scanner
 Status: DONE
 File: internal/repo/scan.go
-Skips: .git, .codeindex, node_modules, vendor, dist, build, __pycache__
+Skips: .git, .beakon, node_modules, vendor, dist, build, __pycache__
 Languages: .go .ts .tsx .js .jsx .py
 
 ### 1.2 Tree-sitter Integration
@@ -25,12 +25,12 @@ Extracts: functions, methods, classes, call edges
 ### 1.3 File Index Storage
 Status: DONE
 File: internal/index/write.go
-Stores: .codeindex/files/*.json, symbols.json, map.json, meta.json
+Stores: .beakon/files/*.json, symbols.json, map.json, meta.json
 
 ### 1.4 Call Graph (Bidirectional)
 Status: DONE
 File: internal/graph/build.go
-Stores: .codeindex/graph/calls_from.json + calls_to.json
+Stores: .beakon/graph/calls_from.json + calls_to.json
 Precomputed at index time — both directions
 
 ### 1.5 Full Indexer
@@ -90,7 +90,7 @@ Handles: file change, file deletion
 Status: DONE
 File: internal/indexer/watch.go
 fsnotify, 50ms debounce, 500ms max debounce
-Auto-runs initial index if .codeindex missing
+Auto-runs initial index if .beakon missing
 
 ---
 
@@ -223,13 +223,13 @@ Implementation:
 
 ### 6.2 impact Command
 Status: TODO
-File: cmd/codeindex/main.go + internal/graph/build.go
+File: cmd/beakon/main.go + internal/graph/build.go
 
 Show everything that would break if a symbol changes.
 Algorithm: reverse BFS from symbol through calls_to graph.
 
 Example:
-    ./codeindex impact createJWT --human
+    ./beakon impact createJWT --human
 
 Output:
     impact: createJWT
@@ -239,7 +239,7 @@ Output:
 
 ### 6.3 Config File
 Status: TODO
-File: .codeindex/config.yaml
+File: .beakon/config.yaml
 
 Options:
     version: 1
@@ -290,11 +290,11 @@ Assembles complete LLM context bundle for a symbol:
 
 ### 7.2 context command
 Status: DONE
-Location: cmd/codeindex/main.go
+Location: cmd/beakon/main.go
 
 Usage:
-    codeindex context <symbol>
-    codeindex context <symbol> --human
+    beakon context <symbol>
+    beakon context <symbol> --human
 
 JSON output: full Bundle struct
 Human output: anchor + CALLS + CALLED BY sections with source

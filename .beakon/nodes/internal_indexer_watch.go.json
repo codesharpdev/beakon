@@ -1,0 +1,236 @@
+{
+  "file": "internal/indexer/watch.go",
+  "hash": "d365470067149f4a0802140ce8e3b44f4d7744c5",
+  "symbols": [
+    {
+      "id": "go:class:internal/indexer/watch.go:WatchEvent",
+      "kind": "class",
+      "name": "WatchEvent",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 20,
+      "end_line": 24,
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:class:internal/indexer/watch.go:Watcher",
+      "kind": "class",
+      "name": "Watcher",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 27,
+      "end_line": 33,
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:function:internal/indexer/watch.go:NewWatcher",
+      "kind": "function",
+      "name": "NewWatcher",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 36,
+      "end_line": 56,
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:method:internal/indexer/watch.go:Watcher.Start",
+      "kind": "method",
+      "name": "Watcher.Start",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 59,
+      "end_line": 127,
+      "parent": "Watcher",
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:method:internal/indexer/watch.go:Watcher.Stop",
+      "kind": "method",
+      "name": "Watcher.Stop",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 130,
+      "end_line": 136,
+      "parent": "Watcher",
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:method:internal/indexer/watch.go:Watcher.processFile",
+      "kind": "method",
+      "name": "Watcher.processFile",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 139,
+      "end_line": 146,
+      "parent": "Watcher",
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:method:internal/indexer/watch.go:Watcher.addDirs",
+      "kind": "method",
+      "name": "Watcher.addDirs",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 149,
+      "end_line": 163,
+      "parent": "Watcher",
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    },
+    {
+      "id": "go:function:internal/indexer/watch.go:isSupportedFile",
+      "kind": "function",
+      "name": "isSupportedFile",
+      "language": "go",
+      "file_path": "internal/indexer/watch.go",
+      "start_line": 175,
+      "end_line": 178,
+      "source_hash": "d365470067149f4a0802140ce8e3b44f4d7744c5"
+    }
+  ],
+  "calls": [
+    {
+      "from": "NewWatcher",
+      "to": "fsnotify.NewWatcher"
+    },
+    {
+      "from": "NewWatcher",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "NewWatcher",
+      "to": "make"
+    },
+    {
+      "from": "NewWatcher",
+      "to": "make"
+    },
+    {
+      "from": "NewWatcher",
+      "to": "w.addDirs"
+    },
+    {
+      "from": "NewWatcher",
+      "to": "fw.Close"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "make"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "time.NewTicker"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "ticker.Stop"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "isSupportedFile"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "time.Now"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "mu.Unlock"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "os.Stat"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "info.IsDir"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "w.watcher.Add"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "time.Now"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "now.Sub"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "now.Sub"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "append"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "delete"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "mu.Unlock"
+    },
+    {
+      "from": "Watcher.Start",
+      "to": "w.processFile"
+    },
+    {
+      "from": "Watcher.Stop",
+      "to": "w.once.Do"
+    },
+    {
+      "from": "Watcher.Stop",
+      "to": "close"
+    },
+    {
+      "from": "Watcher.Stop",
+      "to": "w.watcher.Close"
+    },
+    {
+      "from": "Watcher.Stop",
+      "to": "close"
+    },
+    {
+      "from": "Watcher.processFile",
+      "to": "UpdateFile"
+    },
+    {
+      "from": "Watcher.addDirs",
+      "to": "filepath.Walk"
+    },
+    {
+      "from": "Watcher.addDirs",
+      "to": "info.IsDir"
+    },
+    {
+      "from": "Watcher.addDirs",
+      "to": "info.Name"
+    },
+    {
+      "from": "Watcher.addDirs",
+      "to": "strings.HasPrefix"
+    },
+    {
+      "from": "Watcher.addDirs",
+      "to": "w.watcher.Add"
+    },
+    {
+      "from": "isSupportedFile",
+      "to": "detectLang"
+    }
+  ]
+}

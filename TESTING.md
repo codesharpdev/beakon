@@ -1,10 +1,10 @@
-# CodeIndex — Testing Guide
+# Beakon — Testing Guide
 
 ## Quick Start
 
 ```bash
 # Build
-go build -o codeindex ./cmd/codeindex
+go build -o beakon ./cmd/beakon
 
 # Run all tests
 go test ./...
@@ -24,43 +24,43 @@ Run this after every significant change to verify end-to-end behavior.
 
 ```bash
 # 1. Build
-go build -o codeindex ./cmd/codeindex
+go build -o beakon ./cmd/beakon
 
 # 2. Index the sample repo
-./codeindex index ./testdata/sample_repo
+./beakon index ./testdata/sample_repo
 
 # 3. Map — should show auth/ and api/ directories
-./codeindex map --human
+./beakon map --human
 
 # 4. Trace — should show Login → AuthService.Login call chain
-./codeindex trace Login --human
+./beakon trace Login --human
 
 # 5. Explain — should show full feature flow + files
-./codeindex explain Login --human
+./beakon explain Login --human
 
 # 6. Callers — should return UserController.Login
-./codeindex callers "AuthService.Login" --human
+./beakon callers "AuthService.Login" --human
 
 # 7. Deps — should return validatePassword, createJWT
-./codeindex deps "AuthService.Login" --human
+./beakon deps "AuthService.Login" --human
 
 # 8. Show — should print the Login function source
-./codeindex show "AuthService.Login" --human
+./beakon show "AuthService.Login" --human
 
 # 9. Search — should return all login-related symbols
-./codeindex search login --human
+./beakon search login --human
 
 # 10. JSON output check — all commands default to JSON
-./codeindex map
-./codeindex trace Login
-./codeindex callers "AuthService.Login"
+./beakon map
+./beakon trace Login
+./beakon callers "AuthService.Login"
 ```
 
 ---
 
 ## Expected Output Reference
 
-### codeindex map --human
+### beakon map --human
 
 ```
 auth/
@@ -74,7 +74,7 @@ api/
   UserController.Logout
 ```
 
-### codeindex trace Login --human
+### beakon trace Login --human
 
 ```
 Login
@@ -94,7 +94,7 @@ Login
         ...
 ```
 
-### codeindex explain Login --human
+### beakon explain Login --human
 
 ```
 Feature: Login
@@ -108,14 +108,14 @@ Files involved:
   auth/service.go
 ```
 
-### codeindex callers AuthService.Login --human
+### beakon callers AuthService.Login --human
 
 ```
 callers of AuthService.Login:
   UserController.Login
 ```
 
-### codeindex deps AuthService.Login --human
+### beakon deps AuthService.Login --human
 
 ```
 deps of AuthService.Login:
@@ -129,7 +129,7 @@ deps of AuthService.Login:
 
 ```bash
 # Terminal 1 — start watch mode
-./codeindex watch --human
+./beakon watch --human
 
 # Terminal 2 — modify a file
 echo "// comment" >> ./testdata/sample_repo/auth/service.go
@@ -144,10 +144,10 @@ echo "// comment" >> ./testdata/sample_repo/auth/service.go
 
 ```bash
 # Index the sample repo
-./codeindex index ./testdata/sample_repo
+./beakon index ./testdata/sample_repo
 
 # Check symbol count
-./codeindex map --human
+./beakon map --human
 
 # Add a new function to auth/service.go
 cat >> ./testdata/sample_repo/auth/service.go << 'EOF'
@@ -158,10 +158,10 @@ func refreshToken(token string) string {
 EOF
 
 # Re-index (should skip unchanged files)
-./codeindex index ./testdata/sample_repo
+./beakon index ./testdata/sample_repo
 
 # Verify new symbol appears
-./codeindex search refresh --human
+./beakon search refresh --human
 # Expected: refreshToken  auth/service.go:XX
 ```
 
@@ -173,13 +173,13 @@ All commands must produce valid JSON when --human is not set.
 
 ```bash
 # Validate JSON output for each command
-./codeindex map | python3 -m json.tool
-./codeindex trace Login | python3 -m json.tool
-./codeindex callers "AuthService.Login" | python3 -m json.tool
-./codeindex deps "AuthService.Login" | python3 -m json.tool
-./codeindex show "AuthService.Login" | python3 -m json.tool
-./codeindex search login | python3 -m json.tool
-./codeindex explain Login | python3 -m json.tool
+./beakon map | python3 -m json.tool
+./beakon trace Login | python3 -m json.tool
+./beakon callers "AuthService.Login" | python3 -m json.tool
+./beakon deps "AuthService.Login" | python3 -m json.tool
+./beakon show "AuthService.Login" | python3 -m json.tool
+./beakon search login | python3 -m json.tool
+./beakon explain Login | python3 -m json.tool
 ```
 
 All must exit 0 with valid JSON.

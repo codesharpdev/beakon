@@ -33,7 +33,7 @@ type Bundle struct {
 // Engine assembles context bundles from the index.
 type Engine struct {
 	root    string
-	symIdx  map[string]pkg.CodeIndexNode
+	symIdx  map[string]pkg.Node
 	from    graph.CallsFrom
 	to      graph.CallsTo
 	loaded  bool
@@ -54,7 +54,7 @@ func (e *Engine) load() error {
 	if err != nil {
 		return err
 	}
-	e.symIdx = make(map[string]pkg.CodeIndexNode, len(syms))
+	e.symIdx = make(map[string]pkg.Node, len(syms))
 	for _, s := range syms {
 		e.symIdx[s.Name] = s
 	}
@@ -118,8 +118,8 @@ func (e *Engine) Assemble(query string) (*Bundle, error) {
 	return bundle, nil
 }
 
-// toBlock converts a CodeIndexNode to a CodeBlock with live source.
-func (e *Engine) toBlock(node pkg.CodeIndexNode) CodeBlock {
+// toBlock converts a Node to a CodeBlock with live source.
+func (e *Engine) toBlock(node pkg.Node) CodeBlock {
 	block := CodeBlock{
 		Symbol: node.Name,
 		Kind:   node.Kind,
@@ -132,7 +132,7 @@ func (e *Engine) toBlock(node pkg.CodeIndexNode) CodeBlock {
 }
 
 // findSymbol looks up a symbol by exact name or partial suffix match.
-func (e *Engine) findSymbol(name string) (pkg.CodeIndexNode, bool) {
+func (e *Engine) findSymbol(name string) (pkg.Node, bool) {
 	// Exact match first
 	if n, ok := e.symIdx[name]; ok {
 		return n, true
@@ -147,7 +147,7 @@ func (e *Engine) findSymbol(name string) (pkg.CodeIndexNode, bool) {
 			return n, true
 		}
 	}
-	return pkg.CodeIndexNode{}, false
+	return pkg.Node{}, false
 }
 
 // fetchCode reads the source lines for a symbol live from disk.
@@ -213,5 +213,5 @@ type SymbolNotFound struct {
 }
 
 func (e *SymbolNotFound) Error() string {
-	return "symbol not found: " + e.Name + " — run 'codeindex index' first"
+	return "symbol not found: " + e.Name + " — run 'beakon index' first"
 }

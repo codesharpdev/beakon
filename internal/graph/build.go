@@ -12,11 +12,11 @@ import (
 const graphDir = ".beakon/graph"
 
 // CallsFrom maps symbol → []symbols it calls
-// Stored in .codeindex/graph/calls_from.json
+// Stored in .beakon/graph/calls_from.json
 type CallsFrom map[string][]string
 
 // CallsTo maps symbol → []symbols that call it
-// Stored in .codeindex/graph/calls_to.json
+// Stored in .beakon/graph/calls_to.json
 type CallsTo map[string][]string
 
 // Build constructs both directions of the call graph from all edges.
@@ -37,7 +37,7 @@ func Build(edges []pkg.CallEdge) (CallsFrom, CallsTo) {
 	return from, to
 }
 
-// Write persists both graph files to .codeindex/graph/
+// Write persists both graph files to .beakon/graph/
 func Write(root string, from CallsFrom, to CallsTo) error {
 	dir := filepath.Join(root, graphDir)
 	if err := os.MkdirAll(dir, 0755); err != nil {
@@ -94,9 +94,9 @@ func Trace(symbol string, from CallsFrom) []string {
 }
 
 // TraceRich performs BFS and enriches each step with file location and code snippet.
-// symIndex is a map of symbol name → CodeIndexNode for fast lookup.
+// symIndex is a map of symbol name → Node for fast lookup.
 // repoRoot is needed to read source files live.
-func TraceRich(symbol string, from CallsFrom, symIndex map[string]pkg.CodeIndexNode, repoRoot string) []pkg.TraceStep {
+func TraceRich(symbol string, from CallsFrom, symIndex map[string]pkg.Node, repoRoot string) []pkg.TraceStep {
 	queue := []struct {
 		name  string
 		depth int

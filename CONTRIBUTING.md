@@ -1,4 +1,4 @@
-# CodeIndex — Contributing
+# Beakon — Contributing
 
 ## Setup
 
@@ -6,16 +6,16 @@ Requirements: Go 1.21+
 
 ```bash
 git clone <repo>
-cd codeindex
+cd beakon
 go mod tidy
-go build -o codeindex ./cmd/codeindex
+go build -o beakon ./cmd/beakon
 ```
 
 Verify:
 
 ```bash
-./codeindex index ./testdata/sample_repo
-./codeindex map --human
+./beakon index ./testdata/sample_repo
+./beakon map --human
 ```
 
 ---
@@ -43,7 +43,7 @@ Types: feat, fix, perf, test, docs, refactor
 
 ## Adding a New Command
 
-1. Add handler in cmd/codeindex/main.go
+1. Add handler in cmd/beakon/main.go
 2. Add to root.AddCommand() in init()
 3. Follow the pattern: getwd → call internal package → format output
 4. No business logic in main.go
@@ -66,12 +66,12 @@ Types: feat, fix, perf, test, docs, refactor
 
 ## Modifying the Data Model
 
-Before changing CodeIndexNode:
+Before changing BeakonNode:
 1. Read SPEC.md — understand current schema
 2. Update pkg/types.go
 3. Update SPEC.md to match
 4. Find all callers of the struct — update them all
-5. Check that existing .codeindex/ files still load (or add migration)
+5. Check that existing .beakon/ files still load (or add migration)
 6. Update TASKS.md with migration note
 
 ---
@@ -79,7 +79,7 @@ Before changing CodeIndexNode:
 ## Directory Reference
 
 ```
-codeindex/
+beakon/
 ├── CLAUDE.md        Agent operating instructions
 ├── SPEC.md          Data structures + storage layout
 ├── ARCHITECTURE.md  Package responsibilities + pipeline
@@ -88,7 +88,7 @@ codeindex/
 ├── TESTING.md       How to test everything
 ├── CONTRIBUTING.md  This file
 │
-├── cmd/codeindex/main.go     CLI entry point
+├── cmd/beakon/main.go     CLI entry point
 │
 ├── internal/
 │   ├── repo/       Repository scanner

@@ -1,4 +1,4 @@
-# CodeIndex — Repository Rules
+# Beakon — Repository Rules
 
 These rules are invariants. They must not be broken.
 If a change requires breaking a rule, discuss it first by updating this file.
@@ -33,7 +33,7 @@ cmd/ contains only CLI wiring — no business logic.
 Packages may only import at the same level or below.
 
 Allowed:
-    cmd/codeindex  → internal/*, pkg
+    cmd/beakon  → internal/*, pkg
     internal/indexer → internal/repo, internal/symbols, internal/graph, internal/index, pkg
     internal/graph   → pkg
     internal/index   → pkg
@@ -54,10 +54,10 @@ Circular imports are forbidden.
 
 ## Data Model Rules
 
-All symbols must be represented by pkg.CodeIndexNode.
+All symbols must be represented by pkg.BeakonNode.
 
 Do NOT create alternative node structs.
-Do NOT add fields to CodeIndexNode without updating SPEC.md.
+Do NOT add fields to BeakonNode without updating SPEC.md.
 
 Schema changes require:
 1. Update pkg/types.go
@@ -88,14 +88,14 @@ Random IDs, UUIDs, and timestamp-based IDs are forbidden.
 
 ## Storage Rules
 
-All index data lives inside .codeindex/ only.
+All index data lives inside .beakon/ only.
 Format: JSON always.
 Binary formats: forbidden.
 Database files: forbidden.
 No SQLite, BoltDB, or any embedded database.
 
-.codeindex/files/ and .codeindex/graph/ are gitignored (derived artifacts).
-.codeindex/config.yaml is committed (user configuration).
+.beakon/files/ and .beakon/graph/ are gitignored (derived artifacts).
+.beakon/config.yaml is committed (user configuration).
 
 Writes to symbols.json, map.json, calls_from.json, calls_to.json must be atomic.
 Use: write to temp file → os.Rename to final path.
@@ -108,7 +108,7 @@ Parsing must use Tree-sitter via github.com/smacker/go-tree-sitter.
 Custom parsers are forbidden.
 Regex-based symbol extraction is forbidden.
 
-If a language is not supported by go-tree-sitter, it is not supported by CodeIndex.
+If a language is not supported by go-tree-sitter, it is not supported by Beakon.
 
 ---
 
@@ -131,7 +131,7 @@ A single file parse failure must never abort a full index run.
 Log the error, skip the file, continue.
 
 A query against a missing index must print a clear message:
-    "run 'codeindex index' first"
+    "run 'beakon index' first"
 
 Panics are forbidden in production code paths.
 Use recover() in goroutines that parse untrusted source files.
@@ -184,7 +184,7 @@ Agents working in this repo must:
 3. Read TASKS.md before starting any implementation
 4. Run go test ./... before reporting a task complete
 5. Never introduce a package that violates the import rules
-6. Never use grep/find/cat to explore — use codeindex commands
+6. Never use grep/find/cat to explore — use beakon commands
 
 Agents must not:
 - Introduce global mutable state

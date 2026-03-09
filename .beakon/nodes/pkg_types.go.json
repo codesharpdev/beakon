@@ -1,0 +1,57 @@
+{
+  "file": "pkg/types.go",
+  "hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3",
+  "symbols": [
+    {
+      "id": "go:class:pkg/types.go:CodeIndexNode",
+      "kind": "class",
+      "name": "CodeIndexNode",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 5,
+      "end_line": 15,
+      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+    },
+    {
+      "id": "go:class:pkg/types.go:CallEdge",
+      "kind": "class",
+      "name": "CallEdge",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 18,
+      "end_line": 21,
+      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+    },
+    {
+      "id": "go:class:pkg/types.go:FileIndex",
+      "kind": "class",
+      "name": "FileIndex",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 24,
+      "end_line": 29,
+      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+    },
+    {
+      "id": "go:class:pkg/types.go:TraceStep",
+      "kind": "class",
+      "name": "TraceStep",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 32,
+      "end_line": 39,
+      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+    },
+    {
+      "id": "go:function:pkg/types.go:NodeID",
+      "kind": "function",
+      "name": "NodeID",
+      "language": "go",
+      "file_path": "pkg/types.go",
+      "start_line": 44,
+      "end_line": 46,
+      "source_hash": "c14a62a8cb2109b1bab47adb0b0626e25b443ea3"
+    }
+  ],
+  "calls": null
+}

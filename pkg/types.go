@@ -1,8 +1,8 @@
 package pkg
 
-// CodeIndexNode represents a single symbol in the repository.
+// Node represents a single symbol in the repository.
 // Slimmed to exactly what V1 needs — no more, no less.
-type CodeIndexNode struct {
+type Node struct {
 	ID         string `json:"id"`
 	Kind       string `json:"kind"`       // function | method | class | module | variable
 	Name       string `json:"name"`
@@ -20,11 +20,11 @@ type CallEdge struct {
 	To   string `json:"to"`   // callee symbol name
 }
 
-// FileIndex is stored per source file in .codeindex/files/*.json
+// FileIndex is stored per source file in .beakon/nodes/*.json
 type FileIndex struct {
 	File    string          `json:"file"`
 	Hash    string          `json:"hash"`
-	Symbols []CodeIndexNode `json:"symbols"`
+	Symbols []Node `json:"symbols"`
 	Calls   []CallEdge      `json:"calls"`
 }
 
