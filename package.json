@@ -1,5 +1,5 @@
 {
-  "name": "beakon",
+  "name": "@codesharpdev/beakon",
   "version": "0.1.0",
   "description": "Shared code intelligence infrastructure for AI agents. LSP for AI.",
   "keywords": ["ai", "code-intelligence", "call-graph", "tree-sitter", "llm", "agents"],
