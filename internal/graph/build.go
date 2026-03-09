@@ -93,6 +93,29 @@ func Trace(symbol string, from CallsFrom) []string {
 	return result
 }
 
+// Impact performs reverse BFS from a symbol through calls_to.
+// It returns every symbol that directly or indirectly depends on the given symbol.
+// This is the answer to: "if I change X, what else might break?"
+func Impact(symbol string, to CallsTo) []string {
+	queue := []string{symbol}
+	visited := map[string]bool{}
+	var result []string
+
+	for len(queue) > 0 {
+		current := queue[0]
+		queue = queue[1:]
+		if visited[current] {
+			continue
+		}
+		visited[current] = true
+		result = append(result, current)
+		for _, caller := range to[current] {
+			queue = append(queue, caller)
+		}
+	}
+	return result
+}
+
 // TraceRich performs BFS and enriches each step with file location and code snippet.
 // symIndex is a map of symbol name → Node for fast lookup.
 // repoRoot is needed to read source files live.

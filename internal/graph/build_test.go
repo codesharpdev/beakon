@@ -97,6 +97,39 @@ func TestWrite_NoTmpFilesLeft(t *testing.T) {
 	}
 }
 
+func TestImpact_ReverseBFS(t *testing.T) {
+	_, to := Build(edges(
+		"Login", "validatePassword",
+		"Login", "createJWT",
+		"Handle", "Login",
+	))
+
+	result := Impact("validatePassword", to)
+
+	assertSliceContains(t, result, "validatePassword")
+	assertSliceContains(t, result, "Login")
+	assertSliceContains(t, result, "Handle")
+}
+
+func TestImpact_CycleDetection(t *testing.T) {
+	_, to := Build(edges(
+		"A", "B",
+		"B", "A",
+	))
+	result := Impact("A", to)
+	if len(result) > 2 {
+		t.Errorf("cycle not detected: got %d results", len(result))
+	}
+}
+
+func TestImpact_IsolatedSymbol(t *testing.T) {
+	_, to := Build(edges("A", "B"))
+	result := Impact("A", to) // nothing calls A
+	if len(result) != 1 {
+		t.Errorf("expected only anchor symbol, got %v", result)
+	}
+}
+
 func assertSliceContains(t *testing.T, slice []string, want string) {
 	t.Helper()
 	for _, s := range slice {

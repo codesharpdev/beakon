@@ -352,6 +352,43 @@ var contextCmd = &cobra.Command{
 	},
 }
 
+// ── impact ────────────────────────────────────────────────────────────────────
+
+var impactCmd = &cobra.Command{
+	Use:   "impact <symbol>",
+	Short: "Show every symbol that depends on this one (reverse impact analysis)",
+	Args:  cobra.ExactArgs(1),
+	RunE: func(cmd *cobra.Command, args []string) error {
+		repoRoot, _ := os.Getwd()
+		sym := args[0]
+
+		callsTo, err := graph.ReadTo(repoRoot)
+		if err != nil {
+			return fmt.Errorf("run 'beakon index' first: %w", err)
+		}
+
+		result := graph.Impact(sym, callsTo)
+
+		if human {
+			fmt.Printf("Impact of changing %q (%d affected symbols):\n\n", sym, len(result))
+			for i, s := range result {
+				if i == 0 {
+					fmt.Printf("  [anchor] %s\n", s)
+				} else {
+					fmt.Printf("  → %s\n", s)
+				}
+			}
+		} else {
+			printJSON(map[string]any{
+				"symbol": sym,
+				"impact": result,
+				"count":  len(result),
+			})
+		}
+		return nil
+	},
+}
+
 // ── helpers ───────────────────────────────────────────────────────────────────
 
 // loadSymIndex builds a name→node map for fast lookup during trace enrichment.
@@ -480,7 +517,7 @@ func printBlock(label string, b ctx.CodeBlock) {
 func init() {
 	root.PersistentFlags().BoolVar(&human, "human", false, "Human-readable output")
 	root.AddCommand(indexCmd, watchCmd, mapCmd, traceCmd, explainCmd,
-		callersCmd, depsCmd, showCmd, searchCmd, contextCmd)
+		callersCmd, depsCmd, showCmd, searchCmd, contextCmd, impactCmd)
 }
 
 func main() {
