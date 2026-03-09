@@ -1,0 +1,370 @@
+{
+  "file": "internal/graph/build.go",
+  "hash": "ee11c3e9b57777a8901303f105c334678f754aa1",
+  "symbols": [
+    {
+      "id": "go:class:internal/graph/build.go:CallsFrom",
+      "kind": "class",
+      "name": "CallsFrom",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 16,
+      "end_line": 16,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:class:internal/graph/build.go:CallsTo",
+      "kind": "class",
+      "name": "CallsTo",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 20,
+      "end_line": 20,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Build",
+      "kind": "function",
+      "name": "Build",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 23,
+      "end_line": 38,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Write",
+      "kind": "function",
+      "name": "Write",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 41,
+      "end_line": 53,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:ReadFrom",
+      "kind": "function",
+      "name": "ReadFrom",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 56,
+      "end_line": 63,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:ReadTo",
+      "kind": "function",
+      "name": "ReadTo",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 66,
+      "end_line": 73,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:Trace",
+      "kind": "function",
+      "name": "Trace",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 76,
+      "end_line": 94,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:TraceRich",
+      "kind": "function",
+      "name": "TraceRich",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 99,
+      "end_line": 150,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:class:internal/graph/build.go:ExplainResult",
+      "kind": "class",
+      "name": "ExplainResult",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 153,
+      "end_line": 158,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:fetchSnippet",
+      "kind": "function",
+      "name": "fetchSnippet",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 161,
+      "end_line": 190,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:splitLines",
+      "kind": "function",
+      "name": "splitLines",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 192,
+      "end_line": 205,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:hasSuffix",
+      "kind": "function",
+      "name": "hasSuffix",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 207,
+      "end_line": 209,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:contains",
+      "kind": "function",
+      "name": "contains",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 211,
+      "end_line": 218,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:writeJSON",
+      "kind": "function",
+      "name": "writeJSON",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 220,
+      "end_line": 229,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    },
+    {
+      "id": "go:function:internal/graph/build.go:readJSON",
+      "kind": "function",
+      "name": "readJSON",
+      "language": "go",
+      "file_path": "internal/graph/build.go",
+      "start_line": 231,
+      "end_line": 238,
+      "source_hash": "ee11c3e9b57777a8901303f105c334678f754aa1"
+    }
+  ],
+  "calls": [
+    {
+      "from": "Build",
+      "to": "make"
+    },
+    {
+      "from": "Build",
+      "to": "make"
+    },
+    {
+      "from": "Build",
+      "to": "contains"
+    },
+    {
+      "from": "Build",
+      "to": "append"
+    },
+    {
+      "from": "Build",
+      "to": "contains"
+    },
+    {
+      "from": "Build",
+      "to": "append"
+    },
+    {
+      "from": "Write",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "Write",
+      "to": "os.MkdirAll"
+    },
+    {
+      "from": "Write",
+      "to": "writeJSON"
+    },
+    {
+      "from": "Write",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "Write",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "Write",
+      "to": "writeJSON"
+    },
+    {
+      "from": "Write",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "Write",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "ReadFrom",
+      "to": "readJSON"
+    },
+    {
+      "from": "ReadFrom",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "ReadFrom",
+      "to": "make"
+    },
+    {
+      "from": "ReadTo",
+      "to": "readJSON"
+    },
+    {
+      "from": "ReadTo",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "ReadTo",
+      "to": "make"
+    },
+    {
+      "from": "Trace",
+      "to": "len"
+    },
+    {
+      "from": "Trace",
+      "to": "append"
+    },
+    {
+      "from": "Trace",
+      "to": "append"
+    },
+    {
+      "from": "TraceRich",
+      "to": "len"
+    },
+    {
+      "from": "TraceRich",
+      "to": "fetchSnippet"
+    },
+    {
+      "from": "TraceRich",
+      "to": "hasSuffix"
+    },
+    {
+      "from": "TraceRich",
+      "to": "fetchSnippet"
+    },
+    {
+      "from": "TraceRich",
+      "to": "append"
+    },
+    {
+      "from": "TraceRich",
+      "to": "append"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "os.ReadFile"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "splitLines"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "string"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "len"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "len"
+    },
+    {
+      "from": "fetchSnippet",
+      "to": "len"
+    },
+    {
+      "from": "splitLines",
+      "to": "len"
+    },
+    {
+      "from": "splitLines",
+      "to": "append"
+    },
+    {
+      "from": "splitLines",
+      "to": "len"
+    },
+    {
+      "from": "splitLines",
+      "to": "append"
+    },
+    {
+      "from": "hasSuffix",
+      "to": "len"
+    },
+    {
+      "from": "hasSuffix",
+      "to": "len"
+    },
+    {
+      "from": "hasSuffix",
+      "to": "len"
+    },
+    {
+      "from": "hasSuffix",
+      "to": "len"
+    },
+    {
+      "from": "writeJSON",
+      "to": "os.Create"
+    },
+    {
+      "from": "writeJSON",
+      "to": "f.Close"
+    },
+    {
+      "from": "writeJSON",
+      "to": "json.NewEncoder"
+    },
+    {
+      "from": "writeJSON",
+      "to": "enc.SetIndent"
+    },
+    {
+      "from": "writeJSON",
+      "to": "enc.Encode"
+    },
+    {
+      "from": "readJSON",
+      "to": "os.Open"
+    },
+    {
+      "from": "readJSON",
+      "to": "f.Close"
+    },
+    {
+      "from": "readJSON",
+      "to": "json.NewDecoder(f).Decode"
+    },
+    {
+      "from": "readJSON",
+      "to": "json.NewDecoder"
+    }
+  ]
+}

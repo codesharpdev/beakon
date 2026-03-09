@@ -1,0 +1,678 @@
+{
+  "BuildMap": [
+    "rebuildGlobal",
+    "writeIndexFiles"
+  ],
+  "Read": [
+    "NeedsUpdate"
+  ],
+  "UpdateFile": [
+    "Watcher.processFile"
+  ],
+  "add": [
+    "uniqueFiles"
+  ],
+  "append": [
+    "rebuildGlobal",
+    "Engine.Assemble",
+    "uniqueFiles",
+    "Build",
+    "Trace",
+    "TraceRich",
+    "splitLines",
+    "ReadAll",
+    "extractGo",
+    "goCallEdges",
+    "extractTS",
+    "tsCallEdges",
+    "extractPython",
+    "pyCallEdges",
+    "Scan",
+    "Run",
+    "BuildMap",
+    "Watcher.Start"
+  ],
+  "c.auth.Login": [
+    "UserController.Login"
+  ],
+  "c.auth.Logout": [
+    "UserController.Logout"
+  ],
+  "close": [
+    "Watcher.Stop"
+  ],
+  "contains": [
+    "Build"
+  ],
+  "context.Background": [
+    "getParser"
+  ],
+  "createJWT": [
+    "AuthService.Login"
+  ],
+  "delete": [
+    "Watcher.Start"
+  ],
+  "detectLang": [
+    "UpdateFile",
+    "isSupportedFile"
+  ],
+  "e.IsDir": [
+    "ReadAll"
+  ],
+  "e.Name": [
+    "ReadAll"
+  ],
+  "e.findSymbol": [
+    "Engine.Assemble"
+  ],
+  "e.load": [
+    "Engine.Assemble"
+  ],
+  "e.toBlock": [
+    "Engine.Assemble"
+  ],
+  "enc.Encode": [
+    "printJSON",
+    "writeJSON"
+  ],
+  "enc.SetIndent": [
+    "printJSON",
+    "writeJSON"
+  ],
+  "errors.New": [
+    "validatePassword"
+  ],
+  "estimateTokens": [
+    "Engine.Assemble"
+  ],
+  "extractGo": [
+    "Extract"
+  ],
+  "extractGoReceiver": [
+    "goMethodName"
+  ],
+  "extractPython": [
+    "Extract"
+  ],
+  "extractTS": [
+    "Extract"
+  ],
+  "f.Close": [
+    "writeJSON",
+    "readJSON"
+  ],
+  "fetchCode": [
+    "Engine.toBlock"
+  ],
+  "fetchSnippet": [
+    "TraceRich"
+  ],
+  "fileKey": [
+    "Write",
+    "Read",
+    "DeleteFile"
+  ],
+  "filepath.Dir": [
+    "writeJSON"
+  ],
+  "filepath.Ext": [
+    "Scan"
+  ],
+  "filepath.Join": [
+    "UpdateFile",
+    "fetchCode",
+    "Write",
+    "ReadFrom",
+    "ReadTo",
+    "fetchSnippet",
+    "Read",
+    "ReadAll",
+    "WriteSymbols",
+    "ReadSymbols",
+    "WriteMap",
+    "ReadMap",
+    "WriteMeta",
+    "ReadMeta",
+    "Init",
+    "DeleteFile",
+    "Run"
+  ],
+  "filepath.Rel": [
+    "UpdateFile",
+    "Scan"
+  ],
+  "filepath.Walk": [
+    "Scan",
+    "Watcher.addDirs"
+  ],
+  "fmt.Errorf": [
+    "Fetch",
+    "UpdateFile",
+    "rebuildGlobal",
+    "findSymbol",
+    "Write",
+    "Init",
+    "Run",
+    "writeIndexFiles",
+    "treeSitterLang",
+    "getParser",
+    "NewWatcher",
+    "Watcher.Start"
+  ],
+  "fmt.Printf": [
+    "printRichTrace",
+    "printContext",
+    "printBlock"
+  ],
+  "fmt.Println": [
+    "printRichTrace",
+    "printContext",
+    "printBlock"
+  ],
+  "fmt.Sprintf": [
+    "Run"
+  ],
+  "fn.Content": [
+    "goCallEdges",
+    "tsCallEdges",
+    "pyCallEdges"
+  ],
+  "fsnotify.NewWatcher": [
+    "NewWatcher"
+  ],
+  "func() { \u003c-sem }": [
+    "Run"
+  ],
+  "func(name string) {\n\t\t\tdefer wg.Done()\n\t\t\tvar fi pkg.FileIndex\n\t\t\tif err := readJSON(filepath.Join(dir, name), \u0026fi); err == nil {\n\t\t\t\tmu.Lock()\n\t\t\t\tall = append(all, fi)\n\t\t\t\tmu.Unlock()\n\t\t\t}\n\t\t}": [
+    "ReadAll"
+  ],
+  "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}": [
+    "Run"
+  ],
+  "fw.Close": [
+    "NewWatcher"
+  ],
+  "getParser": [
+    "parseSource"
+  ],
+  "goCallEdges": [
+    "extractGo"
+  ],
+  "goFuncName": [
+    "extractGo"
+  ],
+  "goMethodName": [
+    "extractGo"
+  ],
+  "goTypeName": [
+    "extractGo"
+  ],
+  "golang.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "graph.Build": [
+    "rebuildGlobal",
+    "writeIndexFiles"
+  ],
+  "graph.ReadFrom": [
+    "Engine.load"
+  ],
+  "graph.ReadTo": [
+    "Engine.load"
+  ],
+  "graph.Write": [
+    "rebuildGlobal",
+    "writeIndexFiles"
+  ],
+  "hasSuffix": [
+    "detectLang",
+    "TraceRich"
+  ],
+  "hashBytes": [
+    "extractGo",
+    "extractTS",
+    "extractPython"
+  ],
+  "hex.EncodeToString": [
+    "HashFile",
+    "hashBytes"
+  ],
+  "index.DeleteFile": [
+    "removeFile"
+  ],
+  "index.Init": [
+    "Run"
+  ],
+  "index.NeedsUpdate": [
+    "UpdateFile",
+    "Run"
+  ],
+  "index.Read": [
+    "UpdateFile",
+    "removeFile",
+    "Run"
+  ],
+  "index.ReadAll": [
+    "rebuildGlobal"
+  ],
+  "index.ReadSymbols": [
+    "loadSymIndex",
+    "findSymbol",
+    "Engine.load"
+  ],
+  "index.Write": [
+    "UpdateFile",
+    "Run"
+  ],
+  "index.WriteMap": [
+    "rebuildGlobal",
+    "writeIndexFiles"
+  ],
+  "index.WriteMeta": [
+    "Run"
+  ],
+  "index.WriteSymbols": [
+    "rebuildGlobal",
+    "writeIndexFiles"
+  ],
+  "info.IsDir": [
+    "Scan",
+    "Watcher.Start",
+    "Watcher.addDirs"
+  ],
+  "info.Name": [
+    "Scan",
+    "Watcher.addDirs"
+  ],
+  "int": [
+    "extractGo",
+    "goTypeName",
+    "goCallEdges",
+    "extractTS",
+    "tsCallEdges",
+    "extractPython",
+    "pyCallEdges"
+  ],
+  "invalidateToken": [
+    "AuthService.Logout"
+  ],
+  "isSupportedFile": [
+    "Watcher.Start"
+  ],
+  "javascript.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "json.NewDecoder": [
+    "readJSON"
+  ],
+  "json.NewDecoder(f).Decode": [
+    "readJSON"
+  ],
+  "json.NewEncoder": [
+    "printJSON",
+    "writeJSON"
+  ],
+  "len": [
+    "Fetch",
+    "UpdateFile",
+    "removeFile",
+    "hasSuffix",
+    "loadSymIndex",
+    "printContext",
+    "Engine.load",
+    "fetchCode",
+    "estimateTokens",
+    "Trace",
+    "TraceRich",
+    "fetchSnippet",
+    "splitLines",
+    "extractGoReceiver",
+    "Run",
+    "BuildMap"
+  ],
+  "make": [
+    "loadSymIndex",
+    "Engine.load",
+    "Build",
+    "ReadFrom",
+    "ReadTo",
+    "Run",
+    "BuildMap",
+    "NewWatcher",
+    "Watcher.Start"
+  ],
+  "mu.Lock": [
+    "ReadAll",
+    "Run",
+    "Watcher.Start"
+  ],
+  "mu.Unlock": [
+    "ReadAll",
+    "Run",
+    "Watcher.Start"
+  ],
+  "n.Child": [
+    "extractGo",
+    "goTypeName",
+    "extractTS",
+    "extractPython"
+  ],
+  "n.ChildByFieldName": [
+    "goFuncName",
+    "goMethodName",
+    "extractTS",
+    "extractPython"
+  ],
+  "n.ChildCount": [
+    "extractGo",
+    "goTypeName",
+    "extractTS",
+    "extractPython"
+  ],
+  "n.EndPoint": [
+    "extractTS",
+    "extractPython"
+  ],
+  "n.StartPoint": [
+    "extractTS",
+    "extractPython"
+  ],
+  "n.Type": [
+    "extractGo",
+    "extractTS",
+    "extractPython"
+  ],
+  "nameNode.Content": [
+    "goFuncName",
+    "goMethodName",
+    "goTypeName",
+    "extractTS",
+    "extractPython"
+  ],
+  "node.Child": [
+    "goCallEdges",
+    "tsCallEdges",
+    "pyCallEdges"
+  ],
+  "node.ChildByFieldName": [
+    "goCallEdges",
+    "tsCallEdges",
+    "pyCallEdges"
+  ],
+  "node.ChildCount": [
+    "goCallEdges",
+    "tsCallEdges",
+    "pyCallEdges"
+  ],
+  "node.EndPoint": [
+    "extractGo"
+  ],
+  "node.StartPoint": [
+    "extractGo"
+  ],
+  "node.Type": [
+    "goCallEdges",
+    "tsCallEdges",
+    "pyCallEdges"
+  ],
+  "now.Sub": [
+    "Watcher.Start"
+  ],
+  "os.Create": [
+    "writeJSON"
+  ],
+  "os.Exit": [
+    "main"
+  ],
+  "os.IsNotExist": [
+    "UpdateFile",
+    "DeleteFile"
+  ],
+  "os.MkdirAll": [
+    "Write",
+    "Init",
+    "writeJSON"
+  ],
+  "os.Open": [
+    "readJSON"
+  ],
+  "os.ReadDir": [
+    "ReadAll"
+  ],
+  "os.ReadFile": [
+    "Fetch",
+    "UpdateFile",
+    "fetchCode",
+    "fetchSnippet",
+    "HashFile",
+    "Run"
+  ],
+  "os.Remove": [
+    "DeleteFile"
+  ],
+  "os.Stat": [
+    "UpdateFile",
+    "Watcher.Start"
+  ],
+  "p.ParseCtx": [
+    "getParser"
+  ],
+  "p.SetLanguage": [
+    "getParser"
+  ],
+  "parseSource": [
+    "extractGo",
+    "extractTS",
+    "extractPython"
+  ],
+  "pkg.NodeID": [
+    "extractGo",
+    "extractTS",
+    "extractPython"
+  ],
+  "printBlock": [
+    "printContext"
+  ],
+  "pyCallEdges": [
+    "extractPython"
+  ],
+  "python.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "readJSON": [
+    "ReadFrom",
+    "ReadTo",
+    "Read",
+    "ReadAll",
+    "ReadSymbols",
+    "ReadMap",
+    "ReadMeta"
+  ],
+  "rebuildGlobal": [
+    "UpdateFile",
+    "removeFile"
+  ],
+  "recvNode.Content": [
+    "goMethodName"
+  ],
+  "removeFile": [
+    "UpdateFile"
+  ],
+  "repo.Scan": [
+    "Run"
+  ],
+  "root.AddCommand": [
+    "init"
+  ],
+  "root.Execute": [
+    "main"
+  ],
+  "root.PersistentFlags": [
+    "init"
+  ],
+  "root.PersistentFlags().BoolVar": [
+    "init"
+  ],
+  "sha1.Sum": [
+    "HashFile",
+    "hashBytes"
+  ],
+  "sitter.NewParser": [
+    "getParser"
+  ],
+  "spec.ChildByFieldName": [
+    "goTypeName"
+  ],
+  "spec.Type": [
+    "goTypeName"
+  ],
+  "splitLines": [
+    "fetchSnippet"
+  ],
+  "string": [
+    "Fetch",
+    "fetchCode",
+    "fetchSnippet"
+  ],
+  "strings.Fields": [
+    "extractGoReceiver"
+  ],
+  "strings.HasPrefix": [
+    "Scan",
+    "Watcher.addDirs"
+  ],
+  "strings.HasSuffix": [
+    "findSymbol",
+    "Engine.findSymbol",
+    "ReadAll"
+  ],
+  "strings.Join": [
+    "Fetch",
+    "printContext",
+    "fetchCode",
+    "BuildMap"
+  ],
+  "strings.Repeat": [
+    "printRichTrace",
+    "printContext"
+  ],
+  "strings.ReplaceAll": [
+    "fileKey"
+  ],
+  "strings.Split": [
+    "Fetch",
+    "printRichTrace",
+    "printBlock",
+    "fetchCode",
+    "BuildMap"
+  ],
+  "strings.ToLower": [
+    "findSymbol",
+    "Engine.findSymbol",
+    "Scan"
+  ],
+  "strings.Trim": [
+    "extractGoReceiver"
+  ],
+  "strings.TrimPrefix": [
+    "extractGoReceiver"
+  ],
+  "strings.TrimRight": [
+    "printRichTrace"
+  ],
+  "strings.TrimSpace": [
+    "goCallEdges",
+    "tsCallEdges",
+    "pyCallEdges"
+  ],
+  "symbols.Extract": [
+    "UpdateFile",
+    "Run"
+  ],
+  "symbols.HashFile": [
+    "UpdateFile",
+    "Run"
+  ],
+  "ticker.Stop": [
+    "Watcher.Start"
+  ],
+  "time.NewTicker": [
+    "Watcher.Start"
+  ],
+  "time.Now": [
+    "UpdateFile",
+    "Run",
+    "Watcher.Start"
+  ],
+  "time.Since": [
+    "UpdateFile",
+    "removeFile",
+    "Run"
+  ],
+  "tree.RootNode": [
+    "extractGo",
+    "extractTS",
+    "extractPython"
+  ],
+  "treeSitterLang": [
+    "getParser"
+  ],
+  "tsCallEdges": [
+    "extractTS"
+  ],
+  "typescript.GetLanguage": [
+    "treeSitterLang"
+  ],
+  "uniqueFiles": [
+    "Engine.Assemble"
+  ],
+  "validatePassword": [
+    "AuthService.Login"
+  ],
+  "w.addDirs": [
+    "NewWatcher"
+  ],
+  "w.once.Do": [
+    "Watcher.Stop"
+  ],
+  "w.processFile": [
+    "Watcher.Start"
+  ],
+  "w.watcher.Add": [
+    "Watcher.Start",
+    "Watcher.addDirs"
+  ],
+  "w.watcher.Close": [
+    "Watcher.Stop"
+  ],
+  "walk": [
+    "extractGo",
+    "goCallEdges",
+    "extractTS",
+    "tsCallEdges",
+    "extractPython",
+    "pyCallEdges"
+  ],
+  "wg.Add": [
+    "ReadAll",
+    "Run"
+  ],
+  "wg.Done": [
+    "ReadAll",
+    "Run"
+  ],
+  "wg.Wait": [
+    "ReadAll",
+    "Run"
+  ],
+  "writeIndexFiles": [
+    "Run"
+  ],
+  "writeJSON": [
+    "Write",
+    "WriteSymbols",
+    "WriteMap",
+    "WriteMeta"
+  ]
+}

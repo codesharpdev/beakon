@@ -1,0 +1,48 @@
+{
+  "file": "testdata/sample_repo/api/controller.go",
+  "hash": "c458c2bd0c9cc1b3f72540a80519583bc9393a97",
+  "symbols": [
+    {
+      "id": "go:class:testdata/sample_repo/api/controller.go:UserController",
+      "kind": "class",
+      "name": "UserController",
+      "language": "go",
+      "file_path": "testdata/sample_repo/api/controller.go",
+      "start_line": 6,
+      "end_line": 8,
+      "source_hash": "c458c2bd0c9cc1b3f72540a80519583bc9393a97"
+    },
+    {
+      "id": "go:method:testdata/sample_repo/api/controller.go:UserController.Login",
+      "kind": "method",
+      "name": "UserController.Login",
+      "language": "go",
+      "file_path": "testdata/sample_repo/api/controller.go",
+      "start_line": 11,
+      "end_line": 13,
+      "parent": "UserController",
+      "source_hash": "c458c2bd0c9cc1b3f72540a80519583bc9393a97"
+    },
+    {
+      "id": "go:method:testdata/sample_repo/api/controller.go:UserController.Logout",
+      "kind": "method",
+      "name": "UserController.Logout",
+      "language": "go",
+      "file_path": "testdata/sample_repo/api/controller.go",
+      "start_line": 16,
+      "end_line": 18,
+      "parent": "UserController",
+      "source_hash": "c458c2bd0c9cc1b3f72540a80519583bc9393a97"
+    }
+  ],
+  "calls": [
+    {
+      "from": "UserController.Login",
+      "to": "c.auth.Login"
+    },
+    {
+      "from": "UserController.Logout",
+      "to": "c.auth.Logout"
+    }
+  ]
+}

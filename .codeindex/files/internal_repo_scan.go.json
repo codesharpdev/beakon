@@ -1,0 +1,64 @@
+{
+  "file": "internal/repo/scan.go",
+  "hash": "8830d87a88c36e448eca98b452911faa6a790474",
+  "symbols": [
+    {
+      "id": "go:class:internal/repo/scan.go:SourceFile",
+      "kind": "class",
+      "name": "SourceFile",
+      "language": "go",
+      "file_path": "internal/repo/scan.go",
+      "start_line": 31,
+      "end_line": 34,
+      "source_hash": "8830d87a88c36e448eca98b452911faa6a790474"
+    },
+    {
+      "id": "go:function:internal/repo/scan.go:Scan",
+      "kind": "function",
+      "name": "Scan",
+      "language": "go",
+      "file_path": "internal/repo/scan.go",
+      "start_line": 37,
+      "end_line": 59,
+      "source_hash": "8830d87a88c36e448eca98b452911faa6a790474"
+    }
+  ],
+  "calls": [
+    {
+      "from": "Scan",
+      "to": "filepath.Walk"
+    },
+    {
+      "from": "Scan",
+      "to": "info.IsDir"
+    },
+    {
+      "from": "Scan",
+      "to": "info.Name"
+    },
+    {
+      "from": "Scan",
+      "to": "strings.HasPrefix"
+    },
+    {
+      "from": "Scan",
+      "to": "info.Name"
+    },
+    {
+      "from": "Scan",
+      "to": "strings.ToLower"
+    },
+    {
+      "from": "Scan",
+      "to": "filepath.Ext"
+    },
+    {
+      "from": "Scan",
+      "to": "filepath.Rel"
+    },
+    {
+      "from": "Scan",
+      "to": "append"
+    }
+  ]
+}

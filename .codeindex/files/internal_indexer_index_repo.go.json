@@ -1,0 +1,264 @@
+{
+  "file": "internal/indexer/index_repo.go",
+  "hash": "06c1f6393dca9b2b595740227491ade67679f5c4",
+  "symbols": [
+    {
+      "id": "go:class:internal/indexer/index_repo.go:Result",
+      "kind": "class",
+      "name": "Result",
+      "language": "go",
+      "file_path": "internal/indexer/index_repo.go",
+      "start_line": 19,
+      "end_line": 25,
+      "source_hash": "06c1f6393dca9b2b595740227491ade67679f5c4"
+    },
+    {
+      "id": "go:function:internal/indexer/index_repo.go:Run",
+      "kind": "function",
+      "name": "Run",
+      "language": "go",
+      "file_path": "internal/indexer/index_repo.go",
+      "start_line": 29,
+      "end_line": 126,
+      "source_hash": "06c1f6393dca9b2b595740227491ade67679f5c4"
+    },
+    {
+      "id": "go:function:internal/indexer/index_repo.go:writeIndexFiles",
+      "kind": "function",
+      "name": "writeIndexFiles",
+      "language": "go",
+      "file_path": "internal/indexer/index_repo.go",
+      "start_line": 129,
+      "end_line": 141,
+      "source_hash": "06c1f6393dca9b2b595740227491ade67679f5c4"
+    },
+    {
+      "id": "go:function:internal/indexer/index_repo.go:BuildMap",
+      "kind": "function",
+      "name": "BuildMap",
+      "language": "go",
+      "file_path": "internal/indexer/index_repo.go",
+      "start_line": 144,
+      "end_line": 155,
+      "source_hash": "06c1f6393dca9b2b595740227491ade67679f5c4"
+    }
+  ],
+  "calls": [
+    {
+      "from": "Run",
+      "to": "time.Now"
+    },
+    {
+      "from": "Run",
+      "to": "index.Init"
+    },
+    {
+      "from": "Run",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "Run",
+      "to": "repo.Scan"
+    },
+    {
+      "from": "Run",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "Run",
+      "to": "make"
+    },
+    {
+      "from": "Run",
+      "to": "wg.Add"
+    },
+    {
+      "from": "Run",
+      "to": "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}"
+    },
+    {
+      "from": "Run",
+      "to": "wg.Done"
+    },
+    {
+      "from": "Run",
+      "to": "func() { \u003c-sem }"
+    },
+    {
+      "from": "Run",
+      "to": "filepath.Join"
+    },
+    {
+      "from": "Run",
+      "to": "os.ReadFile"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "fmt.Sprintf"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Unlock"
+    },
+    {
+      "from": "Run",
+      "to": "symbols.HashFile"
+    },
+    {
+      "from": "Run",
+      "to": "index.NeedsUpdate"
+    },
+    {
+      "from": "Run",
+      "to": "index.Read"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Unlock"
+    },
+    {
+      "from": "Run",
+      "to": "symbols.Extract"
+    },
+    {
+      "from": "Run",
+      "to": "index.Write"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "fmt.Sprintf"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Unlock"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Lock"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "append"
+    },
+    {
+      "from": "Run",
+      "to": "mu.Unlock"
+    },
+    {
+      "from": "Run",
+      "to": "wg.Wait"
+    },
+    {
+      "from": "Run",
+      "to": "writeIndexFiles"
+    },
+    {
+      "from": "Run",
+      "to": "index.WriteMeta"
+    },
+    {
+      "from": "Run",
+      "to": "time.Now"
+    },
+    {
+      "from": "Run",
+      "to": "len"
+    },
+    {
+      "from": "Run",
+      "to": "len"
+    },
+    {
+      "from": "Run",
+      "to": "time.Since"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "graph.Build"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "graph.Write"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "index.WriteSymbols"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "index.WriteMap"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "BuildMap"
+    },
+    {
+      "from": "writeIndexFiles",
+      "to": "fmt.Errorf"
+    },
+    {
+      "from": "BuildMap",
+      "to": "make"
+    },
+    {
+      "from": "BuildMap",
+      "to": "strings.Split"
+    },
+    {
+      "from": "BuildMap",
+      "to": "len"
+    },
+    {
+      "from": "BuildMap",
+      "to": "strings.Join"
+    },
+    {
+      "from": "BuildMap",
+      "to": "len"
+    },
+    {
+      "from": "BuildMap",
+      "to": "append"
+    }
+  ]
+}

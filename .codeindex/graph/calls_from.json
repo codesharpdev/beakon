@@ -1,0 +1,504 @@
+{
+  "AuthService.Login": [
+    "validatePassword",
+    "createJWT"
+  ],
+  "AuthService.Logout": [
+    "invalidateToken"
+  ],
+  "Build": [
+    "make",
+    "contains",
+    "append"
+  ],
+  "BuildMap": [
+    "make",
+    "strings.Split",
+    "len",
+    "strings.Join",
+    "append"
+  ],
+  "DeleteFile": [
+    "filepath.Join",
+    "fileKey",
+    "os.Remove",
+    "os.IsNotExist"
+  ],
+  "Engine.Assemble": [
+    "e.load",
+    "e.findSymbol",
+    "e.toBlock",
+    "append",
+    "uniqueFiles",
+    "estimateTokens"
+  ],
+  "Engine.findSymbol": [
+    "strings.ToLower",
+    "strings.HasSuffix"
+  ],
+  "Engine.load": [
+    "index.ReadSymbols",
+    "make",
+    "len",
+    "graph.ReadFrom",
+    "graph.ReadTo"
+  ],
+  "Engine.toBlock": [
+    "fetchCode"
+  ],
+  "Extract": [
+    "extractGo",
+    "extractTS",
+    "extractPython"
+  ],
+  "Fetch": [
+    "os.ReadFile",
+    "fmt.Errorf",
+    "strings.Split",
+    "string",
+    "len",
+    "strings.Join"
+  ],
+  "HashFile": [
+    "os.ReadFile",
+    "sha1.Sum",
+    "hex.EncodeToString"
+  ],
+  "Init": [
+    "filepath.Join",
+    "os.MkdirAll",
+    "fmt.Errorf"
+  ],
+  "NeedsUpdate": [
+    "Read"
+  ],
+  "NewWatcher": [
+    "fsnotify.NewWatcher",
+    "fmt.Errorf",
+    "make",
+    "w.addDirs",
+    "fw.Close"
+  ],
+  "Read": [
+    "filepath.Join",
+    "fileKey",
+    "readJSON"
+  ],
+  "ReadAll": [
+    "filepath.Join",
+    "os.ReadDir",
+    "e.IsDir",
+    "strings.HasSuffix",
+    "e.Name",
+    "wg.Add",
+    "func(name string) {\n\t\t\tdefer wg.Done()\n\t\t\tvar fi pkg.FileIndex\n\t\t\tif err := readJSON(filepath.Join(dir, name), \u0026fi); err == nil {\n\t\t\t\tmu.Lock()\n\t\t\t\tall = append(all, fi)\n\t\t\t\tmu.Unlock()\n\t\t\t}\n\t\t}",
+    "wg.Done",
+    "readJSON",
+    "mu.Lock",
+    "append",
+    "mu.Unlock",
+    "wg.Wait"
+  ],
+  "ReadFrom": [
+    "readJSON",
+    "filepath.Join",
+    "make"
+  ],
+  "ReadMap": [
+    "filepath.Join",
+    "readJSON"
+  ],
+  "ReadMeta": [
+    "filepath.Join",
+    "readJSON"
+  ],
+  "ReadSymbols": [
+    "filepath.Join",
+    "readJSON"
+  ],
+  "ReadTo": [
+    "readJSON",
+    "filepath.Join",
+    "make"
+  ],
+  "Run": [
+    "time.Now",
+    "index.Init",
+    "fmt.Errorf",
+    "repo.Scan",
+    "make",
+    "wg.Add",
+    "func(sf repo.SourceFile) {\n\t\t\tdefer wg.Done()\n\t\t\tsem \u003c- struct{}{}\n\t\t\tdefer func() { \u003c-sem }()\n\n\t\t\tabsPath := filepath.Join(root, sf.Path)\n\t\t\tsrc, err := os.ReadFile(absPath)\n\t\t\tif err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"read %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\thash := symbols.HashFile(absPath)\n\n\t\t\t// Skip files that haven't changed\n\t\t\tif !index.NeedsUpdate(root, sf.Path, hash) {\n\t\t\t\t// Still need to load existing symbols for graph rebuild\n\t\t\t\tfi, err := index.Read(root, sf.Path)\n\t\t\t\tif err == nil {\n\t\t\t\t\tmu.Lock()\n\t\t\t\t\tallSymbols = append(allSymbols, fi.Symbols...)\n\t\t\t\t\tallEdges = append(allEdges, fi.Calls...)\n\t\t\t\t\tskipped++\n\t\t\t\t\tmu.Unlock()\n\t\t\t\t}\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tsyms, calls := symbols.Extract(sf.Path, sf.Language, src)\n\t\t\tfi := pkg.FileIndex{\n\t\t\t\tFile:    sf.Path,\n\t\t\t\tHash:    hash,\n\t\t\t\tSymbols: syms,\n\t\t\t\tCalls:   calls,\n\t\t\t}\n\n\t\t\tif err := index.Write(root, fi); err != nil {\n\t\t\t\tmu.Lock()\n\t\t\t\terrors = append(errors, fmt.Sprintf(\"write %s: %v\", sf.Path, err))\n\t\t\t\tmu.Unlock()\n\t\t\t\treturn\n\t\t\t}\n\n\t\t\tmu.Lock()\n\t\t\tallSymbols = append(allSymbols, syms...)\n\t\t\tallEdges = append(allEdges, calls...)\n\t\t\tindexed++\n\t\t\tmu.Unlock()\n\t\t}",
+    "wg.Done",
+    "func() { \u003c-sem }",
+    "filepath.Join",
+    "os.ReadFile",
+    "mu.Lock",
+    "append",
+    "fmt.Sprintf",
+    "mu.Unlock",
+    "symbols.HashFile",
+    "index.NeedsUpdate",
+    "index.Read",
+    "symbols.Extract",
+    "index.Write",
+    "wg.Wait",
+    "writeIndexFiles",
+    "index.WriteMeta",
+    "len",
+    "time.Since"
+  ],
+  "Scan": [
+    "filepath.Walk",
+    "info.IsDir",
+    "info.Name",
+    "strings.HasPrefix",
+    "strings.ToLower",
+    "filepath.Ext",
+    "filepath.Rel",
+    "append"
+  ],
+  "Trace": [
+    "len",
+    "append"
+  ],
+  "TraceRich": [
+    "len",
+    "fetchSnippet",
+    "hasSuffix",
+    "append"
+  ],
+  "UpdateFile": [
+    "time.Now",
+    "filepath.Rel",
+    "filepath.Join",
+    "os.Stat",
+    "os.IsNotExist",
+    "removeFile",
+    "symbols.HashFile",
+    "index.NeedsUpdate",
+    "time.Since",
+    "detectLang",
+    "os.ReadFile",
+    "fmt.Errorf",
+    "symbols.Extract",
+    "index.Read",
+    "len",
+    "index.Write",
+    "rebuildGlobal"
+  ],
+  "UserController.Login": [
+    "c.auth.Login"
+  ],
+  "UserController.Logout": [
+    "c.auth.Logout"
+  ],
+  "Watcher.Start": [
+    "make",
+    "time.NewTicker",
+    "ticker.Stop",
+    "isSupportedFile",
+    "mu.Lock",
+    "time.Now",
+    "mu.Unlock",
+    "os.Stat",
+    "info.IsDir",
+    "w.watcher.Add",
+    "fmt.Errorf",
+    "now.Sub",
+    "append",
+    "delete",
+    "w.processFile"
+  ],
+  "Watcher.Stop": [
+    "w.once.Do",
+    "close",
+    "w.watcher.Close"
+  ],
+  "Watcher.addDirs": [
+    "filepath.Walk",
+    "info.IsDir",
+    "info.Name",
+    "strings.HasPrefix",
+    "w.watcher.Add"
+  ],
+  "Watcher.processFile": [
+    "UpdateFile"
+  ],
+  "Write": [
+    "filepath.Join",
+    "os.MkdirAll",
+    "writeJSON",
+    "fmt.Errorf",
+    "fileKey"
+  ],
+  "WriteMap": [
+    "filepath.Join",
+    "writeJSON"
+  ],
+  "WriteMeta": [
+    "filepath.Join",
+    "writeJSON"
+  ],
+  "WriteSymbols": [
+    "filepath.Join",
+    "writeJSON"
+  ],
+  "detectLang": [
+    "hasSuffix"
+  ],
+  "estimateTokens": [
+    "len"
+  ],
+  "extractGo": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "goFuncName",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "node.StartPoint",
+    "node.EndPoint",
+    "goCallEdges",
+    "goMethodName",
+    "goTypeName",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "tree.RootNode"
+  ],
+  "extractGoReceiver": [
+    "strings.Trim",
+    "strings.Fields",
+    "strings.TrimPrefix",
+    "len"
+  ],
+  "extractPython": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "pyCallEdges",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "tree.RootNode"
+  ],
+  "extractTS": [
+    "parseSource",
+    "hashBytes",
+    "n.Type",
+    "n.ChildByFieldName",
+    "nameNode.Content",
+    "append",
+    "pkg.NodeID",
+    "int",
+    "n.StartPoint",
+    "n.EndPoint",
+    "tsCallEdges",
+    "n.ChildCount",
+    "walk",
+    "n.Child",
+    "tree.RootNode"
+  ],
+  "fetchCode": [
+    "filepath.Join",
+    "os.ReadFile",
+    "strings.Split",
+    "string",
+    "len",
+    "strings.Join"
+  ],
+  "fetchSnippet": [
+    "filepath.Join",
+    "os.ReadFile",
+    "splitLines",
+    "string",
+    "len"
+  ],
+  "fileKey": [
+    "strings.ReplaceAll"
+  ],
+  "findSymbol": [
+    "index.ReadSymbols",
+    "fmt.Errorf",
+    "strings.ToLower",
+    "strings.HasSuffix"
+  ],
+  "getParser": [
+    "treeSitterLang",
+    "sitter.NewParser",
+    "p.SetLanguage",
+    "p.ParseCtx",
+    "context.Background",
+    "fmt.Errorf"
+  ],
+  "goCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "goFuncName": [
+    "n.ChildByFieldName",
+    "nameNode.Content"
+  ],
+  "goMethodName": [
+    "n.ChildByFieldName",
+    "extractGoReceiver",
+    "recvNode.Content",
+    "nameNode.Content"
+  ],
+  "goTypeName": [
+    "int",
+    "n.ChildCount",
+    "n.Child",
+    "spec.Type",
+    "spec.ChildByFieldName",
+    "nameNode.Content"
+  ],
+  "hasSuffix": [
+    "len"
+  ],
+  "hashBytes": [
+    "sha1.Sum",
+    "hex.EncodeToString"
+  ],
+  "init": [
+    "root.PersistentFlags().BoolVar",
+    "root.PersistentFlags",
+    "root.AddCommand"
+  ],
+  "isSupportedFile": [
+    "detectLang"
+  ],
+  "loadSymIndex": [
+    "index.ReadSymbols",
+    "make",
+    "len"
+  ],
+  "main": [
+    "root.Execute",
+    "os.Exit"
+  ],
+  "parseSource": [
+    "getParser"
+  ],
+  "printBlock": [
+    "fmt.Printf",
+    "strings.Split",
+    "fmt.Println"
+  ],
+  "printContext": [
+    "strings.Repeat",
+    "fmt.Printf",
+    "strings.Join",
+    "fmt.Println",
+    "printBlock",
+    "len"
+  ],
+  "printJSON": [
+    "json.NewEncoder",
+    "enc.SetIndent",
+    "enc.Encode"
+  ],
+  "printRichTrace": [
+    "strings.Repeat",
+    "fmt.Printf",
+    "strings.Split",
+    "strings.TrimRight",
+    "fmt.Println"
+  ],
+  "pyCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "readJSON": [
+    "os.Open",
+    "f.Close",
+    "json.NewDecoder(f).Decode",
+    "json.NewDecoder"
+  ],
+  "rebuildGlobal": [
+    "index.ReadAll",
+    "fmt.Errorf",
+    "append",
+    "graph.Build",
+    "graph.Write",
+    "index.WriteSymbols",
+    "index.WriteMap",
+    "BuildMap"
+  ],
+  "removeFile": [
+    "index.Read",
+    "len",
+    "index.DeleteFile",
+    "rebuildGlobal",
+    "time.Since"
+  ],
+  "splitLines": [
+    "len",
+    "append"
+  ],
+  "treeSitterLang": [
+    "golang.GetLanguage",
+    "typescript.GetLanguage",
+    "javascript.GetLanguage",
+    "python.GetLanguage",
+    "fmt.Errorf"
+  ],
+  "tsCallEdges": [
+    "node.Type",
+    "node.ChildByFieldName",
+    "strings.TrimSpace",
+    "fn.Content",
+    "append",
+    "int",
+    "node.ChildCount",
+    "walk",
+    "node.Child"
+  ],
+  "uniqueFiles": [
+    "append",
+    "add"
+  ],
+  "validatePassword": [
+    "errors.New"
+  ],
+  "writeIndexFiles": [
+    "graph.Build",
+    "graph.Write",
+    "fmt.Errorf",
+    "index.WriteSymbols",
+    "index.WriteMap",
+    "BuildMap"
+  ],
+  "writeJSON": [
+    "os.Create",
+    "f.Close",
+    "json.NewEncoder",
+    "enc.SetIndent",
+    "enc.Encode",
+    "os.MkdirAll",
+    "filepath.Dir"
+  ]
+}

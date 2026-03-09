@@ -1,0 +1,130 @@
+{
+  "cmd/codeindex": [
+    "loadSymIndex",
+    "printRichTrace",
+    "findSymbol",
+    "printJSON",
+    "printContext",
+    "printBlock",
+    "init",
+    "main"
+  ],
+  "internal/code": [
+    "Block",
+    "Fetch"
+  ],
+  "internal/context": [
+    "CodeBlock",
+    "Bundle",
+    "Engine",
+    "NewEngine",
+    "Engine.load",
+    "Engine.Assemble",
+    "Engine.toBlock",
+    "Engine.findSymbol",
+    "fetchCode",
+    "uniqueFiles",
+    "estimateTokens",
+    "SymbolNotFound",
+    "SymbolNotFound.Error"
+  ],
+  "internal/graph": [
+    "CallsFrom",
+    "CallsTo",
+    "Build",
+    "Write",
+    "ReadFrom",
+    "ReadTo",
+    "Trace",
+    "TraceRich",
+    "ExplainResult",
+    "fetchSnippet",
+    "splitLines",
+    "hasSuffix",
+    "contains",
+    "writeJSON",
+    "readJSON"
+  ],
+  "internal/index": [
+    "Meta",
+    "SymbolsIndex",
+    "MapIndex",
+    "Write",
+    "Read",
+    "ReadAll",
+    "WriteSymbols",
+    "ReadSymbols",
+    "WriteMap",
+    "ReadMap",
+    "WriteMeta",
+    "ReadMeta",
+    "NeedsUpdate",
+    "Init",
+    "fileKey",
+    "writeJSON",
+    "readJSON",
+    "DeleteFile"
+  ],
+  "internal/indexer": [
+    "UpdateResult",
+    "UpdateFile",
+    "removeFile",
+    "rebuildGlobal",
+    "detectLang",
+    "hasSuffix",
+    "Result",
+    "Run",
+    "writeIndexFiles",
+    "BuildMap",
+    "WatchEvent",
+    "Watcher",
+    "NewWatcher",
+    "Watcher.Start",
+    "Watcher.Stop",
+    "Watcher.processFile",
+    "Watcher.addDirs",
+    "isSupportedFile"
+  ],
+  "internal/repo": [
+    "SourceFile",
+    "Scan"
+  ],
+  "internal/symbols": [
+    "Extract",
+    "HashFile",
+    "extractGo",
+    "goFuncName",
+    "goMethodName",
+    "goTypeName",
+    "goCallEdges",
+    "extractGoReceiver",
+    "extractTS",
+    "tsCallEdges",
+    "extractPython",
+    "pyCallEdges",
+    "hashBytes",
+    "parseSource",
+    "treeSitterLang",
+    "getParser"
+  ],
+  "pkg": [
+    "CodeIndexNode",
+    "CallEdge",
+    "FileIndex",
+    "TraceStep",
+    "NodeID"
+  ],
+  "testdata/sample_repo/api": [
+    "UserController",
+    "UserController.Login",
+    "UserController.Logout"
+  ],
+  "testdata/sample_repo/auth": [
+    "AuthService",
+    "AuthService.Login",
+    "AuthService.Logout",
+    "validatePassword",
+    "createJWT",
+    "invalidateToken"
+  ]
+}
