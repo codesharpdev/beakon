@@ -283,6 +283,39 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 				})
 				calls = append(calls, tsCallEdges(n, src, qualified, parent)...)
 			}
+		case "lexical_declaration", "variable_declaration":
+			// const/let X = () => {} | function(){} | memo(fn) | forwardRef(fn)
+			// React components and inline hooks are bound this way, so the
+			// declared name — not the anonymous function expression — is the symbol.
+			for i := 0; i < int(n.ChildCount()); i++ {
+				d := n.Child(i)
+				if d.Type() != "variable_declarator" {
+					continue
+				}
+				nameNode := d.ChildByFieldName("name")
+				valNode := d.ChildByFieldName("value")
+				if nameNode == nil || valNode == nil {
+					continue
+				}
+				if fn := tsFunctionLikeValue(valNode); fn != nil {
+					name := nameNode.Content(src)
+					nodes = append(nodes, pkg.BeakonNode{
+						ID:   pkg.NodeID(language, "function", filePath, name),
+						Kind: "function", Name: name, Language: language,
+						FilePath:   filePath,
+						StartLine:  int(d.StartPoint().Row) + 1,
+						EndLine:    int(d.EndPoint().Row) + 1,
+						SourceHash: hash,
+					})
+					calls = append(calls, tsCallEdges(valNode, src, name, "")...)
+					for j := 0; j < int(fn.ChildCount()); j++ {
+						walk(fn.Child(j), name)
+					}
+				} else {
+					walk(d, parent)
+				}
+			}
+			return
 		}
 		for i := 0; i < int(n.ChildCount()); i++ {
 			walk(n.Child(i), parent)
@@ -291,6 +324,28 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 
 	walk(tree.RootNode(), "")
 	return nodes, calls
+}
+
+// tsFunctionLikeValue returns the node to descend into when a variable is bound
+// to a function — directly (arrow/function expression) or via a single-arg HOC
+// wrapper like memo(fn) / forwardRef(fn). Returns nil for non-function values.
+func tsFunctionLikeValue(v *sitter.Node) *sitter.Node {
+	switch v.Type() {
+	case "arrow_function", "function_expression", "function", "generator_function":
+		return v
+	case "call_expression":
+		args := v.ChildByFieldName("arguments")
+		if args == nil {
+			return nil
+		}
+		for i := 0; i < int(args.ChildCount()); i++ {
+			switch args.Child(i).Type() {
+			case "arrow_function", "function_expression", "function", "generator_function":
+				return v
+			}
+		}
+	}
+	return nil
 }
 
 func tsCallEdges(n *sitter.Node, src []byte, from string, parent string) []pkg.CallEdge {
