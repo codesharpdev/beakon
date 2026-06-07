@@ -341,14 +341,21 @@ func tsFunctionLikeValue(v *sitter.Node) *sitter.Node {
 	case "arrow_function", "function_expression", "function", "generator_function":
 		return v
 	case "call_expression":
+		// HOC wrapper(s): memo(fn), forwardRef(fn), and nested combinations like
+		// memo(forwardRef(fn)) — recurse through the call chain to find a function.
 		args := v.ChildByFieldName("arguments")
 		if args == nil {
 			return nil
 		}
 		for i := 0; i < int(args.ChildCount()); i++ {
-			switch args.Child(i).Type() {
+			a := args.Child(i)
+			switch a.Type() {
 			case "arrow_function", "function_expression", "function", "generator_function":
 				return v
+			case "call_expression":
+				if tsFunctionLikeValue(a) != nil {
+					return v
+				}
 			}
 		}
 	}

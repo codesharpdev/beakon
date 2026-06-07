@@ -35,6 +35,20 @@ func TestExtractTS_MemoWrappedComponent(t *testing.T) {
 	assertContains(t, symbolNames(nodes), "VersionDropdown")
 }
 
+// Nested HOC wrappers: memo(forwardRef(fn)) — the function is reached through
+// two call expressions, not one.
+const tsNestedHOCSrc = `
+export const ImageViewer = memo(forwardRef(function ImageViewer(props, ref) {
+  return renderImage(props);
+}));
+`
+
+func TestExtractTS_NestedHOCComponent(t *testing.T) {
+	nodes, calls := Extract("app/image-viewer.tsx", "typescript", []byte(tsNestedHOCSrc))
+	assertContains(t, symbolNames(nodes), "ImageViewer")
+	assertEdge(t, calls, "ImageViewer", "renderImage")
+}
+
 func TestExtractTS_DefaultExportFunction(t *testing.T) {
 	nodes, _ := Extract("app/comment-composer.tsx", "typescript", []byte(tsReactSrc))
 	assertContains(t, symbolNames(nodes), "CommentComposer")
