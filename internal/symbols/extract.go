@@ -218,7 +218,14 @@ func extractGoReceiver(recv string) string {
 // --- TypeScript / JavaScript ---
 
 func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.CallEdge) {
-	tree, err := parseSource(src, language)
+	// JSX files need the JSX-aware grammar or every JSX subtree becomes an ERROR
+	// node and the whole file yields nothing. The symbol language label stays
+	// typescript/javascript so resolver enrichment is unaffected.
+	parseLang := language
+	if strings.HasSuffix(filePath, ".tsx") || strings.HasSuffix(filePath, ".jsx") {
+		parseLang = "tsx"
+	}
+	tree, err := parseSource(src, parseLang)
 	if err != nil {
 		return nil, nil
 	}
@@ -364,12 +371,37 @@ func tsCallEdges(n *sitter.Node, src []byte, from string, parent string) []pkg.C
 				}
 			}
 		}
+		// Rendering <Component/> is a call edge in React. Lowercase tags are host
+		// elements (div, span) — skip them; only Capitalized or Namespaced.Member
+		// tags refer to component symbols.
+		if node.Type() == "jsx_opening_element" || node.Type() == "jsx_self_closing_element" {
+			if nameNode := node.ChildByFieldName("name"); nameNode != nil {
+				name := strings.TrimSpace(nameNode.Content(src))
+				if name != from && isJSXComponentName(name) {
+					edges = append(edges, pkg.CallEdge{From: from, To: name})
+				}
+			}
+		}
 		for i := 0; i < int(node.ChildCount()); i++ {
 			walk(node.Child(i))
 		}
 	}
 	walk(n)
 	return edges
+}
+
+// isJSXComponentName reports whether a JSX tag refers to a component symbol
+// rather than a host element. React treats Capitalized tags and member
+// expressions (Foo.Bar) as components; lowercase tags are HTML elements.
+func isJSXComponentName(name string) bool {
+	if name == "" {
+		return false
+	}
+	if strings.Contains(name, ".") {
+		return true
+	}
+	r := rune(name[0])
+	return r >= 'A' && r <= 'Z'
 }
 
 // --- Python ---
