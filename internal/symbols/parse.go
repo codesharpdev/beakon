@@ -22,6 +22,7 @@ import (
 	"github.com/smacker/go-tree-sitter/rust"
 	"github.com/smacker/go-tree-sitter/scala"
 	"github.com/smacker/go-tree-sitter/swift"
+	"github.com/smacker/go-tree-sitter/typescript/tsx"
 	"github.com/smacker/go-tree-sitter/typescript/typescript"
 )
 
@@ -31,6 +32,10 @@ func treeSitterLang(language string) (*sitter.Language, error) {
 		return golang.GetLanguage(), nil
 	case "typescript":
 		return typescript.GetLanguage(), nil
+	case "tsx":
+		// JSX-aware grammar for .tsx/.jsx; selected by file extension while the
+		// symbol's language label stays "typescript"/"javascript".
+		return tsx.GetLanguage(), nil
 	case "javascript":
 		return javascript.GetLanguage(), nil
 	case "python":

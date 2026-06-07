@@ -218,7 +218,14 @@ func extractGoReceiver(recv string) string {
 // --- TypeScript / JavaScript ---
 
 func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.CallEdge) {
-	tree, err := parseSource(src, language)
+	// JSX files need the JSX-aware grammar or every JSX subtree becomes an ERROR
+	// node and the whole file yields nothing. The symbol language label stays
+	// typescript/javascript so resolver enrichment is unaffected.
+	parseLang := language
+	if strings.HasSuffix(filePath, ".tsx") || strings.HasSuffix(filePath, ".jsx") {
+		parseLang = "tsx"
+	}
+	tree, err := parseSource(src, parseLang)
 	if err != nil {
 		return nil, nil
 	}
@@ -283,6 +290,39 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 				})
 				calls = append(calls, tsCallEdges(n, src, qualified, parent)...)
 			}
+		case "lexical_declaration", "variable_declaration":
+			// const/let X = () => {} | function(){} | memo(fn) | forwardRef(fn)
+			// React components and inline hooks are bound this way, so the
+			// declared name — not the anonymous function expression — is the symbol.
+			for i := 0; i < int(n.ChildCount()); i++ {
+				d := n.Child(i)
+				if d.Type() != "variable_declarator" {
+					continue
+				}
+				nameNode := d.ChildByFieldName("name")
+				valNode := d.ChildByFieldName("value")
+				if nameNode == nil || valNode == nil {
+					continue
+				}
+				if fn := tsFunctionLikeValue(valNode); fn != nil {
+					name := nameNode.Content(src)
+					nodes = append(nodes, pkg.BeakonNode{
+						ID:   pkg.NodeID(language, "function", filePath, name),
+						Kind: "function", Name: name, Language: language,
+						FilePath:   filePath,
+						StartLine:  int(d.StartPoint().Row) + 1,
+						EndLine:    int(d.EndPoint().Row) + 1,
+						SourceHash: hash,
+					})
+					calls = append(calls, tsCallEdges(valNode, src, name, "")...)
+					for j := 0; j < int(fn.ChildCount()); j++ {
+						walk(fn.Child(j), name)
+					}
+				} else {
+					walk(d, parent)
+				}
+			}
+			return
 		}
 		for i := 0; i < int(n.ChildCount()); i++ {
 			walk(n.Child(i), parent)
@@ -291,6 +331,35 @@ func extractTS(filePath, language string, src []byte) ([]pkg.BeakonNode, []pkg.C
 
 	walk(tree.RootNode(), "")
 	return nodes, calls
+}
+
+// tsFunctionLikeValue returns the node to descend into when a variable is bound
+// to a function — directly (arrow/function expression) or via a single-arg HOC
+// wrapper like memo(fn) / forwardRef(fn). Returns nil for non-function values.
+func tsFunctionLikeValue(v *sitter.Node) *sitter.Node {
+	switch v.Type() {
+	case "arrow_function", "function_expression", "function", "generator_function":
+		return v
+	case "call_expression":
+		// HOC wrapper(s): memo(fn), forwardRef(fn), and nested combinations like
+		// memo(forwardRef(fn)) — recurse through the call chain to find a function.
+		args := v.ChildByFieldName("arguments")
+		if args == nil {
+			return nil
+		}
+		for i := 0; i < int(args.ChildCount()); i++ {
+			a := args.Child(i)
+			switch a.Type() {
+			case "arrow_function", "function_expression", "function", "generator_function":
+				return v
+			case "call_expression":
+				if tsFunctionLikeValue(a) != nil {
+					return v
+				}
+			}
+		}
+	}
+	return nil
 }
 
 func tsCallEdges(n *sitter.Node, src []byte, from string, parent string) []pkg.CallEdge {
@@ -309,12 +378,37 @@ func tsCallEdges(n *sitter.Node, src []byte, from string, parent string) []pkg.C
 				}
 			}
 		}
+		// Rendering <Component/> is a call edge in React. Lowercase tags are host
+		// elements (div, span) — skip them; only Capitalized or Namespaced.Member
+		// tags refer to component symbols.
+		if node.Type() == "jsx_opening_element" || node.Type() == "jsx_self_closing_element" {
+			if nameNode := node.ChildByFieldName("name"); nameNode != nil {
+				name := strings.TrimSpace(nameNode.Content(src))
+				if name != from && isJSXComponentName(name) {
+					edges = append(edges, pkg.CallEdge{From: from, To: name})
+				}
+			}
+		}
 		for i := 0; i < int(node.ChildCount()); i++ {
 			walk(node.Child(i))
 		}
 	}
 	walk(n)
 	return edges
+}
+
+// isJSXComponentName reports whether a JSX tag refers to a component symbol
+// rather than a host element. React treats Capitalized tags and member
+// expressions (Foo.Bar) as components; lowercase tags are HTML elements.
+func isJSXComponentName(name string) bool {
+	if name == "" {
+		return false
+	}
+	if strings.Contains(name, ".") {
+		return true
+	}
+	r := rune(name[0])
+	return r >= 'A' && r <= 'Z'
 }
 
 // --- Python ---
